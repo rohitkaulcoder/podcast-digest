@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast Digest Archive</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #fafafa;
+            color: #1a1a2e;
+            line-height: 1.6;
+        }
+        header {
+            margin-bottom: 40px;
+        }
+        h1 {
+            color: #1a1a2e;
+            border-bottom: 3px solid #e94560;
+            padding-bottom: 15px;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+        .tagline {
+            color: #666;
+            font-size: 1.1rem;
+            margin-top: 0;
+        }
+        .digest-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .digest-list li {
+            margin: 12px 0;
+        }
+        .digest-list a {
+            display: block;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            color: #1a1a2e;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border-left: 4px solid transparent;
+        }
+        .digest-list a:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            border-left-color: #e94560;
+            transform: translateX(4px);
+        }
+        .digest-list .date {
+            font-size: 1.1rem;
+            color: #e94560;
+        }
+        .digest-list .label {
+            font-size: 0.85rem;
+            color: #888;
+            margin-left: 10px;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #888;
+        }
+        .empty-state .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: #e94560;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎙️ Podcast Digest Archive</h1>
+        <p class="tagline">Weekly insights from the best podcasts, distilled into digestible nuggets.</p>
+    </header>
+    
+    <main>
+        <ul class="digest-list">
+            <!-- DIGEST_LIST -->
+        </ul>
+    </main>
+    
+    <footer>
+        <p>Generated with 💙 by <a href="https://claude.ai">Claude</a></p>
+    </footer>
+</body>
+</html>
