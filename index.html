@@ -7,117 +7,294 @@
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            background: #fafafa;
-            color: #1a1a2e;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            color: #2D2D2D;
             line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
         }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
         header {
-            margin-bottom: 40px;
+            text-align: center;
+            margin: 60px 0 80px;
+            position: relative;
         }
+
+        .emoji-decoration {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
         h1 {
-            color: #1a1a2e;
-            border-bottom: 3px solid #e94560;
-            padding-bottom: 15px;
-            margin-bottom: 10px;
-            font-size: 2rem;
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FF9B71 0%, #FF7B9C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
         }
+
         .tagline {
+            font-size: 1.2rem;
             color: #666;
-            font-size: 1.1rem;
-            margin-top: 0;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
         }
-        .digest-list {
+
+        .digest-grid {
+            display: grid;
+            gap: 24px;
             list-style: none;
             padding: 0;
-            margin: 0;
+            margin-bottom: 60px;
         }
-        .digest-list li {
-            margin: 12px 0;
-        }
-        .digest-list a {
-            display: block;
-            padding: 20px;
+
+        .digest-card {
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-            color: #1a1a2e;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(255, 155, 113, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .digest-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #FF9B71 0%, #FFB88C 50%, #FF7B9C 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .digest-card:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 12px 40px rgba(255, 155, 113, 0.2);
+            border-color: #FFB88C;
+        }
+
+        .digest-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .digest-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .date {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #FF9B71;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .date::before {
+            content: '📅';
+            font-size: 1.2rem;
+        }
+
+        .stats {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        .stat-badge {
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid #FFD4C4;
+        }
+
+        .stat-badge strong {
+            color: #FF9B71;
+            font-weight: 600;
+        }
+
+        .fun-fact {
+            background: linear-gradient(135deg, #FFB88C 0%, #FF9B71 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 60px 0;
+            box-shadow: 0 8px 30px rgba(255, 155, 113, 0.3);
+        }
+
+        .fun-fact h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .fun-fact p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            color: #FF9B71;
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.2s ease;
-            border-left: 4px solid transparent;
+            transition: color 0.2s;
         }
-        .digest-list a:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-            border-left-color: #e94560;
-            transform: translateX(4px);
+
+        footer a:hover {
+            color: #FF7B9C;
         }
-        .digest-list .date {
-            font-size: 1.1rem;
-            color: #e94560;
-        }
-        .digest-list .label {
-            font-size: 0.85rem;
-            color: #888;
-            margin-left: 10px;
-        }
+
         .empty-state {
             text-align: center;
-            padding: 60px 20px;
-            color: #888;
+            padding: 80px 20px;
+            color: #999;
         }
+
         .empty-state .icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
+            font-size: 4rem;
+            margin-bottom: 20px;
         }
-        footer {
-            margin-top: 60px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            text-align: center;
-            color: #888;
-            font-size: 0.9rem;
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .emoji-decoration {
+                font-size: 3rem;
+            }
+
+            header {
+                margin: 40px 0 60px;
+            }
+
+            .digest-card {
+                padding: 24px;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 8px;
+            }
         }
-        footer a {
-            color: #e94560;
-            text-decoration: none;
+
+        /* Playful accents */
+        .accent-circle {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.1;
+            z-index: -1;
         }
-        footer a:hover {
-            text-decoration: underline;
+
+        .accent-1 {
+            width: 300px;
+            height: 300px;
+            background: #FF9B71;
+            top: -100px;
+            right: -100px;
+        }
+
+        .accent-2 {
+            width: 200px;
+            height: 200px;
+            background: #FFB88C;
+            bottom: -50px;
+            left: -50px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>🎙️ Podcast Digest Archive</h1>
-        <p class="tagline">Weekly insights from the best podcasts, distilled into digestible nuggets.</p>
-    </header>
-    
-    <main>
-        <ul class="digest-list">
-            <li>
-                <a href="digest_2026-01-24.html">
-                    <span class="date">January 24, 2026</span>
-                    <span class="label">2 episodes • 4 quick hits • 20 insights</span>
-                </a>
-            </li>
-            <li>
-                <a href="digest_2026-01-23.html">
-                    <span class="date">January 23, 2026</span>
-                    <span class="label">3 episodes • 6 quick hits • 27 insights</span>
-                </a>
-            </li>
-            <!-- DIGEST_LIST -->
-        </ul>
-    </main>
-    
-    <footer>
-        <p>Generated with 💙 by <a href="https://claude.ai">Claude</a></p>
-    </footer>
+    <!-- Playful background accents -->
+    <div class="accent-circle accent-1"></div>
+    <div class="accent-circle accent-2"></div>
+
+    <div class="container">
+        <header>
+            <div class="emoji-decoration">🎧</div>
+            <h1>Podcast Digest</h1>
+            <p class="tagline">MBA-level insights from the best podcasts, distilled with strategic depth</p>
+        </header>
+
+        <main>
+            <ul class="digest-grid">
+                <li>
+                    <div class="digest-card">
+                        <a href="digest_2026-01-24.html" class="digest-link">
+                            <div class="date">January 24, 2026</div>
+                            <div class="stats">
+                                <span class="stat-badge">📊 <strong>2</strong> episodes</span>
+                                <span class="stat-badge">⚡ <strong>4</strong> quick hits</span>
+                                <span class="stat-badge">💡 <strong>20</strong> insights</span>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="digest-card">
+                        <a href="digest_2026-01-23.html" class="digest-link">
+                            <div class="date">January 23, 2026</div>
+                            <div class="stats">
+                                <span class="stat-badge">📊 <strong>3</strong> episodes</span>
+                                <span class="stat-badge">⚡ <strong>6</strong> quick hits</span>
+                                <span class="stat-badge">💡 <strong>27</strong> insights</span>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                <!-- DIGEST_LIST -->
+            </ul>
+
+            <div class="fun-fact">
+                <h3>✨ Powered by Claude</h3>
+                <p>Every insight crafted with McKinsey-level strategic analysis</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>Built with curiosity · Generated with <a href="https://claude.ai">Claude AI</a></p>
+        </footer>
+    </div>
 </body>
 </html>
