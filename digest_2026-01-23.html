@@ -12,10 +12,11 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #1a1a2e;
-            background: #fafafa;
+            color: #2D2D2D;
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            min-height: 100vh;
             padding: 20px;
         }
 
@@ -24,19 +25,26 @@
             margin: 0 auto;
             background: white;
             padding: 40px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(255, 155, 113, 0.15);
+            border-radius: 20px;
         }
 
         header {
-            border-bottom: 4px solid #e94560;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+            text-align: center;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+            border-bottom: none;
         }
 
         h1 {
-            color: #1a1a2e;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FF9B71 0%, #FF7B9C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
         }
 
         .stats {
@@ -45,27 +53,32 @@
         }
 
         .export-btn {
-            background: #e94560;
+            background: linear-gradient(135deg, #FF9B71 0%, #FFB88C 100%);
             color: white;
             border: none;
-            padding: 12px 24px;
-            border-radius: 6px;
+            padding: 14px 28px;
+            border-radius: 12px;
             cursor: pointer;
             font-size: 1rem;
-            margin: 20px 0;
-            transition: background 0.3s;
+            font-weight: 500;
+            margin: 20px auto;
+            display: block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 155, 113, 0.3);
         }
 
         .export-btn:hover {
-            background: #d63650;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 155, 113, 0.4);
         }
 
         .themes-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #FFB88C 0%, #FF9B71 100%);
             color: white;
-            padding: 30px;
-            border-radius: 8px;
-            margin: 30px 0;
+            padding: 35px;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 8px 30px rgba(255, 155, 113, 0.25);
         }
 
         .themes-section h2 {
@@ -84,15 +97,16 @@
         }
 
         .toc {
-            background: #f5f5f5;
-            padding: 25px;
-            border-radius: 8px;
-            margin: 30px 0;
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border: 2px solid #FFD4C4;
         }
 
         .toc h2 {
             margin-bottom: 15px;
-            color: #1a1a2e;
+            color: #2D2D2D;
         }
 
         .toc ul {
@@ -104,19 +118,19 @@
         }
 
         .toc a {
-            color: #e94560;
+            color: #FF9B71;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.2s;
         }
 
         .toc a:hover {
-            color: #d63650;
+            color: #FF7B9C;
             text-decoration: underline;
         }
 
         .badge {
-            background: #e94560;
+            background: #FF9B71;
             color: white;
             padding: 2px 8px;
             border-radius: 12px;
@@ -126,14 +140,21 @@
 
         .episode {
             margin: 40px 0;
-            padding: 30px;
+            padding: 35px;
             background: #fff;
-            border-left: 5px solid #e94560;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 5px solid #FF9B71;
+            box-shadow: 0 2px 8px rgba(255, 155, 113, 0.1);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .episode:hover {
+            box-shadow: 0 4px 15px rgba(255, 155, 113, 0.15);
+            transform: translateY(-2px);
         }
 
         .episode h2 {
-            color: #1a1a2e;
+            color: #2D2D2D;
             margin-bottom: 10px;
             font-size: 1.8rem;
         }
@@ -145,7 +166,7 @@
         }
 
         .episode-meta a {
-            color: #e94560;
+            color: #FF9B71;
             text-decoration: none;
         }
 
@@ -170,48 +191,57 @@
             color: white;
         }
 
-        .core { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-        .counter { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #5a189a !important; }
-        .data { background: linear-gradient(135deg, #81fbb8 0%, #28c76f 100%); }
-        .future { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: #d63650 !important; }
+        .core { background: linear-gradient(135deg, #FFB88C 0%, #FF9B71 100%); }
+        .counter { background: linear-gradient(135deg, #FF9B71 0%, #FF7B9C 100%); }
+        .data { background: linear-gradient(135deg, #FFD4C4 0%, #FFB88C 100%); }
+        .future { background: linear-gradient(135deg, #FF7B9C 0%, #FFB88C 100%); }
 
         .insight {
             margin: 20px 0;
-            padding: 20px;
-            background: #f9f9f9;
-            border-radius: 6px;
-            border-left: 4px solid #e94560;
+            padding: 24px;
+            background: #FFFBF8;
+            border-radius: 16px;
+            border-left: 4px solid #FF9B71;
+            transition: all 0.3s;
+        }
+
+        .insight:hover {
+            background: #FFF8F3;
+            box-shadow: 0 4px 15px rgba(255, 155, 113, 0.1);
         }
 
         .insight h4 {
-            color: #1a1a2e;
-            margin-bottom: 12px;
+            color: #2D2D2D;
+            margin-bottom: 14px;
             font-size: 1.15rem;
             line-height: 1.4;
+            font-weight: 600;
         }
 
         .context {
             margin: 15px 0;
-            line-height: 1.7;
-            color: #333;
+            line-height: 1.75;
+            color: #444;
             font-size: 0.98rem;
         }
 
         .quote {
             margin: 15px 0;
-            padding: 15px;
+            padding: 18px;
             background: white;
-            border-left: 3px solid #e94560;
+            border-left: 4px solid #FFB88C;
+            border-radius: 8px;
             font-style: italic;
             color: #555;
             line-height: 1.6;
         }
 
         .quick-hits-section {
-            background: #fffbea;
-            padding: 30px;
-            border-radius: 8px;
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            padding: 35px;
+            border-radius: 20px;
             margin: 40px 0;
+            border: 2px solid #FFD4C4;
         }
 
         .quick-hit {
@@ -234,7 +264,7 @@
         }
 
         .quick-hit-meta a {
-            color: #e94560;
+            color: #FF9B71;
             text-decoration: none;
         }
 
@@ -271,9 +301,103 @@
                 font-size: 1.4rem;
             }
         }
+
+        /* Playful accents */
+        .accent-circle {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .accent-1 {
+            width: 300px;
+            height: 300px;
+            background: #FF9B71;
+            top: -100px;
+            right: -100px;
+        }
+
+        .accent-2 {
+            width: 200px;
+            height: 200px;
+            background: #FFB88C;
+            bottom: -50px;
+            left: -50px;
+        }
+
+        /* Anthropic-inspired doodles */
+        .doodle {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .doodle-1 {
+            top: 15%;
+            right: 10%;
+            width: 80px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .doodle-2 {
+            bottom: 20%;
+            left: 8%;
+            width: 60px;
+            animation: float 5s ease-in-out infinite 1s;
+        }
+
+        .doodle-3 {
+            top: 40%;
+            left: 5%;
+            width: 50px;
+            animation: float 6s ease-in-out infinite 2s;
+        }
+
+        .doodle-4 {
+            top: 60%;
+            right: 5%;
+            width: 70px;
+            animation: float 5s ease-in-out infinite 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
     </style>
 </head>
 <body>
+    <!-- Playful background accents -->
+    <div class="accent-circle accent-1"></div>
+    <div class="accent-circle accent-2"></div>
+
+    <!-- Anthropic-inspired doodles -->
+    <svg class="doodle doodle-1" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20,50 Q35,20 50,50 T80,50" stroke="#FF9B71" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <circle cx="20" cy="50" r="4" fill="#FF9B71"/>
+        <circle cx="80" cy="50" r="4" fill="#FF9B71"/>
+    </svg>
+
+    <svg class="doodle doodle-2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="25" stroke="#FFB88C" stroke-width="3" fill="none"/>
+        <circle cx="50" cy="50" r="15" stroke="#FFB88C" stroke-width="2" fill="none"/>
+        <circle cx="50" cy="50" r="5" fill="#FFB88C"/>
+    </svg>
+
+    <svg class="doodle doodle-3" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30,70 L50,30 L70,70 Z" stroke="#FF7B9C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="50" cy="50" r="3" fill="#FF7B9C"/>
+    </svg>
+
+    <svg class="doodle doodle-4" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25,50 L40,35 L55,50 L70,35 L85,50" stroke="#FF9B71" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="25" cy="50" r="4" fill="#FF9B71"/>
+        <circle cx="85" cy="50" r="4" fill="#FF9B71"/>
+    </svg>
+
     <div class="container">
         <header>
             <h1>🎙️ Podcast Digest</h1>
