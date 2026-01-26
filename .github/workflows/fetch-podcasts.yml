@@ -1,0 +1,107 @@
+name: Fetch Podcasts Daily
+
+on:
+  # Run daily at 8:00 AM UTC (adjust timezone as needed)
+  schedule:
+    - cron: '0 8 * * *'
+
+  # Allow manual trigger from GitHub UI
+  workflow_dispatch:
+    inputs:
+      days:
+        description: 'Number of days to fetch'
+        required: false
+        default: '1'
+
+jobs:
+  fetch-and-process:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Create data directories
+        run: |
+          mkdir -p data/chunks
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Fetch podcasts
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          # Determine days to fetch
+          DAYS=${{ github.event.inputs.days || '1' }}
+
+          echo "🎙️ Fetching podcasts from last $DAYS day(s)..."
+          python3 scripts/fetch_podcasts.py --days $DAYS --max-per-channel 5 -o data/podcasts.json
+
+          # Check if fetch was successful
+          if [ $? -eq 0 ]; then
+            echo "✅ Podcasts fetched successfully"
+            echo "fetch_status=success" >> $GITHUB_OUTPUT
+          else
+            echo "❌ Failed to fetch podcasts"
+            echo "fetch_status=failed" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+      - name: Process into chunks
+        if: success()
+        run: |
+          echo "📦 Processing podcasts into chunks..."
+          python3 scripts/prepare_digest_chunks.py data/podcasts.json data/chunks
+
+          if [ $? -eq 0 ]; then
+            echo "✅ Chunks prepared successfully"
+          else
+            echo "❌ Failed to prepare chunks"
+            exit 1
+          fi
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git diff --quiet data/ || echo "has_changes=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push if changes
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+
+          git add data/
+
+          # Create commit message with summary
+          EPISODE_COUNT=$(python3 -c "import json; data=json.load(open('data/podcasts.json')); print(len(data))")
+
+          git commit -m "Auto-fetch: $EPISODE_COUNT episode(s) on $(date +'%Y-%m-%d')
+
+          🤖 Automated fetch via GitHub Actions
+
+          Co-Authored-By: GitHub Actions <actions@github.com>"
+
+          git push
+
+          echo "✅ Changes committed and pushed"
+
+      - name: No new episodes
+        if: steps.check_changes.outputs.has_changes != 'true'
+        run: |
+          echo "ℹ️ No new episodes found"
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "::error::Podcast fetch workflow failed! Check the logs above for details."
