@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast Digest - February 16, 2026</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2D2D2D;
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(255, 155, 113, 0.15);
+            border-radius: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+            border-bottom: none;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FF9B71 0%, #FF7B9C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+        }
+
+        .stats {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .export-btn {
+            background: linear-gradient(135deg, #FF9B71 0%, #FFB88C 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 20px auto;
+            display: block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 155, 113, 0.3);
+        }
+
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 155, 113, 0.4);
+        }
+
+        .themes-section {
+            background: linear-gradient(135deg, #FFB88C 0%, #FF9B71 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 8px 30px rgba(255, 155, 113, 0.25);
+        }
+
+        .themes-section h2 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .themes-section ol {
+            margin-left: 20px;
+        }
+
+        .themes-section li {
+            margin: 12px 0;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .toc {
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border: 2px solid #FFD4C4;
+        }
+
+        .toc h2 {
+            margin-bottom: 20px;
+            color: #FF9B71;
+            font-weight: 600;
+        }
+
+        .toc ul {
+            list-style: none;
+        }
+
+        .toc li {
+            margin: 10px 0;
+        }
+
+        .toc a {
+            color: #FF9B71;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover {
+            color: #FF7B9C;
+            text-decoration: underline;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #FF9B71 0%, #FFB88C 100%);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            margin-left: 8px;
+            font-weight: 500;
+        }
+
+        .episode {
+            margin: 40px 0;
+            padding: 35px;
+            background: #fff;
+            border-left: 5px solid #FF9B71;
+            box-shadow: 0 4px 20px rgba(255, 155, 113, 0.1);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .episode:hover {
+            box-shadow: 0 6px 30px rgba(255, 155, 113, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .episode h2 {
+            color: #2D2D2D;
+            margin-bottom: 12px;
+            font-size: 1.9rem;
+            font-weight: 600;
+        }
+
+        .episode-meta {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .episode-meta a {
+            color: #FF9B71;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .episode-meta a:hover {
+            color: #FF7B9C;
+            text-decoration: underline;
+        }
+
+        .insights-container {
+            margin-top: 25px;
+        }
+
+        .insight-category {
+            margin: 25px 0;
+        }
+
+        .category-header {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 6px;
+            color: white;
+        }
+
+        .core { background: linear-gradient(135deg, #FFB88C 0%, #FF9B71 100%); }
+        .counter { background: linear-gradient(135deg, #FF9B71 0%, #FF7B9C 100%); }
+        .data { background: linear-gradient(135deg, #FFD4C4 0%, #FFB88C 100%); }
+        .future { background: linear-gradient(135deg, #FF7B9C 0%, #FFB88C 100%); }
+
+        .insight {
+            margin: 20px 0;
+            padding: 24px;
+            background: #FFFBF8;
+            border-radius: 16px;
+            border-left: 4px solid #FF9B71;
+            transition: all 0.3s;
+        }
+
+        .insight:hover {
+            background: #FFF8F3;
+            box-shadow: 0 4px 15px rgba(255, 155, 113, 0.1);
+        }
+
+        .insight h4 {
+            color: #2D2D2D;
+            margin-bottom: 14px;
+            font-size: 1.15rem;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
+        .context {
+            margin: 15px 0;
+            line-height: 1.75;
+            color: #444;
+            font-size: 0.98rem;
+        }
+
+        .quote {
+            margin: 15px 0;
+            padding: 18px;
+            background: white;
+            border-left: 4px solid #FFB88C;
+            border-radius: 8px;
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .quick-hits-section {
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            padding: 35px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border: 2px solid #FFD4C4;
+        }
+
+        .quick-hit {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .quick-hit h3 {
+            color: #1a1a2e;
+            margin-bottom: 10px;
+        }
+
+        .quick-hit-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .quick-hit-meta a {
+            color: #FF9B71;
+            text-decoration: none;
+        }
+
+        .quick-hit ul {
+            margin-left: 20px;
+        }
+
+        .quick-hit li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .export-btn {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .episode h2 {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Playful accents */
+        .accent-circle {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .accent-1 {
+            width: 300px;
+            height: 300px;
+            background: #FF9B71;
+            top: -100px;
+            right: -100px;
+        }
+
+        .accent-2 {
+            width: 200px;
+            height: 200px;
+            background: #FFB88C;
+            bottom: -50px;
+            left: -50px;
+        }
+
+        /* Anthropic-inspired doodles */
+        .doodle {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .doodle-1 {
+            top: 15%;
+            right: 10%;
+            width: 80px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .doodle-2 {
+            bottom: 20%;
+            left: 8%;
+            width: 60px;
+            animation: float 5s ease-in-out infinite 1s;
+        }
+
+        .doodle-3 {
+            top: 40%;
+            left: 5%;
+            width: 50px;
+            animation: float 6s ease-in-out infinite 2s;
+        }
+
+        .doodle-4 {
+            top: 60%;
+            right: 5%;
+            width: 70px;
+            animation: float 5s ease-in-out infinite 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Playful background accents -->
+    <div class="accent-circle accent-1"></div>
+    <div class="accent-circle accent-2"></div>
+
+    <!-- Anthropic-inspired doodles -->
+    <svg class="doodle doodle-1" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20,50 Q35,20 50,50 T80,50" stroke="#FF9B71" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <circle cx="20" cy="50" r="4" fill="#FF9B71"/>
+        <circle cx="80" cy="50" r="4" fill="#FF9B71"/>
+    </svg>
+
+    <svg class="doodle doodle-2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="25" stroke="#FFB88C" stroke-width="3" fill="none"/>
+        <circle cx="50" cy="50" r="15" stroke="#FFB88C" stroke-width="2" fill="none"/>
+        <circle cx="50" cy="50" r="5" fill="#FFB88C"/>
+    </svg>
+
+    <svg class="doodle doodle-3" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30,70 L50,30 L70,70 Z" stroke="#FF7B9C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="50" cy="50" r="3" fill="#FF7B9C"/>
+    </svg>
+
+    <svg class="doodle doodle-4" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25,50 L40,35 L55,50 L70,35 L85,50" stroke="#FF9B71" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="25" cy="50" r="4" fill="#FF9B71"/>
+        <circle cx="85" cy="50" r="4" fill="#FF9B71"/>
+    </svg>
+
+    <div class="container">
+        <header>
+            <h1>🎙️ Podcast Digest</h1>
+            <p class="stats">February 16, 2026 • 1 Full Episode • 6 Quick Hits • 18 Insights</p>
+        </header>
+
+        <button class="export-btn" onclick="window.print()">📄 Export as PDF</button>
+
+        <div class="themes-section">
+            <h2>🔥 Top 5 Recurring Themes</h2>
+            <ol>
+                <li><strong>Ruthless Sales Culture Drives Hypergrowth:</strong> ElevenLabs demands 20x salary in quota ($100K base = $2M quota), 80%+ hit targets, and uses public shaming in monthly meetings - migrating from 10% to 40% outbound in one year.</li>
+                <li><strong>Metrics Can't Capture Values:</strong> Universities chase research expenditures that exclude contextual experts; transparency systems designed to root out fakers also eliminate non-legible excellence, creating a gap between measurable and meaningful.</li>
+                <li><strong>AI Governance Race Intensifies:</strong> Democratic nations need stronger leverage when setting AI rules of the road; concern that authoritarian governments could weaponize AI against their own people in ways difficult to displace.</li>
+                <li><strong>NFL Profitability Disparity Crisis:</strong> Cowboys generate $630M profit vs league average $127M and bottom team just $21M - testing "league first" mentality as private equity's $24M paydays become material to struggling franchises.</li>
+                <li><strong>Indonesia's Innovation Failure:</strong> Spent hundreds of millions building simple apps instead of real tech like EVs despite abundant natural resources - money chased fast dollars and MBA founders over engineering talent.</li>
+            </ol>
+        </div>
+
+        <div class="toc">
+            <h2>📑 Table of Contents</h2>
+            <h3>🔵 Core Insights</h3>
+            <ul>
+                <li>[20VC] 20x salary quota drives 80%+ quota attainment through ruthless accountability...</li>
+                <li>[20VC] Public performance reviews in monthly meetings - shame underperformers, celebrate...</li>
+                <li>[20VC] Sales culture requires being "on the road 75% of the time" - office presence is a...</li>
+                <li><em>...and 4 more</em></li>
+            </ul>
+            <h3>🟣 Counter-Intuitive</h3>
+            <ul>
+                <li>[20VC] Underforecast pipeline to force harder work - put $24K when you expect $500K deal...</li>
+                <li>[20VC] Remote sales teams work through ruthlessness - no junior hires, all autonomous...</li>
+                <li><em>...and 1 more</em></li>
+            </ul>
+            <h3>🟢 Data Points</h3>
+            <ul>
+                <li>[Acquired] Dallas Cowboys: $13B valuation, $1.2B revenue, $630M profit vs average team $127M...</li>
+                <li>[20VC] ElevenLabs migrated from 10% outbound sales to 40% through relentless weekly...</li>
+                <li>[20VC] 20x base salary quota - if you earn $100K, quota is $2 million, period...</li>
+            </ul>
+            <h3>🎯 Quick Hits</h3>
+            <ul>
+                <li>Dallas Cowboys Revenue Disparity Tests NFL's "League First" Mentality</li>
+                <li>How to Accidentally Replace Your Values - Metrics vs Context</li>
+                <li>Can We Prevent Authoritarian States From Weaponizing AI? - Dario Amodei</li>
+                <li>There Are Some Problems That Money Won't Solve</li>
+                <li>We Ask Everyone to Bring 20X Their Salary</li>
+                <li>Hundreds of Millions for Basic Apps? - Indonesia's Innovation Gap</li>
+            </ul>
+        </div>
+
+        <!-- FULL EPISODES -->
+
+        <div class="episode">
+            <h2>The Ruthless Sales Culture Behind ElevenLabs Growth</h2>
+            <p class="episode-meta">20VC • Carles Reina, GTM Lead at ElevenLabs • <a href="https://www.youtube.com/watch?v=dXGLftcRHAE" target="_blank">Watch →</a></p>
+
+            <div class="insights-container">
+                <div class="insight-category">
+                    <div class="category-header core">🔵 Core Insights</div>
+
+                    <div class="insight">
+                        <h4>20x salary quota drives 80%+ quota attainment through ruthless accountability</h4>
+                        <div class="context">
+                            ElevenLabs sets a brutal standard: if you earn $100K base, your quota is $2 million. Miss it and you're out. Yet over 80% of reps hit quota because the company is "ruthless on that end." The high bar combined with paying accelerators for overperformance attracts top talent. Carles prefers smaller teams that smash quotas over larger teams that miss. The 20% who don't hit quota fall into two buckets: poor fits who get terminated with 2-3 months severance, and enterprise reps building long-term pipelines who need more ramp time.
+                        </div>
+                        <div class="quote">
+                            "We ask everyone to bring 20 times their base salary. That's your quota, right? So if I pay you 100k a year, your quota is $2 million. That's it. If you don't achieve your quota, then you're going to be out, right? And we're ruthless on that end. Today is more than 80% hit their quota."
+                        </div>
+                    </div>
+
+                    <div class="insight">
+                        <h4>Public performance reviews in monthly meetings - shame underperformers, celebrate wins openly</h4>
+                        <div class="context">
+                            Every month, Carles runs pipeline review sessions where account execs present for 7-8 minutes in front of the entire team. If someone hasn't done their job, he tells them publicly. If they were "just lucky" closing deals without proper pipeline building, he calls it out. But when they improve the next month, he celebrates that too. The philosophy: sales people need to be on their toes constantly. Good performers accept criticism, learn from it, and improve. Sessions are 90 minutes total, all remote.
+                        </div>
+                        <div class="quote">
+                            "I don't agree with praise in public, criticize in private. I think I need to tell you what is right and what is wrong. I'm not going to hold back on saying if you haven't done a good job. Sales people need to be on their toes all the time and if they're good at their job they're going to accept the criticism, learn from it, and then improve."
+                        </div>
+                    </div>
+
+                    <div class="insight">
+                        <h4>Sales culture requires being "on the road 75% of the time" - office presence is a warning sign</h4>
+                        <div class="context">
+                            Carles personally travels 75% of his time - in recent weeks hitting San Francisco, Mexico City, Tokyo, Seoul, Singapore, London, and Dubai. He expects the same from his team. When he sees sales people in the office multiple days, he "starts getting worried" because sales people need to be on the road talking to customers. Building sales culture remotely works "by being ruthless" - it requires extra time and forcing people to actually be on the road, not doing virtual meetings from the office.
+                        </div>
+                        <div class="quote">
+                            "I travel like 75% of my time. In the past three weeks I was in San Francisco, I was in Mexico City, in Tokyo, in Seoul, in Singapore, in London and I'm heading to Dubai. That is the standard thing - sales people need to be on the road talking to their customers. If you're constantly in the office doing virtual meetings only with your customers, you're doing it wrong."
+                        </div>
+                    </div>
+
+                    <div class="insight">
+                        <h4>Migrated from 90% inbound to 50/50 outbound through relentless weekly tracking and public callouts</h4>
+                        <div class="context">
+                            Early 2025, Carles became obsessed with the risk of pipeline drying up if the team only did inbound. He set a goal to hit 50% outbound by year-end. Every week he publishes a report showing every single account exec and SDR's outbound performance vs target. If you don't achieve it, you get called out. People made jokes about "outbound outbound outbound" because he hammered it so often. Result: migrated from 10% outbound to 40% by relentless cultural enforcement through public transparency.
+                        </div>
+                        <div class="quote">
+                            "We were doing the majority of deals like 90% of the deals were mostly inbounds. I was getting extremely worried that if at some point the pipeline dries up then you essentially end up dying. I put together a report every single week with every single account exec and SDR telling them you've achieved your target on a weekly basis, you haven't achieved it. If people don't achieve it, I call them out."
+                        </div>
+                    </div>
+
+                    <div class="insight">
+                        <h4>SDR-in-chief mentality: GTM leader personally outbounds prospects and closes deals to model behavior</h4>
+                        <div class="context">
+                            Carles considers himself the "SDR in chief" and "absolutely loves" outbounding people. He personally messaged Razer's CEO when in Singapore, secured a meeting, and spent an hour in their offices discussing partnership - then passed it to the team. His philosophy: a good leader needs to be a good outbounder. He draws a parallel to VCs being "glorified SDR or BDR" roles. By doing the work himself, he can assess if sales team struggles are due to poor team, poor product, or insufficient aggression.
+                        </div>
+                        <div class="quote">
+                            "I am the SDR in chief in the company. I absolutely love it. I actually love outbounding people. I do it all the time and then I pass it to the team because I do believe a good leader needs to be a good outbounder. For me a VC is just a glorified SDR or BDR."
+                        </div>
+                    </div>
+
+                    <div class="insight">
+                        <h4>Compensate both account exec AND CSM on upsells - paying double to align incentives perfectly</h4>
+                        <div class="context">
+                            ElevenLabs double-pays on expansion: the original account exec continues to accrue commissions on upsells even after handoff, while the CSM is compensated on net revenue retention (NRR). Carles "doesn't care" about paying double because it means two people are "busting their ass to make sure they actually can make more money which is fantastic for me as a company." This dual incentive structure ensures both parties stay engaged in customer success and expansion.
+                        </div>
+                        <div class="quote">
+                            "On the upsell side we compensate both the account manager, sorry, the account exec and the CSM. The account exec continues to accrue quarter retirement and commissions and the CSM is compensated on NRR. I'm paying double but I don't care it makes perfect sense because then I have these two people busting their ass."
+                        </div>
+                    </div>
+
+                    <div class="insight">
+                        <h4>Pipeline reviews focus on blockers and company-wide solutions, not just deal status</h4>
+                        <div class="context">
+                            In monthly pipeline sessions, after reps present closed deals, pipeline, and 30-day forecasts, Carles always asks the same question: "What are the blockers that you have and how can I help you?" He builds a condensed list of blockers per region, then posts it across the entire organization. This creates visibility - "if we solve all these blockers in Europe we could be making a lot more money" - and ensures product, engineering, and ops teams understand what's holding back sales.
+                        </div>
+                        <div class="quote">
+                            "At the end when they present, the question is always the same: What are the blockers that you have and how can I help you? I build a list of the blockers for each one of them, condense it, and post it across the entire organization being like if we solve all of these blockers in Europe we could be making a lot more money."
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="insight-category">
+                    <div class="category-header counter">🟣 Counter-Intuitive</div>
+
+                    <div class="insight">
+                        <h4>Underforecast pipeline to force harder work - put $24K when you expect $500K deal</h4>
+                        <div class="context">
+                            Carles advises being "as negative as possible" on pipeline forecasts. If you think a deal will be $500K, put $24K. This prevents inflation that creates awkward board questions ("you said $2M but signed at $100K - what happened?"). More importantly, it's a forcing mechanism: if you always underestimate your pipeline, you need a bigger pipeline to hit year-end or quarter-end numbers, which means you "end up working twice as hard." Prevents teams from getting comfortable with inflated numbers.
+                        </div>
+                        <div class="quote">
+                            "Be as negative as possible. If you think it's going to be half a million dollars, just put me that you're going to be signing it at $24,000. If you always underestimate or undervalue your pipeline, it means you need to have a higher pipeline to reach the numbers, so you end up working twice as hard because your pipeline is not big enough."
+                        </div>
+                    </div>
+
+                    <div class="insight">
+                        <h4>Remote sales teams work through ruthlessness - no junior hires, all autonomous road warriors</h4>
+                        <div class="context">
+                            Building sales culture remotely requires "being ruthless" and "extra time," but Carles doesn't hire junior people. He only hires autonomous, energetic, passionate people who can handle "a million nos" and will be on the road constantly. The team has multiple touchpoints but operates independently. When asked how to build sales culture remotely, his answer is simple: be on top of it constantly, hire senior talent only, and force people onto the road rather than accepting virtual-only engagement.
+                        </div>
+                        <div class="quote">
+                            "Building sales remotely requires being ruthless. You need to be on top of it. I don't hire people that are junior. I hire people that are actually autonomous, very energetic, very passionate, will accept a million nos fundamentally because building sales is tough. Building sales remotely is even tougher."
+                        </div>
+                    </div>
+
+                    <div class="insight">
+                        <h4>Stopped selling for 6 months post-fundraise to rebuild infrastructure - "only one shot with lawyers"</h4>
+                        <div class="context">
+                            This is actually from the Legora CEO episode mentioned in the transcript context, where after raising from Benchmark and Redpoint, the CEO told the board they wouldn't sell for 6 months to fix infrastructure. The philosophy applies to ElevenLabs' ruthless culture too: better to pause, rebuild, and come back strong than to burn customers with a broken product. Carles applies similar thinking - he'd rather have someone building a proper enterprise pipeline who looks like they're at 50% quota than someone inflating numbers with bad deals.
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="insight-category">
+                    <div class="category-header data">🟢 Data Points</div>
+
+                    <div class="insight">
+                        <h4>ElevenLabs migrated from 10% outbound sales to 40% through relentless weekly tracking</h4>
+                        <div class="context">
+                            The company started 2025 with 90% inbound deals and only 10% outbound. Through weekly reporting, public callouts, and cultural pressure, they shifted to 40% outbound by end of year. This represents a 4x increase in outbound mix, reducing dependency on inbound flow and building a more sustainable pipeline generation engine. The shift happened over roughly 12 months through consistent enforcement and transparency.
+                        </div>
+                        <div class="quote">
+                            "We were doing 10% outbound sales early this year and we ended up migrating from this 10% outbound sales to 40% that we do now."
+                        </div>
+                    </div>
+
+                    <div class="insight">
+                        <h4>20x base salary quota - if you earn $100K, quota is $2 million, period</h4>
+                        <div class="context">
+                            The standard in SaaS is typically 6-7x, maybe 8-10x base salary as quota. ElevenLabs doubled that to 20x and told early account execs: "I have absolutely no clue if 20x is going to be the right number or not, but this is not how we're going to be building a company if you're thinking about doing the same you'd be doing at Notion or other places." They've kept it since day one for the past 2.5 years. Over 80% of reps hit quota, unlocking accelerators.
+                        </div>
+                        <div class="quote">
+                            "We ask everyone to bring 20 times their base salary. So if I pay you 100k a year, your quota is $2 million. The standard in SaaS is somewhere on like six to seven maybe eight maybe 10. We've kept it since day one. We've been running with this for the past 2 and a half years."
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="quick-hits-section">
+            <h2>🎯 Quick Hits</h2>
+            <p style="color: #666; margin-bottom: 20px;">Short-form content with rapid-fire takeaways</p>
+
+            <div class="quick-hit">
+                <h3>Dallas Cowboys Revenue Disparity Tests NFL's "League First" Mentality</h3>
+                <div class="quick-hit-meta">Acquired / ACQ2 • <a href="https://www.youtube.com/watch?v=jehDo19l0jA" target="_blank">Watch →</a></div>
+                <ul>
+                    <li>Forbes estimates Cowboys worth $13 billion with $1.2B revenue and $630M operating income - reasonable 10x revenue, 20x income valuation</li>
+                    <li>Average NFL team generates $127M profit while least profitable team produces just $21M - massive disparity threatens league-first philosophy</li>
+                    <li>Private equity's $24M payday becomes "very impactful" when stacked on top of a $21M baseline - every incremental million matters to bottom teams</li>
+                    <li>Cowboys' exceptional local revenue production creates high water mark that other teams can't replicate through shared league revenue alone</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>How to Accidentally Replace Your Values - Metrics vs Context</h3>
+                <div class="quick-hit-meta">Dialectic • <a href="https://www.youtube.com/watch?v=VLRx1vRxbwo" target="_blank">Watch →</a></div>
+                <ul>
+                    <li>Universities measure productivity by research expenditures - metric can't make contextual shift for groups that shouldn't be measured by grants</li>
+                    <li>Values are context-sensitive and require expert judgment; metrics by nature target what is portable, consistent, and accessible</li>
+                    <li>Transparency methods to root out fakers take out two groups: actual fakers AND people targeting something important but not legible/quantifiable</li>
+                    <li>Fakers simply adapt and game the now-clear public targets, while genuine experts pursuing non-legible excellence get eliminated</li>
+                    <li>The gap between "what we can measure" and "what actually matters" is the core problem with metric-driven systems</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>Can We Prevent Authoritarian States From Weaponizing AI? - Dario Amodei</h3>
+                <div class="quick-hit-meta">Dwarkesh Podcast • <a href="https://www.youtube.com/watch?v=xQjPlv2EI38" target="_blank">Watch →</a></div>
+                <ul>
+                    <li>Concern that governments will oppress their own people with AI - worry about world carved into two pieces with one side authoritarian/totalitarian in hard-to-displace way</li>
+                    <li>Initial conditions matter when setting up "rules of the road" for AI - better if democratic nations hold stronger hand with more leverage during negotiation</li>
+                    <li>Eventually governments will get powerful AI with risks of authoritarianism and bad equilibria - but the starting position determines long-term outcomes</li>
+                    <li>Requires international cooperation beyond what democracies currently seem willing to provide - not just one country or even US-only coalition setting rules unilaterally</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>There Are Some Problems That Money Won't Solve</h3>
+                <div class="quick-hit-meta">20VC • <a href="https://www.youtube.com/watch?v=piWrV5Ca5F4" target="_blank">Watch →</a></div>
+                <ul>
+                    <li>Father was very smart and intellectual but started driving a cab - "not the right job for him" and "it just broke him down"</li>
+                    <li>Initial belief: "if I was going to get money I was going to fix this" - classic hope that wealth solves all problems</li>
+                    <li>Gave father a lot of money, but "he used it to drink more" and "drank himself to death" - money amplified existing problems rather than solving them</li>
+                    <li>Brutal lesson that financial resources can't fix deeper psychological, addiction, or fulfillment issues - some problems require different solutions</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>We Ask Everyone to Bring 20X Their Salary</h3>
+                <div class="quick-hit-meta">20VC • <a href="https://www.youtube.com/watch?v=3nx1a_PNC2w" target="_blank">Watch →</a></div>
+                <ul>
+                    <li>20x base salary quota: $100K salary means $2M quota - miss it and "you're going to be out, and we're ruthless on that end"</li>
+                    <li>More than 80% of reps hit their quota at ElevenLabs - high bar combined with ruthless enforcement creates top-performing culture</li>
+                    <li>Philosophy: would rather have smaller teams that smash quotas and pay them accelerators than larger teams that miss targets</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>Hundreds of Millions for Basic Apps? - Indonesia's Innovation Gap</h3>
+                <div class="quick-hit-meta">The Generalist • <a href="https://www.youtube.com/watch?v=QtGRrVKygos" target="_blank">Watch →</a></div>
+                <ul>
+                    <li>Indonesia spent hundreds of millions building apps "you can build in half an hour" - no real innovation because that wasn't the sexy thing to build</li>
+                    <li>Despite having all natural resources, no Indonesian EV or real tech products - "biggest tech company in the country is a distributor, they're all distributors"</li>
+                    <li>Money chased "fast dollars" and "not real businesses" - funded MBA founders instead of the smart engineering kids who "studied really hard at ITB"</li>
+                    <li>Capital allocation failure: backing business operators over technical builders in a region with abundant resources but lacking execution-focused investment</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <footer style="text-align: center; padding: 40px 20px; color: #999; margin-top: 60px;">
+            <p>Generated with <a href="https://claude.ai" style="color: #FF9B71; text-decoration: none;">Claude Code</a> 🤖</p>
+            <p style="margin-top: 10px;"><a href="index.html" style="color: #FF9B71; text-decoration: none;">← Back to Archive</a></p>
+        </footer>
+    </div>
+</body>
+</html>
