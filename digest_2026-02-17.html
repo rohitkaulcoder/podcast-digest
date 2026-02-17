@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast Digest - February 17, 2026</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2D2D2D;
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(255, 155, 113, 0.15);
+            border-radius: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+            border-bottom: none;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FF9B71 0%, #FF7B9C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+        }
+
+        .stats {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .export-btn {
+            background: linear-gradient(135deg, #FF9B71 0%, #FFB88C 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 20px auto;
+            display: block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 155, 113, 0.3);
+        }
+
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 155, 113, 0.4);
+        }
+
+        .themes-section {
+            background: linear-gradient(135deg, #FFB88C 0%, #FF9B71 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 8px 30px rgba(255, 155, 113, 0.25);
+        }
+
+        .themes-section h2 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .themes-section ol {
+            margin-left: 20px;
+        }
+
+        .themes-section li {
+            margin: 12px 0;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .toc {
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border: 2px solid #FFD4C4;
+        }
+
+        .toc h2 {
+            margin-bottom: 20px;
+            color: #FF9B71;
+            font-weight: 600;
+        }
+
+        .toc ul {
+            list-style: none;
+        }
+
+        .toc li {
+            margin: 10px 0;
+        }
+
+        .toc a {
+            color: #FF9B71;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover {
+            color: #FF7B9C;
+            text-decoration: underline;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #FF9B71 0%, #FFB88C 100%);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            margin-left: 8px;
+            font-weight: 500;
+        }
+
+        .episode {
+            margin: 40px 0;
+            padding: 35px;
+            background: #fff;
+            border-left: 5px solid #FF9B71;
+            box-shadow: 0 4px 20px rgba(255, 155, 113, 0.1);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .episode:hover {
+            box-shadow: 0 6px 30px rgba(255, 155, 113, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .episode h2 {
+            color: #2D2D2D;
+            margin-bottom: 12px;
+            font-size: 1.9rem;
+            font-weight: 600;
+        }
+
+        .episode-meta {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .episode-meta a {
+            color: #FF9B71;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .episode-meta a:hover {
+            color: #FF7B9C;
+            text-decoration: underline;
+        }
+
+        .insights-container {
+            margin-top: 25px;
+        }
+
+        .insight-category {
+            margin: 25px 0;
+        }
+
+        .category-header {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 6px;
+            color: white;
+        }
+
+        .core { background: linear-gradient(135deg, #FFB88C 0%, #FF9B71 100%); }
+        .counter { background: linear-gradient(135deg, #FF9B71 0%, #FF7B9C 100%); }
+        .data { background: linear-gradient(135deg, #FFD4C4 0%, #FFB88C 100%); }
+        .future { background: linear-gradient(135deg, #FF7B9C 0%, #FFB88C 100%); }
+
+        .insight {
+            margin: 20px 0;
+            padding: 24px;
+            background: #FFFBF8;
+            border-radius: 16px;
+            border-left: 4px solid #FF9B71;
+            transition: all 0.3s;
+        }
+
+        .insight:hover {
+            background: #FFF8F3;
+            box-shadow: 0 4px 15px rgba(255, 155, 113, 0.1);
+        }
+
+        .insight h4 {
+            color: #2D2D2D;
+            margin-bottom: 14px;
+            font-size: 1.15rem;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
+        .context {
+            margin: 15px 0;
+            line-height: 1.75;
+            color: #444;
+            font-size: 0.98rem;
+        }
+
+        .quote {
+            margin: 15px 0;
+            padding: 18px;
+            background: white;
+            border-left: 4px solid #FFB88C;
+            border-radius: 8px;
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .quick-hits-section {
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            padding: 35px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border: 2px solid #FFD4C4;
+        }
+
+        .quick-hit {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .quick-hit h3 {
+            color: #1a1a2e;
+            margin-bottom: 10px;
+        }
+
+        .quick-hit-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .quick-hit-meta a {
+            color: #FF9B71;
+            text-decoration: none;
+        }
+
+        .quick-hit ul {
+            margin-left: 20px;
+        }
+
+        .quick-hit li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .export-btn {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .episode h2 {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Playful accents */
+        .accent-circle {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .accent-1 {
+            width: 300px;
+            height: 300px;
+            background: #FF9B71;
+            top: -100px;
+            right: -100px;
+        }
+
+        .accent-2 {
+            width: 200px;
+            height: 200px;
+            background: #FFB88C;
+            bottom: -50px;
+            left: -50px;
+        }
+
+        /* Anthropic-inspired doodles */
+        .doodle {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .doodle-1 {
+            top: 15%;
+            right: 10%;
+            width: 80px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .doodle-2 {
+            bottom: 20%;
+            left: 8%;
+            width: 60px;
+            animation: float 5s ease-in-out infinite 1s;
+        }
+
+        .doodle-3 {
+            top: 40%;
+            left: 5%;
+            width: 50px;
+            animation: float 6s ease-in-out infinite 2s;
+        }
+
+        .doodle-4 {
+            top: 60%;
+            right: 5%;
+            width: 70px;
+            animation: float 5s ease-in-out infinite 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Playful background accents -->
+    <div class="accent-circle accent-1"></div>
+    <div class="accent-circle accent-2"></div>
+
+    <!-- Anthropic-inspired doodles -->
+    <svg class="doodle doodle-1" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20,50 Q35,20 50,50 T80,50" stroke="#FF9B71" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <circle cx="20" cy="50" r="4" fill="#FF9B71"/>
+        <circle cx="80" cy="50" r="4" fill="#FF9B71"/>
+    </svg>
+
+    <svg class="doodle doodle-2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="25" stroke="#FFB88C" stroke-width="3" fill="none"/>
+        <circle cx="50" cy="50" r="15" stroke="#FFB88C" stroke-width="2" fill="none"/>
+        <circle cx="50" cy="50" r="5" fill="#FFB88C"/>
+    </svg>
+
+    <svg class="doodle doodle-3" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30,70 L50,30 L70,70 Z" stroke="#FF7B9C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="50" cy="50" r="3" fill="#FF7B9C"/>
+    </svg>
+
+    <svg class="doodle doodle-4" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25,50 L40,35 L55,50 L70,35 L85,50" stroke="#FF9B71" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="25" cy="50" r="4" fill="#FF9B71"/>
+        <circle cx="85" cy="50" r="4" fill="#FF9B71"/>
+    </svg>
+
+    <div class="container">
+        <header>
+            <h1>🎙️ Podcast Digest</h1>
+            <p class="stats">February 17, 2026 • 2 Full Episodes • 5 Quick Hits • 31 Insights</p>
+        </header>
+
+        <button class="export-btn" onclick="window.print()">📄 Export as PDF</button>
+
+        <div class="themes-section">
+            <h2>🔥 Top 5 Recurring Themes</h2>
+            <ol>
+                <li><strong>AI as a Measurable Productivity Multiplier:</strong> Concrete, measured gains are here now — Ramp's AI agents review 100,000 expenses per day at 99%+ accuracy, and NBIM reports a 20% internal productivity improvement from AI tool adoption, with headcount held flat.</li>
+                <li><strong>The Collapse of Marginal Knowledge Work Costs:</strong> Eric Glyman's framework that AI is driving the cost of cognitive work toward zero reshapes what it means to be a software or financial services company. Ramp is pivoting to sell "work done," not software licenses.</li>
+                <li><strong>National-Scale AI Adoption as a Competitive Strategy:</strong> Iceland's partnership with Anthropic to embed AI across all schools signals a new geopolitical dimension of the AI race — countries must now compete on AI infrastructure the way they competed on broadband in the 2000s.</li>
+                <li><strong>The Psychology of Contrarianism and High Performance:</strong> Nicolai Tangen's finding that fewer than 10% of people genuinely think differently — and that these are the only ones worth hiring for investment roles — connects to the Dialectic episode's insight that external "loving attention" unlocks performance that self-discipline alone cannot.</li>
+                <li><strong>Sovereign Wealth, Long-Term Capital, and the New Financial Order:</strong> Norway's $2.1T fund model (radical transparency + 3% spending cap), Klarna's pivot from BNPL to daily banking, and Ramp's rapid treasury growth all point to a restructuring of how capital is stored, allocated, and deployed in the AI era.</li>
+            </ol>
+        </div>
+
+        <div class="toc">
+            <h2>📑 Table of Contents</h2>
+            <h3>🔵 Core Insights</h3>
+            <ul>
+                <li>[Cheeky Pint] Ramp reached $1B+ revenue in 6 years, with non-card revenue now surpassing card revenue...</li>
+                <li>[Cheeky Pint] Ramp now processes over 2% of all US corporate and small business card spend...</li>
+                <li>[Cheeky Pint] Ramp's core differentiation is 'selling time, not money' — unlike banks which sell credit...</li>
+                <li>[Knowledge Project] High ambition is more important than capability — having great ambitions produces great results even when you fail...</li>
+                <li>[Knowledge Project] Speed is a mindset, not just a tactic — fast responses require shorter communications...</li>
+                <li><em>...and 3 more</em></li>
+            </ul>
+            <h3>🟣 Counter-Intuitive</h3>
+            <ul>
+                <li>[Cheeky Pint] AI agents review 100,000 expenses per day at 99%+ accuracy — more accurate than human reviewers...</li>
+                <li>[Cheeky Pint] The 'SaaS apocalypse' for simple apps is real, but complex software with embedded data moats is protected...</li>
+                <li>[Knowledge Project] Most portfolio managers would have been better off doing nothing...</li>
+                <li><em>...and 4 more</em></li>
+            </ul>
+            <h3>🟢 Data Points</h3>
+            <ul>
+                <li>[Cheeky Pint] National average yield on business checking accounts is 0.07% — far below federal overnight rate...</li>
+                <li>[Cheeky Pint] Majority of US businesses have adopted AI despite Census Bureau reporting only single-digit adoption...</li>
+                <li>[Knowledge Project] NBIM is increasing internal productivity by approximately 20% through AI tool adoption...</li>
+                <li><em>...and 2 more</em></li>
+            </ul>
+            <h3>🟠 Future-Looking</h3>
+            <ul>
+                <li>[Cheeky Pint] The marginal cost of cognitive knowledge work is collapsing — Ramp is selling 'work done' not software...</li>
+                <li>[Cheeky Pint] Code itself may become ephemeral — companies could rewrite entire codebases annually as models improve...</li>
+                <li>[Knowledge Project] AI will make authoritarianism categorically more dangerous...</li>
+                <li>[Knowledge Project] Iceland's national partnership with Anthropic to inject AI into all schools points to a new model...</li>
+            </ul>
+            <h3>🎯 Quick Hits</h3>
+            <ul>
+                <li>What Motivates Highly Successful People? (Dialectic)</li>
+                <li>Can The CCP Exist After AGI - Dario Amodei (Dwarkesh)</li>
+                <li>How Norway Turned Their Oil Into A $2 Trillion Fund (Knowledge Project)</li>
+                <li>Klarna CEO: We have more customers than Revolut (20VC)</li>
+                <li>Klarna CEO answers the REAL questions (20VC)</li>
+            </ul>
+        </div>
+
+        <!-- FULL EPISODES -->
+
+        <!-- Episode 1: Ramp / Cheeky Pint -->
+        <div class="episode">
+            <h2>Ramp founder Eric Glyman on the many ways AI is changing corporate spending</h2>
+            <p class="episode-meta">Cheeky Pint • <a href="https://www.youtube.com/watch?v=TRPCRIhrYac" target="_blank">Watch →</a></p>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header core">🔵 Core Insights</div>
+
+            <div class="insight">
+                <h4>Ramp reached $1B+ revenue in 6 years, with non-card revenue now surpassing card revenue</h4>
+                <p class="episode-meta">[Cheeky Pint] Ramp founder Eric Glyman on the many ways AI is changing corporate spending • <a href="https://www.youtube.com/watch?v=TRPCRIhrYac" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Ramp was founded in 2019 and crossed $1 billion in annual revenue within six years. While interchange on corporate cards was historically 90%+ of gross profit, the second through fifth lines of business — bill payments, software, treasury, travel, and procurement — are now collectively projected to comprise the majority of Ramp's business by end of the year. This marks a fundamental shift from a corporate card company to a full financial operating platform.
+                </div>
+                <div class="quote">
+                    By the time we were six years and change, the company had passed over a billion a year in revenue... I think by the end of this year, the second, third, fourth, fifth lines of business will comprise and aggregate the majority of Ramp's business.
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Ramp now processes over 2% of all US corporate and small business card spend — with 98% still untouched</h4>
+                <p class="episode-meta">[Cheeky Pint] Ramp founder Eric Glyman on the many ways AI is changing corporate spending • <a href="https://www.youtube.com/watch?v=TRPCRIhrYac" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Despite being founded only six years ago with no product available to sign up for seven years ago, Ramp has captured over 2% of all corporate and small business card transactions in the United States. Glyman frames this as remarkable for the pace of growth, while simultaneously noting that 98% of spend is still not on Ramp — indicating the remaining opportunity is enormous.
+                </div>
+                <div class="quote">
+                    I believe today Ramp powers more than 2% of all corporate and small business card transactions in the United States. Which is amazing for a business that, the product, you couldn't even sign up for it six years ago.
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Ramp's core differentiation is 'selling time, not money' — unlike banks which sell credit</h4>
+                <p class="episode-meta">[Cheeky Pint] Ramp founder Eric Glyman on the many ways AI is changing corporate spending • <a href="https://www.youtube.com/watch?v=TRPCRIhrYac" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Traditional financial service providers compete on cost of capital, interest rates, and rewards programs. Ramp's strategic thesis is fundamentally different: instead of optimizing basis points on interchange or loan rates, they focus on eliminating the time businesses waste on financial operations. This philosophical difference defines their product roadmap and shapes every feature they build.
+                </div>
+                <div class="quote">
+                    What it's evolved into... the largest point of differentiation at the meta level between Ramp and maybe the financial service providers that we compete with is they sell money and we sell time.
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Average Ramp customer grew revenue 16% last year versus 5% for the average US business</h4>
+                <p class="episode-meta">[Cheeky Pint] Ramp founder Eric Glyman on the many ways AI is changing corporate spending • <a href="https://www.youtube.com/watch?v=TRPCRIhrYac" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Ramp tracks spending and growth data across 55,000+ businesses, giving them a unique dataset to understand how financial hygiene and efficiency correlate with business outcomes. The gap between Ramp customers (16% revenue growth) and the broader US average (5%) is attributed to both hard-dollar cost savings and the time freed up by automating financial operations, which employees redirect to higher-value work.
+                </div>
+                <div class="quote">
+                    The average customer last year on Ramp grew their revenue by, I think it was 16%, which compared to, in the United States, the average business... I think it's 5% in the US.
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header counter">🟣 Counter-Intuitive</div>
+
+            <div class="insight">
+                <h4>AI agents review 100,000 expenses per day at 99%+ accuracy — more accurate than human reviewers</h4>
+                <p class="episode-meta">[Cheeky Pint] Ramp founder Eric Glyman on the many ways AI is changing corporate spending • <a href="https://www.youtube.com/watch?v=TRPCRIhrYac" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Ramp built AI agents that review expense reports against company policy written in plain English. These agents have access to all transaction metadata, receipt data, timing data, and policy data. At over 99% accuracy, the AI outperforms human reviewers — who often don't know the full expense policy and make inconsistent judgment calls. The system still satisfies Sarbanes-Oxley compliance requirements through proper audit trails.
+                </div>
+                <div class="quote">
+                    We are processing over 100,000 expenses a day that are being reviewed agentically... And today it's over 99% accurate, which turns out it's much more accurate than people are.
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>The 'SaaS apocalypse' for simple apps is real — but complex software with embedded data moats is protected</h4>
+                <p class="episode-meta">[Cheeky Pint] Ramp founder Eric Glyman on the many ways AI is changing corporate spending • <a href="https://www.youtube.com/watch?v=TRPCRIhrYac" target="_blank">Watch →</a></p>
+                <div class="context">
+                    There is genuine fear that AI will allow anyone to clone SaaS products instantly. Glyman and co-host Alex Rampell distinguish between "feature companies" (simple apps) that are vulnerable to AI-driven cloning, and deeply complex platforms (like NetSuite, Workday, or Ramp) with years of accumulated edge cases, customer data, and integration complexity that cannot be replicated by prompting an AI. The "tech debt" that sounds like a liability is actually the embedded competitive advantage.
+                </div>
+                <div class="quote">
+                    There are like nine million edge cases. The tech debt sounds bad because it's a pejorative, debt = bad. But actually it's good because what you've done is you've uncovered every single problem that can go wrong.
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>A penny saved is equivalent to 12 pennies of revenue for the average US business</h4>
+                <p class="episode-meta">[Cheeky Pint] Ramp founder Eric Glyman on the many ways AI is changing corporate spending • <a href="https://www.youtube.com/watch?v=TRPCRIhrYac" target="_blank">Watch →</a></p>
+                <div class="context">
+                    With US businesses averaging 8% profit margins, the economic math of cost savings is dramatically more powerful than it appears. Saving $1 on expenses is arithmetically equivalent to generating $12.50 in new revenue. This is why Ramp's value proposition — helping companies cut expenses by an average of 5% per year — is so compelling from a financial perspective, and why CFOs should prioritize expense optimization over equivalent revenue pursuits.
+                </div>
+                <div class="quote">
+                    The average American business has an 8% profit margin. And so mathematically speaking, a penny saved is equivalent to 12 pennies of revenue earned.
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>The difficulty of sending a check is a feature, not a bug — it prevents unauthorized spend</h4>
+                <p class="episode-meta">[Cheeky Pint] Ramp founder Eric Glyman on the many ways AI is changing corporate spending • <a href="https://www.youtube.com/watch?v=TRPCRIhrYac" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The very friction that makes old-school payment systems feel antiquated serves a real economic purpose: it forces intentionality. Glyman draws the parallel to gym memberships charged to credit cards — the ease of recurring charges causes waste. Ramp's single-use and merchant-locked cards bring the friction back selectively, creating a "moral code" in spending without reverting to cumbersome check processes.
+                </div>
+                <div class="quote">
+                    The difficulty of sending a check is a feature, not a bug... One-time use cards. Single-use cards, but also more than that, merchant blocking... On the 10,001th dollar they try to charge you, it declines.
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header data">🟢 Data Points</div>
+
+            <div class="insight">
+                <h4>National average yield on business checking accounts is 0.07% — far below the federal overnight rate</h4>
+                <p class="episode-meta">[Cheeky Pint] Ramp founder Eric Glyman on the many ways AI is changing corporate spending • <a href="https://www.youtube.com/watch?v=TRPCRIhrYac" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Glyman highlights the enormous gap between what businesses earn on their cash deposits (0.07% national average on checking accounts) and what they could earn in higher-yield products. This float profit is captured almost entirely by large banks rather than being passed to business customers. Ramp Treasury was built to close this gap by actively moving idle cash into higher-yield instruments.
+                </div>
+                <div class="quote">
+                    I think the national average for businesses, right, these are sophisticated entities with personnel... I think the national average on checking accounts is 0.07% in the US.
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Majority of US businesses have adopted AI despite Census Bureau reporting only single-digit adoption</h4>
+                <p class="episode-meta">[Cheeky Pint] Ramp founder Eric Glyman on the many ways AI is changing corporate spending • <a href="https://www.youtube.com/watch?v=TRPCRIhrYac" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Ramp's spend data across 55,000+ businesses tells a very different adoption story than government surveys. When the Census Bureau asked businesses whether they were using AI to produce goods or services, single-digit percentages said yes. But Ramp's data shows the majority of their customers — which roughly mirror the US business distribution — are paying for AI tools (ChatGPT, Anthropic, Cursor, Cognition, etc.). The disconnect is in how adoption is defined and surveyed.
+                </div>
+                <div class="quote">
+                    The Census Bureau would do these periodic surveys... saying a single digit percent of businesses in the US have adopted AI. And we looked at our data and we support over 55,000 businesses... the majority of businesses have used AI.
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Ramp Treasury accrued several billion dollars of deposits in roughly one year</h4>
+                <p class="episode-meta">[Cheeky Pint] Ramp founder Eric Glyman on the many ways AI is changing corporate spending • <a href="https://www.youtube.com/watch?v=TRPCRIhrYac" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Launched about a year before the recording, Ramp's treasury product — which includes checking-like products and a money ladder / investment product — has grown to several billion dollars in deposits. This rapid growth reflects both the demand for yield-generating alternatives to traditional business checking accounts and the trust companies place in Ramp as a financial platform beyond just spend management.
+                </div>
+                <div class="quote">
+                    Treasury. That's a product that is about a year old, several billion dollars of deposits. Some of that is checking-like products. Some of that is more of an investment and money ladder type product.
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header future">🟠 Future-Looking</div>
+
+            <div class="insight">
+                <h4>The marginal cost of cognitive knowledge work is collapsing — Ramp is selling 'work done,' not software</h4>
+                <p class="episode-meta">[Cheeky Pint] Ramp founder Eric Glyman on the many ways AI is changing corporate spending • <a href="https://www.youtube.com/watch?v=TRPCRIhrYac" target="_blank">Watch →</a></p>
+                <div class="context">
+                    As AI token costs fall, Ramp's strategic direction is selling outcomes — "expenses done," "accounting done," specific knowledge work completed — rather than software licenses. For their customer base (most of whom have no software engineer on staff), this represents transformative value: previously unaffordable financial operations delivered at near-zero marginal cost.
+                </div>
+                <div class="quote">
+                    Most of our customers don't have a single software engineer, let alone a software engineer for their finance team. And if what we are very good at doing is selling functionally sets of work... expenses done, accounting done, some type of knowledge work done, and you can deliver that. That is immense high-leverage value.
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Code itself may become ephemeral — companies could rewrite entire codebases annually as models improve</h4>
+                <p class="episode-meta">[Cheeky Pint] Ramp founder Eric Glyman on the many ways AI is changing corporate spending • <a href="https://www.youtube.com/watch?v=TRPCRIhrYac" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Glyman describes a potential future where code is written at the outcome-specification level rather than the implementation level. Instead of hardcoding business logic, companies would specify desired outcomes and let progressively smarter models write (and periodically rewrite) the underlying implementation. This would mean "tech debt" as a concept disappears — codebases become self-healing and self-upgrading artifacts.
+                </div>
+                <div class="quote">
+                    As these models get much smarter, you might write your code base in such a way where you say, 'Every year, rewrite the underlying code, but here's the outcome I can drive.' And do you just have kind of self-healing and writing code all the way through?
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>The marginal cost of 'arguing' — and all knowledge-based disputes — is collapsing to zero</h4>
+                <p class="episode-meta">[Cheeky Pint] Ramp founder Eric Glyman on the many ways AI is changing corporate spending • <a href="https://www.youtube.com/watch?v=TRPCRIhrYac" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Glyman and co-host Rampell discuss how AI is eliminating the friction cost that previously made small disputes (chargebacks, price-match claims, billing errors) economically irrational to pursue. When the cost of constructing and filing a complaint goes to zero, consumers and businesses will pursue every valid claim. This will reshape the economics of customer service, dispute resolution, and corporate billing.
+                </div>
+                <div class="quote">
+                    My wife got into an argument with some company and she used ChatGPT to argue with them, they used it to argue back with her... the marginal cost of time, of knowledge... is what's going down so rapidly.
+                </div>
+            </div>
+        </div>
+
+        <!-- Episode 2: Nicolai Tangen / Knowledge Project -->
+        <div class="episode">
+            <h2>Nicolai Tangen on AI, Ambition, and the Speed of Success</h2>
+            <p class="episode-meta">The Knowledge Project • <a href="https://www.youtube.com/watch?v=zyvuM3J9QqQ" target="_blank">Watch →</a></p>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header core">🔵 Core Insights</div>
+
+            <div class="insight">
+                <h4>Norges Bank Investment Management manages $2.1 trillion — roughly 1.7% of every listed company on earth</h4>
+                <p class="episode-meta">[Knowledge Project] Nicolai Tangen on AI, Ambition, and the Speed of Success • <a href="https://www.youtube.com/watch?v=zyvuM3J9QqQ" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Nicolai Tangen runs the world's largest sovereign wealth fund, a position that gives him a unique vantage point on global markets, geopolitics, and corporate governance. The fund owns stakes in approximately 9,000 companies worldwide. This scale — effectively a 2% toll on the world economy — means NBIM's investment decisions and shareholder votes carry outsized systemic influence.
+                </div>
+                <div class="quote">
+                    We own shares in 9,000 companies. If all the CEOs were going to have a billion dollars that would be pretty expensive for us.
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>High ambition is more important than capability — great ambitions produce great results even when you fail</h4>
+                <p class="episode-meta">[Knowledge Project] Nicolai Tangen on AI, Ambition, and the Speed of Success • <a href="https://www.youtube.com/watch?v=zyvuM3J9QqQ" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Tangen contrasts the American and Norwegian mindsets on ambition. In Norway, the cultural concept of "Janteloven" (don't think you are exceptional in any way) suppresses ambition systemically. Tangen argues this asymmetry between cultures produces fundamentally different outcomes: high ambition combined with failure still outperforms low ambition combined with success. This applies as much to organizations and countries as to individuals.
+                </div>
+                <div class="quote">
+                    If you have really really high ambitions, you achieve great things even if you fail. If you have low ambitions, you achieve nothing even if you succeed.
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Speed is a mindset, not just a tactic — fast responses require shorter communications, compounding to save enormous time</h4>
+                <p class="episode-meta">[Knowledge Project] Nicolai Tangen on AI, Ambition, and the Speed of Success • <a href="https://www.youtube.com/watch?v=zyvuM3J9QqQ" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Tangen has a strong operational philosophy around speed. He maintains a countdown clock in his office showing remaining days in his tenure to force urgency into every decision. His email philosophy: a reply within one minute needs only two words; a reply the next day needs a paragraph; a reply a week later needs a full page. Delay creates its own bureaucratic cost beyond just the time lost.
+                </div>
+                <div class="quote">
+                    If I send you an email and you answer within one minute how long does that email need to be? Two words. And I'm impressed because you answer really quickly. If you answer the next day, how long does it have to be? A paragraph and you answer a week later. It needs to be a page.
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Genuinely contrarian investors are extremely rare — fewer than 10% of people truly think differently</h4>
+                <p class="episode-meta">[Knowledge Project] Nicolai Tangen on AI, Ambition, and the Speed of Success • <a href="https://www.youtube.com/watch?v=zyvuM3J9QqQ" target="_blank">Watch →</a></p>
+                <div class="context">
+                    When Tangen asks university audiences who thinks differently from other people, fewer than 10% raise their hands. He specifically recruits that 10% for NBIM, arguing that true contrarian thinking — the ability to hold positions when everyone disagrees with you and resist the psychological pull of consensus — is the actual source of investment alpha. Being contrarian also requires stubborn conviction AND the ability to change your mind — a rare combination.
+                </div>
+                <div class="quote">
+                    When I give presentations at universities, I ask people, hey, anybody here who thinks differently from other people who kind of think that they are weird... Typically less than 10%. I said, you guys, you're great. We'd love to hire you.
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header counter">🟣 Counter-Intuitive</div>
+
+            <div class="insight">
+                <h4>Norges Bank's 30-year track record is only 25 basis points of annual outperformance — but on $2.1T that's enormous</h4>
+                <p class="episode-meta">[Knowledge Project] Nicolai Tangen on AI, Ambition, and the Speed of Success • <a href="https://www.youtube.com/watch?v=zyvuM3J9QqQ" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The fund is primarily index-like in its construction, running 20% of capital in a truly active way and making smaller tweaks with the rest. On an absolute dollar basis, 25 bps of annual outperformance on $2.1 trillion is worth billions of dollars per year. This reframes the "active vs. passive" debate: even marginal outperformance at scale justifies active management in ways it doesn't at smaller fund sizes.
+                </div>
+                <div class="quote">
+                    Historically over the last close to 30 years we've had 25 basis points of performance. So you would say hey that's not so much. Well, the thing is that if you have a lot of money, it ends up being pretty big absolute amounts.
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Most portfolio managers would have been better off doing nothing — the 'inertia analysis' reveals activity destroys returns</h4>
+                <p class="episode-meta">[Knowledge Project] Nicolai Tangen on AI, Ambition, and the Speed of Success • <a href="https://www.youtube.com/watch?v=zyvuM3J9QqQ" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Tangen describes an "inertia analysis" exercise: take the January 1st portfolio, hold it untouched for the full year, and compare outcomes to the portfolio manager's actual results. More often than not, the activity — trades, rebalancing, tactical tilts — reduced returns versus simply holding the starting position. The insight challenges the fundamental premise of active portfolio management.
+                </div>
+                <div class="quote">
+                    You take the portfolio from January one and you see what would have been the investment result if I just stuck to that and not made a single change and then you look at your actual results for the year and so often you actually have detracted from your performance by the things you've done.
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Changing an organization's culture takes 10 years — and Tangen, five years in, considers himself only halfway done</h4>
+                <p class="episode-meta">[Knowledge Project] Nicolai Tangen on AI, Ambition, and the Speed of Success • <a href="https://www.youtube.com/watch?v=zyvuM3J9QqQ" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Despite having broad authority as CEO and strong performance results, Tangen estimates he is approximately halfway through a 10-year culture change initiative at NBIM. The levers for faster change (replacing people) are constrained by European employment norms and the fact that the existing team is highly capable. The change he's pursuing — more feedback, faster movement, less fear — requires sustained, repetitive communication over many years.
+                </div>
+                <div class="quote">
+                    I would say to change a culture is a 10-year project... I've been in the job for 5 years now. I think I'm roughly half the way in.
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Predicting the future is nearly useless — Tangen and seven smart friends were 80% wrong on 12-month predictions</h4>
+                <p class="episode-meta">[Knowledge Project] Nicolai Tangen on AI, Ambition, and the Speed of Success • <a href="https://www.youtube.com/watch?v=zyvuM3J9QqQ" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Tangen and seven highly intelligent friends tape-recorded 12-month predictions for the year, then reviewed them against reality. They got approximately 80% wrong — missing Trump's election win, the tariff regime, the US-Europe relationship shifts, and other major developments. Rather than trying to predict, Tangen argues the correct response is to build organizational speed and agility to respond to whatever emerges.
+                </div>
+                <div class="quote">
+                    These are really clever people and how do you think we did? Terrible. Terrible. We were like 80% wrong... I think trying to predict in this world is just more and more, you know, useless. So what you need to do, you just need to work on speed and agility.
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header data">🟢 Data Points</div>
+
+            <div class="insight">
+                <h4>NBIM is increasing internal productivity by approximately 20% through AI tool adoption — with flat headcount</h4>
+                <p class="episode-meta">[Knowledge Project] Nicolai Tangen on AI, Ambition, and the Speed of Success • <a href="https://www.youtube.com/watch?v=zyvuM3J9QqQ" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Tangen reports that NBIM is actively embedding AI tools across the organization and measuring the productivity impact. The fund is keeping headcount flat while producing more output and higher-quality work. This is a concrete, measured productivity gain from a major institutional investor — not a theoretical projection. Tangen uses deep research AI functions for investment research that previously would have taken days.
+                </div>
+                <div class="quote">
+                    We are increasing productivity probably by 20% just by utilizing it more and we're just stuffing it in wherever we can and it's making a huge impact... we keep headcount now flat and we are just producing more and producing better quality.
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Norway's sovereign wealth fund spends a maximum of 3% annually — keeping 97% perpetually invested</h4>
+                <p class="episode-meta">[Knowledge Project] Nicolai Tangen on AI, Ambition, and the Speed of Success • <a href="https://www.youtube.com/watch?v=zyvuM3J9QqQ" target="_blank">Watch →</a></p>
+                <div class="context">
+                    A key structural rule governing NBIM is a politically-agreed spending rule capping government drawdowns at 3% of the fund's value per year. This prevents short-term political pressures from depleting the fund and ensures the wealth compounds for future generations. The fund currently represents 25% of Norway's state budget, making this constraint critical to fiscal discipline.
+                </div>
+                <div class="quote">
+                    We have a spending rule which means that the politicians spend 3% of the fund every year a maximum of 3%... the fund is 25% of the state budget.
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header future">🟠 Future-Looking</div>
+
+            <div class="insight">
+                <h4>AI will make authoritarianism categorically more dangerous — requiring the world to rethink how it responds to autocracies</h4>
+                <p class="episode-meta">[Knowledge Project] Nicolai Tangen on AI, Ambition, and the Speed of Success • <a href="https://www.youtube.com/watch?v=zyvuM3J9QqQ" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Referencing Dario Amodei's essay, Tangen expresses concern that AI fundamentally changes the nature of authoritarian governance. Today, the world tolerates authoritarian regimes differently than it would genocide. But in an AI-enabled world, the power an autocrat can wield over their population — surveillance, control, military force — may become so complete that the moral and strategic calculus of how democracies respond must change.
+                </div>
+                <div class="quote">
+                    If I were prime minister for a day, I would inject AI everywhere... Iceland is just doing a cooperation project with Anthropic where they're basically going to stuff it in to all the schools.
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Iceland's national partnership with Anthropic to inject AI into all schools points to a new model of country-level AI adoption</h4>
+                <p class="episode-meta">[Knowledge Project] Nicolai Tangen on AI, Ambition, and the Speed of Success • <a href="https://www.youtube.com/watch?v=zyvuM3J9QqQ" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Tangen cites Iceland's announced national cooperation with Anthropic as a model for what countries should do to stay competitive in the AI era. He draws the parallel to Sweden's 1980s "Home PC" program, which seeded 800,000 computers into a nation of 6-7 million people — widely credited with creating the conditions that produced Spotify, Klarna, and the broader Swedish tech industry.
+                </div>
+                <div class="quote">
+                    In Iceland, they just announced a cooperation project with Anthropic where they're basically going to stuff it in to all the schools and all that kind of thing and I think it should be perfect for Norway... this is just a once-in-a-lifetime opportunity for people, companies and countries to pull apart.
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Hits Section -->
+        <div class="quick-hits-section">
+            <h2>🎯 Quick Hits</h2>
+            <p style="color: #666; margin-bottom: 20px;">Short-form content with rapid-fire takeaways</p>
+
+            <div class="quick-hit">
+                <h3>What Motivates Highly Successful People?</h3>
+                <div class="quick-hit-meta">Dialectic • <a href="https://www.youtube.com/watch?v=zomxceK7DYs" target="_blank">Watch →</a></div>
+                <ul>
+                    <li>External loving attention is a more powerful performance motivator than intrinsic discipline — the speaker performs better when she imagines the gaze of someone who believes in her, to the point of still writing with her former editor Patrick Carlson in mind a decade after last seeing him. This challenges the conventional wisdom that high performers are self-directed.</li>
+                    <li>Groups that offer "loving attention" — critical but caring feedback — unlock motivation that individuals cannot generate alone. The speaker couldn't motivate herself to make an extra run without her coach's presence but immediately did so with it, suggesting the highest-performance environments are built around mutual accountability and genuine investment in each other's excellence.</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>Can The CCP Exist After AGI - Dario Amodei</h3>
+                <div class="quick-hit-meta">Dwarkesh Podcast • <a href="https://www.youtube.com/watch?v=aLMJPs9DFXU" target="_blank">Watch →</a></div>
+                <ul>
+                    <li>Dario Amodei argues that AGI fundamentally changes the moral and strategic weight of authoritarianism — it won't just be "a different system of government" but something graver that the world may need to confront differently than it does today. He stops short of endorsing outright interventionism but signals the question must be addressed.</li>
+                    <li>Amodei distinguishes between his stated belief (authoritarians with AI create dangerous self-reinforcing cycles that are hard to displace) and the stronger interventionist conclusion (autocracies must be eliminated before they become too powerful with AI). He holds the former clearly, treats the latter as a live but uncertain possibility — indicating Anthropic is thinking carefully about geopolitical implications of AGI deployment.</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>How Norway Turned Their Oil Into A $2 Trillion Fund</h3>
+                <div class="quick-hit-meta">The Knowledge Project • <a href="https://www.youtube.com/watch?v=VcCoFsO31_c" target="_blank">Watch →</a></div>
+                <ul>
+                    <li>Norway's three-part formula for a durable sovereign wealth fund: (1) broad cross-party political anchoring so leadership changes don't change fund strategy, (2) radical transparency (world champions 3 years running), and (3) a hard 3% annual spending cap. The fund, now 25% of Norway's state budget, traces to a 1969 decision by foresighted politicians when oil was first discovered.</li>
+                    <li>NBIM's 25 basis points of annual outperformance over 30 years seems modest but represents enormous absolute value at $2.1 trillion in AUM — and the fund's mandate to own roughly 1.7% of every listed company on earth functions as an effective global economic toll, making even tiny edge improvements worth billions annually.</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>Klarna CEO: We have more customers than Revolut</h3>
+                <div class="quick-hit-meta">20VC • <a href="https://www.youtube.com/watch?v=MaMEPqRoUbI" target="_blank">Watch →</a></div>
+                <ul>
+                    <li>Klarna has 110 million customers worldwide versus Revolut's 65 million — making Klarna nearly twice as large by customer count, though Revolut has significantly higher engagement per user. Klarna is executing a deliberate transition from infrequent BNPL payments provider to high-engagement daily banking provider, with the CEO reporting the shift is "going extremely well and accelerating."</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>Klarna CEO answers the REAL questions we've all been wondering</h3>
+                <div class="quick-hit-meta">20VC • <a href="https://www.youtube.com/watch?v=3mZ6THzNQeo" target="_blank">Watch →</a></div>
+                <ul>
+                    <li>A rapid-fire personal Q&amp;A with Klarna CEO Sebastian Siemiatkowski covering guilty pleasures, karaoke songs, and favorite cities. Key signals: he rates Warsaw as the most underrated city to build a business, owns a Steinway self-playing piano he never uses, and names Leonardo DiCaprio as the most famous person in his contacts.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <footer style="text-align: center; padding: 40px 20px; color: #999; margin-top: 60px;">
+            <p>Generated with <a href="https://claude.ai" style="color: #FF9B71; text-decoration: none;">Claude Code</a> 🤖</p>
+            <p style="margin-top: 10px;"><a href="index.html" style="color: #FF9B71; text-decoration: none;">← Back to Archive</a></p>
+        </footer>
+    </div>
+</body>
+</html>
