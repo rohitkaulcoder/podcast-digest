@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast Digest - February 18, 2026</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2D2D2D;
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(255, 155, 113, 0.15);
+            border-radius: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+            border-bottom: none;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FF9B71 0%, #FF7B9C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+        }
+
+        .stats {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .export-btn {
+            background: linear-gradient(135deg, #FF9B71 0%, #FFB88C 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 20px auto;
+            display: block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 155, 113, 0.3);
+        }
+
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 155, 113, 0.4);
+        }
+
+        .themes-section {
+            background: linear-gradient(135deg, #FFB88C 0%, #FF9B71 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 8px 30px rgba(255, 155, 113, 0.25);
+        }
+
+        .themes-section h2 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .themes-section ol {
+            margin-left: 20px;
+        }
+
+        .themes-section li {
+            margin: 12px 0;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .toc {
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border: 2px solid #FFD4C4;
+        }
+
+        .toc h2 {
+            margin-bottom: 20px;
+            color: #FF9B71;
+            font-weight: 600;
+        }
+
+        .toc ul {
+            list-style: none;
+        }
+
+        .toc li {
+            margin: 10px 0;
+        }
+
+        .toc a {
+            color: #FF9B71;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover {
+            color: #FF7B9C;
+            text-decoration: underline;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #FF9B71 0%, #FFB88C 100%);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            margin-left: 8px;
+            font-weight: 500;
+        }
+
+        .episode {
+            margin: 40px 0;
+            padding: 35px;
+            background: #fff;
+            border-left: 5px solid #FF9B71;
+            box-shadow: 0 4px 20px rgba(255, 155, 113, 0.1);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .episode:hover {
+            box-shadow: 0 6px 30px rgba(255, 155, 113, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .episode h2 {
+            color: #2D2D2D;
+            margin-bottom: 12px;
+            font-size: 1.9rem;
+            font-weight: 600;
+        }
+
+        .episode-meta {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .episode-meta a {
+            color: #FF9B71;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .episode-meta a:hover {
+            color: #FF7B9C;
+            text-decoration: underline;
+        }
+
+        .insights-container {
+            margin-top: 25px;
+        }
+
+        .insight-category {
+            margin: 25px 0;
+        }
+
+        .category-header {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 6px;
+            color: white;
+        }
+
+        .core { background: linear-gradient(135deg, #FFB88C 0%, #FF9B71 100%); }
+        .counter { background: linear-gradient(135deg, #FF9B71 0%, #FF7B9C 100%); }
+        .data { background: linear-gradient(135deg, #FFD4C4 0%, #FFB88C 100%); }
+        .future { background: linear-gradient(135deg, #FF7B9C 0%, #FFB88C 100%); }
+
+        .insight {
+            margin: 20px 0;
+            padding: 24px;
+            background: #FFFBF8;
+            border-radius: 16px;
+            border-left: 4px solid #FF9B71;
+            transition: all 0.3s;
+        }
+
+        .insight:hover {
+            background: #FFF8F3;
+            box-shadow: 0 4px 15px rgba(255, 155, 113, 0.1);
+        }
+
+        .insight h4 {
+            color: #2D2D2D;
+            margin-bottom: 14px;
+            font-size: 1.15rem;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
+        .context {
+            margin: 15px 0;
+            line-height: 1.75;
+            color: #444;
+            font-size: 0.98rem;
+        }
+
+        .quote {
+            margin: 15px 0;
+            padding: 18px;
+            background: white;
+            border-left: 4px solid #FFB88C;
+            border-radius: 8px;
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .quick-hits-section {
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            padding: 35px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border: 2px solid #FFD4C4;
+        }
+
+        .quick-hit {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .quick-hit h3 {
+            color: #1a1a2e;
+            margin-bottom: 10px;
+        }
+
+        .quick-hit-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .quick-hit-meta a {
+            color: #FF9B71;
+            text-decoration: none;
+        }
+
+        .quick-hit ul {
+            margin-left: 20px;
+        }
+
+        .quick-hit li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .export-btn {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .episode h2 {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Playful accents */
+        .accent-circle {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .accent-1 {
+            width: 300px;
+            height: 300px;
+            background: #FF9B71;
+            top: -100px;
+            right: -100px;
+        }
+
+        .accent-2 {
+            width: 200px;
+            height: 200px;
+            background: #FFB88C;
+            bottom: -50px;
+            left: -50px;
+        }
+
+        /* Anthropic-inspired doodles */
+        .doodle {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .doodle-1 {
+            top: 15%;
+            right: 10%;
+            width: 80px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .doodle-2 {
+            bottom: 20%;
+            left: 8%;
+            width: 60px;
+            animation: float 5s ease-in-out infinite 1s;
+        }
+
+        .doodle-3 {
+            top: 40%;
+            left: 5%;
+            width: 50px;
+            animation: float 6s ease-in-out infinite 2s;
+        }
+
+        .doodle-4 {
+            top: 60%;
+            right: 5%;
+            width: 70px;
+            animation: float 5s ease-in-out infinite 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Playful background accents -->
+    <div class="accent-circle accent-1"></div>
+    <div class="accent-circle accent-2"></div>
+
+    <!-- Anthropic-inspired doodles -->
+    <svg class="doodle doodle-1" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20,50 Q35,20 50,50 T80,50" stroke="#FF9B71" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <circle cx="20" cy="50" r="4" fill="#FF9B71"/>
+        <circle cx="80" cy="50" r="4" fill="#FF9B71"/>
+    </svg>
+
+    <svg class="doodle doodle-2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="25" stroke="#FFB88C" stroke-width="3" fill="none"/>
+        <circle cx="50" cy="50" r="15" stroke="#FFB88C" stroke-width="2" fill="none"/>
+        <circle cx="50" cy="50" r="5" fill="#FFB88C"/>
+    </svg>
+
+    <svg class="doodle doodle-3" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30,70 L50,30 L70,70 Z" stroke="#FF7B9C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="50" cy="50" r="3" fill="#FF7B9C"/>
+    </svg>
+
+    <svg class="doodle doodle-4" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25,50 L40,35 L55,50 L70,35 L85,50" stroke="#FF9B71" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="25" cy="50" r="4" fill="#FF9B71"/>
+        <circle cx="85" cy="50" r="4" fill="#FF9B71"/>
+    </svg>
+
+    <div class="container">
+        <header>
+            <h1>🎙️ Podcast Digest</h1>
+            <p class="stats">February 18, 2026 • 4 Full Episodes • 9 Quick Hits • 38 Insights</p>
+        </header>
+
+        <button class="export-btn" onclick="window.print()">📄 Export as PDF</button>
+
+        <div class="themes-section">
+            <h2>🔥 Top 5 Recurring Themes</h2>
+            <ol>
+                <li><strong>The Cournot Oligopoly Shaping AI Economics:</strong> The AI lab race isn't driven by altruism or perfect competition — it's a classic Cournot game where a handful of players compete on supply (compute, data centers, GPU allocation) rather than price. The result is structurally high margins for frontier access that won't equilibrate to zero, even as models commoditize at lower tiers.</li>
+                <li><strong>OpenClaw as Bellwether for the Agent Wars:</strong> Peter Steinberger's move to OpenAI — with OpenClaw staying open-source under a new foundation — signals that general-purpose personal AI agents are the next major battleground. Claude Code (enterprise/security-focused) and OpenClaw (open, general-purpose) represent two distinct visions of how agents will reach users.</li>
+                <li><strong>Defense Tech's "Land Grab" Moment:</strong> Anduril's reported $60B valuation (double its 2024 round) and Micron's $200B memory-chip manufacturing bet reflect a broader pattern: incumbent-disrupting companies are raising capital aggressively now, betting that the current administration's openness to Silicon Valley in defense creates a narrow, exploitable window.</li>
+                <li><strong>Platform Identity Crisis in the Age of AI Search:</strong> Pinterest's "code red" and stock drop expose a deeper structural problem: social/visual platforms that can't articulate whether they are social media, search, or e-commerce are uniquely vulnerable to AI-native search replacements. The same question will confront many consumer platforms over the next two years.</li>
+                <li><strong>Open Source as Talent Acquisition Currency:</strong> Steinberger's journey — building OpenClaw as a side project, burning $10–20K/month, getting overwhelmed by support requests, then being scooped up by OpenAI — illustrates how open-source credibility has become a recruiting signal for top AI labs, potentially displacing traditional startup fundraising as the path for individual builders.</li>
+            </ol>
+        </div>
+
+        <div class="toc">
+            <h2>📑 Table of Contents</h2>
+            <h3>🔵 Core Insights</h3>
+            <ul>
+                <li>[TBPN] The Cournot equilibrium explains why AI labs are structurally profitable at the frontier even while losing money overall...</li>
+                <li>[TBPN] AI labs run two businesses inside one P&amp;L — model training (depreciating asset) and inference factory (manufacturing margin)...</li>
+                <li>[TBPN] Micron is betting $200B to break the AI memory bottleneck — the largest such commitment in the memory industry in 40 years...</li>
+                <li>[TiTV] OpenAI's acqui-hire of OpenClaw founder Peter Steinberger is a direct answer to Claude Code's enterprise dominance...</li>
+                <li>[TiTV] Claude Code's enterprise advantage comes from security and scoping — OpenClaw's advantage is generality and open-source freedom...</li>
+                <li>[TiTV] Pinterest declared an internal "code red" months before its 20% stock drop, focused on reversing ad revenue deceleration...</li>
+                <li>[TiTV] Anduril is in talks to raise billions at a $60B valuation — roughly double its June 2024 round — spanning submarines, drones, rockets, and mixed-reality headsets...</li>
+                <li>[TiTV] Yahoo CEO Jim Lanzone is positioning Yahoo as an AI-powered search play, leaning on the company's existing content moat...</li>
+                <li><em>...and more</em></li>
+            </ul>
+            <h3>🟣 Counter-Intuitive</h3>
+            <ul>
+                <li>[TBPN] "Tech debt" in complex software platforms is actually a competitive moat — it encodes nine million solved edge cases that AI can't easily replicate...</li>
+                <li>[TBPN] GPT-4 cost ~$100M to train but quickly generated billions in revenue — the training cost narrative masks structurally healthy unit economics...</li>
+                <li>[TiTV] OpenAI is building a nonprofit foundation to house OpenClaw — strikingly similar to OpenAI's own original structure, which it has since tried to escape...</li>
+                <li>[TiTV] Pinterest has 80 billion searches per month — but advertisers still can't reliably measure return on Pinterest ad spend, making the data moat nearly worthless...</li>
+                <li>[TiTV] Anduril has grown successfully under both the Trump and Biden administrations — its advantage is less political than it appears...</li>
+                <li><em>...and more</em></li>
+            </ul>
+            <h3>🟢 Data Points</h3>
+            <ul>
+                <li>[TBPN] Inference gross margins are positive even at frontier model scale — confirmed by comparing API prices to open-source commodity inference costs...</li>
+                <li>[TBPN] India's Adani Group committed $100B to AI infrastructure development by 2035 — the largest such commitment in India to date...</li>
+                <li>[TBPN] Thursday Night Football on Amazon Prime averaged 15.33M viewers in 2025 — the highest average in the show's 20-year history...</li>
+                <li>[TiTV] OpenClaw's founder was spending $10,000–$20,000/month of personal funds developing the project before OpenAI stepped in...</li>
+                <li>[TiTV] Pinterest stock fell 20% in a single session after its Q4 earnings — with ad revenue growth decelerating as the core concern...</li>
+                <li><em>...and more</em></li>
+            </ul>
+            <h3>🟠 Future-Looking</h3>
+            <ul>
+                <li>[TBPN] If model training scale-up plateaus, AI labs exit the Cournot game and enter Bertrand competition — margins compress but don't go to zero, resembling hyperscaler cloud economics...</li>
+                <li>[TBPN] Video editing may be one of the last white-collar jobs to be AI-automated — because the "kill your darlings" decisions aren't logged in structured, machine-readable format...</li>
+                <li>[TiTV] OpenAI's long-term goal for OpenClaw is for Steinberger's mom to be able to install it — signaling a consumer-facing personal agent product roadmap...</li>
+                <li>[TiTV] Pinterest's survival likely depends on being acquired — potentially by OpenAI, whose visual search and shopping agent capabilities would benefit from Pinterest's 80B monthly searches and Gen Z/millennial women user base...</li>
+                <li><em>...and more</em></li>
+            </ul>
+            <h3>🎯 Quick Hits</h3>
+            <ul>
+                <li>How Claude Code Was Actually Developed — Dario Amodei (Dwarkesh)</li>
+                <li>I Hate Losing — on jealousy, excellence, and self-flagellation (Dialectic/Sequoia)</li>
+                <li>How Amazon Prime Turned Thursday Night Football into Must-See TV (ACQ2)</li>
+                <li>The Limits of AI Customer Service Agents (20VC)</li>
+                <li>Why Nubank Will Beat Revolut in the US (20VC)</li>
+                <li>Why Medtech Is Harder Than Other Regulated Industries (The Generalist)</li>
+                <li>OpenAI Hires OpenClaw Founder — Community Reactions (TiTV)</li>
+                <li>6-Year-Old Girl Scout Breaks Cookie Sales Record with $600K ARR (TBPN)</li>
+                <li>Song of the Week: Bazooka — and What It Reveals About Virality (TBPN)</li>
+            </ul>
+        </div>
+
+        <!-- FULL EPISODES -->
+
+        <!-- Episode 1: TBPN - Cournot Equilibrium / AI Lab Economics -->
+        <div class="episode" id="tbpn-cournot">
+            <h2>The Cournot Equation, Micron's $200B Bet, Hollywood vs. Seedance 2.0</h2>
+            <p class="episode-meta">TBPN • <a href="https://www.youtube.com/watch?v=OA7PG2VjchY" target="_blank">Watch →</a></p>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header core">🔵 Core Insights</div>
+
+            <div class="insight">
+                <h4>The Cournot equilibrium explains why AI labs maintain structurally profitable frontier access even while losing money overall</h4>
+                <p class="episode-meta">[TBPN] The Cournot Equation • <a href="https://www.youtube.com/watch?v=OA7PG2VjchY" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Antoine Cournot's 150-year-old economic model describes oligopolies that compete on supply rather than price. With only three or four major AI labs at the frontier, the market doesn't equilibrate to zero-margin perfect competition — it stabilizes at a high price for frontier access. Labs signal compute investments to each other (Microsoft pauses, AWS goes all-in) and respond accordingly, creating a game of chicken around who builds the most data center capacity. The result: frontier AI access will remain expensive for the foreseeable future because the structural incentives prevent any one player from breaking ranks and cutting prices to commoditize.
+                </div>
+                <div class="quote">
+                    "Everyone's sort of keying off of each other... if someone's buying 10 billion of compute over here, they're going to counter with eight over there or try and jump to 12. It's why Semi Analysis exists. The corno equilibrium comes when a small number of labs — an oligopoly — effectively choose supply at the frontier level and then the market clears at a high price for frontier access."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>AI labs actually run two separate businesses inside one P&amp;L — a depreciating training asset and a manufacturing-margin inference factory</h4>
+                <p class="episode-meta">[TBPN] The Secret Economics of AI Labs • <a href="https://www.youtube.com/watch?v=Q0ff9-5y1wY" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The reason AI labs appear deeply unprofitable while simultaneously having healthy gross margins is that they hide two very different economic structures inside a single P&amp;L. The first is model training: a massive upfront capital expenditure that produces a depreciating asset — each model generation declines in value as a newer frontier model is released. The second is the inference factory: a manufacturing-margin business with positive contribution margins (you can verify this by comparing API prices to open-source commodity inference costs). Companies lose money because training costs are scaling exponentially, but the underlying unit economics of inference are healthy. GPT-4, which cost roughly $100M to train, generated billions in revenue before it was superseded.
+                </div>
+                <div class="quote">
+                    "They're the most unprofitable companies in human history, I think. But at the same time, there is an economic rationality behind all of this... Each model makes money, but the company loses money. The equilibrium I'm talking about is an equilibrium where model training scale-up has equilibrated more."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Micron is spending $200B to break the AI memory bottleneck — the biggest supply crunch the memory industry has seen in 40 years</h4>
+                <p class="episode-meta">[TBPN] The Cournot Equation • <a href="https://www.youtube.com/watch?v=OA7PG2VjchY" target="_blank">Watch →</a></p>
+                <div class="context">
+                    For decades, memory chips were low-margin commodity products. AI's insatiable demand for data transfer at inference time has inverted this. Micron, the largest American memory chip maker, is rushing to add manufacturing capacity at a scale that dwarfs most prior industrial investments. The downstream effects are already visible: the PlayStation 6 has reportedly been delayed to 2029 partly due to memory chip shortages. The bet signals that memory — not compute — may be the next critical bottleneck in the AI infrastructure stack, and that whoever controls memory supply at scale will capture enormous value.
+                </div>
+                <div class="quote">
+                    "Micron is spending $200 billion to break the AI memory bottleneck. For decades, memory chips were low-margin commodity products. Now the industry can't make enough to satisfy data centers' hunger. This is the biggest supply crunch the memory industry has seen in more than 40 years."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Having a consumer product (not just an API business) gives AI labs crucial pricing leverage — Claude Code is Anthropic's version of this hedge</h4>
+                <p class="episode-meta">[TBPN] The Secret Economics of AI Labs • <a href="https://www.youtube.com/watch?v=Q0ff9-5y1wY" target="_blank">Watch →</a></p>
+                <div class="context">
+                    One critique of Anthropic's business has been that it's overwhelmingly API-dependent, forcing it onto a permanent training treadmill — users switch to whatever model is smartest. A consumer product breaks this dynamic: users develop workflows, habits, and expectations around the experience layer, not just raw model intelligence. Claude Code's fast internal adoption at Anthropic itself — and its subsequent external launch — gives Anthropic a sticky, product-layer moat that partially insulates it from model commoditization and reduces the pressure to always be at the bleeding frontier.
+                </div>
+                <div class="quote">
+                    "Having a product, not just an API business, gives you leverage because at some point the models are smart enough where you don't need to train them... you don't need to train a model that is 4% better because people are still coming to your application and having a good product experience. Anthropic has Claude Code now, which gives them more leverage over the market."
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header counter">🟣 Counter-Intuitive</div>
+
+            <div class="insight">
+                <h4>Complex software's "tech debt" is actually a competitive moat — it encodes millions of solved edge cases that AI cannot easily replicate</h4>
+                <p class="episode-meta">[TBPN] The Cournot Equation • <a href="https://www.youtube.com/watch?v=OA7PG2VjchY" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The common fear is that AI will allow anyone to clone any SaaS product overnight. The hosts distinguish between "feature companies" — simple apps that are genuinely vulnerable — and deeply complex platforms where years of accumulated edge cases, customer-specific integration work, and institutional knowledge constitute an invisible moat. The very thing branded as a liability ("tech debt") is actually what makes these platforms hard to replicate: they've already encountered and solved the nine million things that go wrong in production at scale. An AI starting from scratch would need years of real-world usage to discover the same edge cases.
+                </div>
+                <div class="quote">
+                    "There are like nine million edge cases. The tech debt sounds bad because it's a pejorative — debt equals bad. But actually it's good because what you've done is you've uncovered every single problem that can go wrong. The AI is going to have to discover all of those edge cases from scratch."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Video editing may be the last white-collar job to be automated — because the critical decisions aren't logged in any structured format</h4>
+                <p class="episode-meta">[TBPN] The Cournot Equation • <a href="https://www.youtube.com/watch?v=OA7PG2VjchY" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The argument that "all white-collar work will be automated because it's all logged" breaks down for creative editorial roles. The valuable decisions in video editing — what to cut, when to linger, when to "kill your darlings" — are not stored in anything analogous to GitHub's pull request log. The final product exists; the cutting room floor doesn't. Editors can record their screens, but the reasoning behind each cut is not systematically captured in machine-readable form. The Matrix example is instructive: a half-second doorknob reflection shot with elaborate VFX work demonstrates that the ratio between production effort and screen time is invisible to any AI trained only on the output.
+                </div>
+                <div class="quote">
+                    "The valuable decisions in editing aren't neatly organized in the way a GitHub log is, with poll request discussions. There's this whole concept of 'kill your darlings' — like you need to be cutting more. Those decisions sort of get chronicled but they don't get neatly organized in the way a GitHub log does."
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header data">🟢 Data Points</div>
+
+            <div class="insight">
+                <h4>GPT-4 cost roughly $100M to train — and quickly generated a multi-billion dollar revenue run rate, proving AI training unit economics can work</h4>
+                <p class="episode-meta">[TBPN] The Secret Economics of AI Labs • <a href="https://www.youtube.com/watch?v=Q0ff9-5y1wY" target="_blank">Watch →</a></p>
+                <div class="context">
+                    GPT-4 is the most instructive data point in the AI economics debate. Despite the enormous training cost at the time, the model was considered expensive — yet it was so capable that it generated a multi-billion dollar annual revenue run rate well before it was superseded. The inference margins were healthy enough that OpenAI made back its training investment and more. The question now is whether this pattern holds at 10x or 100x training costs, and how quickly new models depreciate in commercial value.
+                </div>
+                <div class="quote">
+                    "GPT-4 is the really instructive example because I believe that model cost like a hundred million dollars to train and it was really expensive at the time, but then very quickly they were on a multi-billion dollar run rate... it was very clear that based on the inference margin and the ChatGPT Pro subscriptions that they made all the money back from GPT-4 and more."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>India's Adani Group committed $100B to AI infrastructure by 2035 — the largest single such commitment in India's history</h4>
+                <p class="episode-meta">[TBPN] The Cournot Equation • <a href="https://www.youtube.com/watch?v=OA7PG2VjchY" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The AI infrastructure investment race has gone sovereign and global. India's Adani Group — an energy and logistics conglomerate — announced a $100 billion commitment to develop large-scale AI data centers by 2035. This dwarfs prior Indian tech investment announcements and signals that the Cournot game is expanding beyond US-based labs to national-scale players. However, the hosts note with some skepticism that 2035 is beyond even the most aggressive AGI timelines, raising questions about whether this capital will be deployed before the landscape it is targeting has fundamentally changed.
+                </div>
+                <div class="quote">
+                    "India's Adani Group to invest $100 billion in AI infrastructure. The Indian conglomerate's investment may boost the country's ambitions to become an AI power. They said they would invest $100 billion to develop large-scale data centers by 2035 — the largest such commitment in India so far."
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header future">🟠 Future-Looking</div>
+
+            <div class="insight">
+                <h4>When model training scale-up plateaus, AI labs exit the Cournot game and enter Bertrand competition — resembling cloud economics, not a winner-take-all market</h4>
+                <p class="episode-meta">[TBPN] The Secret Economics of AI Labs • <a href="https://www.youtube.com/watch?v=Q0ff9-5y1wY" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The long-run equilibrium for AI economics depends critically on what happens to training scale-up. If frontier model capabilities plateau — if there's a "final model" that handles all knowledge work — labs shift from Cournot (supply competition, high margins) to Bertrand (price competition, compressed margins). This doesn't mean profits go to zero; cloud hyperscalers show that oligopolies with massive capital barriers can sustain meaningful margins. But it does mean the current period of explosive lab profitability is time-limited, and explains why many VCs are now investing in multiple labs rather than betting on a single winner.
+                </div>
+                <div class="quote">
+                    "At that point it does commoditize and you drop out of the Cournot equilibrium and you become more like the hyperscaler cloud market... there will be competition between the major three or four labs and it will be much more about how can you marshal enough supply to create a huge barrier to entry. It's why a lot of VC firms are getting in multiple companies — they don't think it's going to be winner-take-all anymore."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Warner Bros. is resuming Paramount merger talks — Hollywood's consolidation is being driven by streaming economics that make scale non-optional</h4>
+                <p class="episode-meta">[TBPN] The Cournot Equation • <a href="https://www.youtube.com/watch?v=OA7PG2VjchY" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Lucas Shaw's reporting on Warner Bros. resuming Paramount talks reflects the inevitable math of streaming: production costs are fixed, distribution is global, and only a handful of content libraries are large enough to justify standalone streaming services. The hosts note that Hollywood studios are playing their own version of a supply-game oligopoly — but one where the endgame is consolidation into two or three mega-studios, not sustained competition. The AI-generated content (like Seedance 2.0) discussed in the same episode adds an additional disruptive threat from below, potentially collapsing content production costs faster than consolidation can save the incumbents.
+                </div>
+                <div class="quote">
+                    "Warner Brothers is going to resume talks with Paramount after two months of rejecting them and playing mind games. The company still says it's committed to Netflix, but needs to find out just how much the Ellisons will offer."
+                </div>
+            </div>
+        </div>
+
+        <!-- Episode 2: TiTV - OpenAI/OpenClaw/Pinterest/Anduril -->
+        <div class="episode" id="titv-main">
+            <h2>OpenAI Snaps Up OpenClaw, Yahoo's AI Search Engine 'Scout,' Inside Anduril's $60B+ Valuation Talks</h2>
+            <p class="episode-meta">TiTV (The Information) • <a href="https://www.youtube.com/watch?v=yHrN_vdnFpg" target="_blank">Watch →</a></p>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header core">🔵 Core Insights</div>
+
+            <div class="insight">
+                <h4>OpenAI's acqui-hire of OpenClaw founder Steinberger is a direct competitive response to Claude Code — but the two products target fundamentally different audiences</h4>
+                <p class="episode-meta">[TiTV] OpenAI Snaps Up OpenClaw • <a href="https://www.youtube.com/watch?v=yHrN_vdnFpg" target="_blank">Watch →</a></p>
+                <div class="context">
+                    OpenClaw went from a viral open-source side project to an OpenAI acquisition target in weeks, following Claude Code's explosive growth. OpenAI wants Steinberger to build personal AI agents — not just coding agents. The distinction matters: Claude Code is deliberately scoped (you specify a folder, a task, and when it's done it stops), making it enterprise-safe. OpenClaw is general-purpose and persistent — it can run in the background, check email, send Slacks, interact with any web page. These represent two different theories of how AI agents will enter the world: enterprise-first with guardrails, vs. developer-first with maximum freedom. Anthropic's earlier request that Steinberger rename "Claudebot" may have foreclosed any partnership path with Anthropic.
+                </div>
+                <div class="quote">
+                    "I think Claude Co-work will have a greater in with enterprises because it offers more security. It is kind of more narrowly scoped... In contrast, OpenClaw is very general purpose. OpenAI is interested in tapping into Steinberger's talent — he clearly has a finger on the pulse of what developers are interested in in terms of agents."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>OpenAI is creating a nonprofit foundation to house OpenClaw — an uncomfortably familiar structure that echoes OpenAI's own founding nonprofit shell</h4>
+                <p class="episode-meta">[TiTV] Why OpenAI Hired the OpenClaw Founder • <a href="https://www.youtube.com/watch?v=4gYQzSyBDgU" target="_blank">Watch →</a></p>
+                <div class="context">
+                    To preserve Steinberger's commitment to keeping OpenClaw open-source, OpenAI agreed to house the project in a new nonprofit foundation. The hosts immediately note the irony: OpenAI itself was originally a nonprofit, and has spent years in legal and governance battles trying to restructure away from that original nonprofit shell. Now it is voluntarily creating another bespoke nonprofit structure to accommodate an acquisition. The open-source commitment means OpenAI is essentially funding a public good — anyone can download, fork, and modify OpenClaw — while presumably benefiting from Steinberger's talent and attention being directed at OpenAI's agent products.
+                </div>
+                <div class="quote">
+                    "OpenAI is going to set up a foundation that will house the Open Claw project... it's sort of on brand for OpenAI to create a kind of bespoke nonprofit structure in order to accomplish a very particular mission. Bespoke and nonprofit and then maybe somewhat regretting the way that they structured it."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Pinterest has 80 billion searches per month and a uniquely valuable Gen Z/millennial women user base — but can't convert either into reliable ad measurement</h4>
+                <p class="episode-meta">[TiTV] 'Code Red' and AI Debates at Pinterest • <a href="https://www.youtube.com/watch?v=hWNWCZqejlc" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Pinterest's core problem is a measurement gap, not a traffic gap. The platform has enormous search volume, a demographically premium user base (Gen Z and millennial women — the most valuable category for advertisers), and strong high-intent categories (clothing, beauty, furniture). But advertisers can't reliably measure the return on their Pinterest spend, which makes them reluctant to scale budgets. Pinterest's "code red" is an internal push to fix the attribution model and the ad recommendation algorithm. The CTO reports early progress — reallocating GPUs to iterate faster on ad modeling — but the stock's 20% drop signals that investor patience for a self-directed turnaround is running thin.
+                </div>
+                <div class="quote">
+                    "Pinterest has 80 billion searches per month... They have billions of images and posts on their site. The user base is typically Gen Z and millennial women — the most valuable categories for advertisers. The question is can they fix the monetization and fix the ad business."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Anduril is seeking to raise billions at a $60B valuation — double its 2024 round — on the back of autonomous submarines, mixed-reality headsets, drones, and solid rocket motors</h4>
+                <p class="episode-meta">[TiTV] Anduril's Massive $60B Defense Bet • <a href="https://www.youtube.com/watch?v=M3Bx2IQA_hc" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Anduril's valuation trajectory reflects how dramatically defense tech has been re-rated. The company won a multi-billion dollar autonomous submarine contract from the Australian Navy, took over a nearly $20 billion mixed-reality headset contract from Microsoft (for soldiers), and has expanded into counter-drone technology, drones, and solid rocket motors. Its ambition is to join the Raytheon/Lockheed/Northrop club — a decades-old prime contractor oligopoly — by growing faster than any of them have in their histories. The current fundraise is described as a "land grab" moment: the stars are aligning under the current administration, and Anduril is racing to capture as much territory and contract value as possible before the political window narrows.
+                </div>
+                <div class="quote">
+                    "Anduril is going to raise billions of dollars yet again. The valuation they're talking about is in the $60 billion range — roughly double the price from last year. This is a company that, if you've stopped paying attention to them in recent years, has really expanded their product set."
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header counter">🟣 Counter-Intuitive</div>
+
+            <div class="insight">
+                <h4>Steinberger didn't go to Anthropic — partly because of an earlier IP dispute over the name "Claudebot" — showing how small early friction can determine billion-dollar outcomes</h4>
+                <p class="episode-meta">[TiTV] Why OpenAI Hired the OpenClaw Founder • <a href="https://www.youtube.com/watch?v=4gYQzSyBDgU" target="_blank">Watch →</a></p>
+                <div class="context">
+                    When OpenClaw (then called Claudebot) first went viral, Anthropic asked Steinberger to change the name because of the Claude trademark. This seemingly minor IP dispute may have foreclosed what could have been a natural partnership — Steinberger's general-purpose agent framework would complement Anthropic's enterprise-focused Claude Code. Instead, Anthropic's enterprise orientation, its historically ambivalent relationship with open source, and the early friction all combined to steer Steinberger toward OpenAI. The lesson: how a company handles early-stage open-source projects that use adjacent branding can have lasting competitive consequences.
+                </div>
+                <div class="quote">
+                    "It's interesting that Anthropic is not where Steinberger ended up... three is that Anthropic and Steinberger got off on kind of an interesting footing because Anthropic asked him to change the name of Claudebot. You'll recall OpenClaw was originally called Claudebot and Anthropic saw that as sort of stepping on their intellectual property."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Anduril has grown successfully under both Trump and Biden — its moat is technological and operational, not primarily political access</h4>
+                <p class="episode-meta">[TiTV] Anduril's Massive $60B Defense Bet • <a href="https://www.youtube.com/watch?v=M3Bx2IQA_hc" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The narrative around Anduril often focuses on its Silicon Valley founders' alignment with the current administration. But the reporter's analysis is more nuanced: Anduril was founded under the first Trump administration, grew significantly under Biden, and is now accelerating under Trump again. Its core advantage is technological differentiation — building AI-native, software-defined defense systems faster than incumbents — not purely political access. The current moment represents a window of heightened opportunity, but the underlying business is secular. The real test will be the US Air Force autonomous fighter jet contract: winning that would confirm Anduril as a true prime contractor, not just a buzzy startup.
+                </div>
+                <div class="quote">
+                    "This company was founded under the first Trump administration. It grew significantly under the Biden administration... so it is it has grown and been successful under two different political regimes. A big moment we're gonna see is whether the US Air Force awards Anduril its very lucrative autonomous fighter jet program."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Pinterest's "identity crisis" — is it social media, search, or e-commerce? — is actually its greatest vulnerability in an AI-search world</h4>
+                <p class="episode-meta">[TiTV] 'Code Red' and AI Debates at Pinterest • <a href="https://www.youtube.com/watch?v=hWNWCZqejlc" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Pinterest is trying to reposition itself to investors as a "search platform" — not social media. This repositioning is strategically rational: search platforms have stronger advertising models (high purchase intent) and are more defensible in an era of AI-generated social feeds. But the identity confusion is real: advertisers, users, and analysts don't agree on what Pinterest is for. In an era where AI-native search can create personalized visual mood boards on demand, Pinterest's category ambiguity leaves it uniquely exposed. Google is already building Pinterest-like features into its own AI search. Pinterest needs to own its identity before someone else defines it for them.
+                </div>
+                <div class="quote">
+                    "I think one thing I realized as I've been thinking about this conversation is that when I talk about Pinterest, sometimes I refer to it as a digital scrapbooking platform, sometimes social media. And so I think this identity crisis — where advertisers don't really know what the one thing is that we should be going to Pinterest for — that's sort of a problem everyone has right now."
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header data">🟢 Data Points</div>
+
+            <div class="insight">
+                <h4>OpenClaw's founder was spending $10,000–$20,000/month of personal funds on the project — and was overburdened by support requests — before OpenAI stepped in</h4>
+                <p class="episode-meta">[TiTV] OpenAI Hires OpenClaw Founder • <a href="https://www.youtube.com/watch?v=BRUOna1kOHg" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Steinberger's decision to join OpenAI rather than raise VC funding was driven by personal sustainability, not exit economics. Open-source projects with viral traction create a cruel trap: massive usage generates massive support burden and API costs, with no corresponding revenue. At $10,000–$20,000/month in personal inference and development costs, OpenClaw was burning Steinberger's personal savings. He had VCs interested and could have raised capital, but explicitly said he didn't want to build another company. OpenAI offered him the ability to keep building the tools — his actual interest — without the organizational overhead. This pattern will recur: the most talented open-source builders will be systematically acquired by labs that can subsidize their infrastructure costs.
+                </div>
+                <div class="quote">
+                    "Steinberger has been very vocal that he didn't have the personal time to deal with all of the requests people were sending in... He was also burning cash, spending money on developing it — I think he had said $10,000 to $20,000 a month. OpenAI stepped up and started footing some of that bill."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Pinterest stock fell 20% in a single session after Q4 earnings — with ad revenue growth deceleration as the central investor concern</h4>
+                <p class="episode-meta">[TiTV] 'Code Red' and AI Debates at Pinterest • <a href="https://www.youtube.com/watch?v=hWNWCZqejlc" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The magnitude of the stock drop — 20% in a single day — reflects how little margin for error Pinterest has with investors at its current valuation. Ad revenue deceleration at a platform-stage company is treated as an existential signal, not a temporary setback, because the alternatives are limited: you can't accelerate ad revenue growth without either growing the user base (slow) or improving ad targeting/measurement (hard). Pinterest has been working on both for months — declaring an internal code red before the earnings, not after — but the market's reaction shows that the improvement hasn't been fast enough or visible enough in the reported numbers.
+                </div>
+                <div class="quote">
+                    "Shares of Pinterest are trying to rebound this week after earnings triggered a 20% single-day plunge last week. At the center of that story is revenue growth that is decelerating. Pinterest declared its own code red well before this stock drop."
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header future">🟠 Future-Looking</div>
+
+            <div class="insight">
+                <h4>OpenAI's long-term goal for OpenClaw is consumer accessibility — "Steinberger's mom should be able to install it" — signaling a mass-market personal agent roadmap</h4>
+                <p class="episode-meta">[TiTV] Why OpenAI Hired the OpenClaw Founder • <a href="https://www.youtube.com/watch?v=4gYQzSyBDgU" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The current version of OpenClaw requires technical expertise to set up correctly — configuring permissions, implementing security precautions so the agent doesn't accidentally expose sensitive data. Steinberger has explicitly stated his goal is to make OpenClaw accessible to non-technical users. Under OpenAI's umbrella, the path is to start with more guardrails (resembling Claude Code's enterprise approach), then progressively unlock capabilities as security challenges are solved. The endgame is a personal AI agent that anyone — not just developers — can run persistently in the background, managing calendar, email, Slack, web browsing, and more. This is the consumer agent wave that has not yet arrived.
+                </div>
+                <div class="quote">
+                    "Steinberger has said his goal is to get OpenClaw to the point where even his mom could download it and install... What we've talked about so far is that OpenClaw is difficult to set up. It takes a technical user to do that. But that's the direction we're going to be seeing from OpenAI — it just may take some baby steps to get there."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Pinterest's most likely exit is acquisition — potentially by a company like OpenAI that needs a visual search and shopping data moat</h4>
+                <p class="episode-meta">[TiTV] 'Code Red' and AI Debates at Pinterest • <a href="https://www.youtube.com/watch?v=hWNWCZqejlc" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The reporter who originally predicted "OpenAI should buy Pinterest" stands by the underlying logic: Pinterest has 80 billion searches per month, a Gen Z and millennial women user base that is uniquely valuable for advertisers, and billions of tagged images and product posts. An AI company building visual search or shopping agents would immediately benefit from this data at a scale that would take years to replicate organically. If Pinterest cannot fix its ad business independently, a sale becomes the most rational outcome. The question is whether the turnaround buys enough time to avoid a distressed sale — which would significantly reduce the multiple.
+                </div>
+                <div class="quote">
+                    "I think there's no doubt there is a ton of underlying value in Pinterest's platform... I think if they are able to fix the ad business at least in the short term, that will keep Wall Street happy. But if the ad business isn't able to recover, then the expectation is they would think more seriously about a potential sale."
+                </div>
+            </div>
+        </div>
+
+        <!-- QUICK HITS SECTION -->
+        <div class="quick-hits-section">
+            <h2 style="color: #FF9B71; margin-bottom: 25px; font-size: 1.8rem;">⚡ Quick Hits</h2>
+
+            <div class="quick-hit">
+                <h3>How Claude Code Was Actually Developed — Dario Amodei</h3>
+                <p class="quick-hit-meta">Dwarkesh Podcast • <a href="https://www.youtube.com/watch?v=eRov-sFcf1s" target="_blank">Watch →</a></p>
+                <ul>
+                    <li>Claude Code was not a deliberate product strategy — it emerged from Dario's internal push in early 2025 to use coding models for Anthropic's own research acceleration. What started as an internal tool called "Claude CLI" saw such fast adoption inside Anthropic that Dario concluded they already had product-market fit and should launch externally.</li>
+                    <li>The feedback loop is structural: Anthropic develops the models, uses the models to develop faster, observes what works, and ships it. No other company has the same "eat your own cooking" advantage at model-scale. This is why Claude Code leads the category despite Anthropic not being primarily an application company.</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>I Hate Losing — On Jealousy, Excellence, and Self-Flagellation at Sequoia</h3>
+                <p class="quick-hit-meta">Dialectic • <a href="https://www.youtube.com/watch?v=fNvMNWI015E" target="_blank">Watch →</a></p>
+                <ul>
+                    <li>The speaker distinguishes between productive competition (watching great people win is rewarding in its own right, because you knew they were exceptional all along) and destructive jealousy (feeling anxious when others succeed while you're not). The former is an energy source; the latter is a trap.</li>
+                    <li>Sequoia's internal offsites are described as "a death march through the sins of the past" — a culture of rigorous self-criticism. The speaker notes this is valuable but only if it doesn't cause dwelling: in venture, the world moves so fast that excessive rumination on past mistakes makes you miss the next opportunity entirely.</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>How Amazon Prime Turned Thursday Night Football into Must-See TV</h3>
+                <p class="quick-hit-meta">Acquired / ACQ2 • <a href="https://www.youtube.com/watch?v=6n0tXE8gR6U" target="_blank">Watch →</a></p>
+                <ul>
+                    <li>Thursday Night Football on Amazon Prime averaged 15.33 million viewers in the 2025 season — the highest average in the show's 20-year history across any network or streaming platform. 122 million unique people watched at least one game, up 50 million since 2022. The Black Friday game was up 21% year-over-year.</li>
+                    <li>The key inflection point wasn't technology or UX — it was schedule quality. "Thursday night actually has great games now" is the most significant driver of the audience shift, not the distribution platform.</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>The Limits of AI Customer Service Agents</h3>
+                <p class="quick-hit-meta">20VC • <a href="https://www.youtube.com/watch?v=zNtoUV2S4kU" target="_blank">Watch →</a></p>
+                <ul>
+                    <li>Customer service AI hits a wall when it needs to read source code or deeply understand proprietary systems to explain issues to customers. At that point, off-the-shelf AI agents become a liability rather than a solution — they can't be plugged in without becoming part of the technical stack, which changes the build vs. buy calculus entirely.</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>Why Nubank Will Beat Revolut in the US Market</h3>
+                <p class="quick-hit-meta">20VC • <a href="https://www.youtube.com/watch?v=S2lzIrgXsuo" target="_blank">Watch →</a></p>
+                <ul>
+                    <li>The speaker argues Nubank (David Vélez) has a structural advantage over Revolut (Nikolay Storonsky) in the US: Nubank has a solid, profitable base in Brazil and a more focused geographic expansion strategy (Brazil → Mexico → US). Revolut is simultaneously launching in Dubai, India, and everywhere at once — which in banking, a heavily regulated, locally complex industry, risks spreading too thin and losing the organizational bandwidth needed to win in any single market.</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>Why Medtech Is Harder Than Other Regulated Industries</h3>
+                <p class="quick-hit-meta">The Generalist • <a href="https://www.youtube.com/watch?v=8M_mzjC3jL0" target="_blank">Watch →</a></p>
+                <ul>
+                    <li>Healthcare isn't just "a regulated industry like fintech." It has multiple stacked layers of regulation — FDA, payer approval, formulary inclusion, hospital procurement — and the path between a startup and its end customer (the patient) runs through payers, providers, and procurement committees. The chasm between the product and the user is uniquely wide, requiring bridging strategies that don't exist in most other markets.</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>OpenAI Hires OpenClaw Founder — Community Reactions</h3>
+                <p class="quick-hit-meta">TiTV (The Information) • <a href="https://www.youtube.com/watch?v=BRUOna1kOHg" target="_blank">Watch →</a></p>
+                <ul>
+                    <li>Community reactions are mixed: some worry that OpenAI's involvement will "spoil the fun" of what made OpenClaw special — its wild, unconstrained, open-source character. Others recognize that Steinberger needed organizational support and infrastructure to mature the product beyond a technically demanding side project. The open-source commitment and foundation structure are intended to reassure the skeptics, but the proof will be in execution.</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>6-Year-Old Girl Scout Breaks Cookie Sales Record with ~$600K ARR</h3>
+                <p class="quick-hit-meta">TBPN • <a href="https://www.youtube.com/watch?v=wGLqalTnC_E" target="_blank">Watch →</a></p>
+                <ul>
+                    <li>A Pennsylvania six-year-old broke the national Girl Scout cookie sales record by selling 87,000 boxes — estimated at approximately $600,000 in sales. The hosts immediately calculated her ARR and declared her unstoppable. A reminder that distribution strategy, not product, often determines outcomes.</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>Song of the Week: "Bazooka" — What Absurdist Virality Actually Means</h3>
+                <p class="quick-hit-meta">TBPN • <a href="https://www.youtube.com/watch?v=a3vqkvGGyp4" target="_blank">Watch →</a></p>
+                <ul>
+                    <li>"Rest in Peace My Granny, She Got Hit by a Bazooka" went viral because it is so specifically absurd that it loops past irony and arrives at something strangely earnest. The impossibility of the scenario — nobody's grandmother has ever been hit by a bazooka — is its own form of tenderness. The song's virality resists every conventional framework for predicting what spreads online.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
