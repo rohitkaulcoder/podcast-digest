@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast Digest - February 19, 2026</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2D2D2D;
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(255, 155, 113, 0.15);
+            border-radius: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+            border-bottom: none;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FF9B71 0%, #FF7B9C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+        }
+
+        .stats {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .export-btn {
+            background: linear-gradient(135deg, #FF9B71 0%, #FFB88C 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 20px auto;
+            display: block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 155, 113, 0.3);
+        }
+
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 155, 113, 0.4);
+        }
+
+        .themes-section {
+            background: linear-gradient(135deg, #FFB88C 0%, #FF9B71 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 8px 30px rgba(255, 155, 113, 0.25);
+        }
+
+        .themes-section h2 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .themes-section ol {
+            margin-left: 20px;
+        }
+
+        .themes-section li {
+            margin: 12px 0;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .toc {
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border: 2px solid #FFD4C4;
+        }
+
+        .toc h2 {
+            margin-bottom: 20px;
+            color: #FF9B71;
+            font-weight: 600;
+        }
+
+        .toc ul {
+            list-style: none;
+        }
+
+        .toc li {
+            margin: 10px 0;
+        }
+
+        .toc a {
+            color: #FF9B71;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover {
+            color: #FF7B9C;
+            text-decoration: underline;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #FF9B71 0%, #FFB88C 100%);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            margin-left: 8px;
+            font-weight: 500;
+        }
+
+        .episode {
+            margin: 40px 0;
+            padding: 35px;
+            background: #fff;
+            border-left: 5px solid #FF9B71;
+            box-shadow: 0 4px 20px rgba(255, 155, 113, 0.1);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .episode:hover {
+            box-shadow: 0 6px 30px rgba(255, 155, 113, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .episode h2 {
+            color: #2D2D2D;
+            margin-bottom: 12px;
+            font-size: 1.9rem;
+            font-weight: 600;
+        }
+
+        .episode-meta {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .episode-meta a {
+            color: #FF9B71;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .episode-meta a:hover {
+            color: #FF7B9C;
+            text-decoration: underline;
+        }
+
+        .insights-container {
+            margin-top: 25px;
+        }
+
+        .insight-category {
+            margin: 25px 0;
+        }
+
+        .category-header {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 6px;
+            color: white;
+        }
+
+        .core { background: linear-gradient(135deg, #FFB88C 0%, #FF9B71 100%); }
+        .counter { background: linear-gradient(135deg, #FF9B71 0%, #FF7B9C 100%); }
+        .data { background: linear-gradient(135deg, #FFD4C4 0%, #FFB88C 100%); }
+        .future { background: linear-gradient(135deg, #FF7B9C 0%, #FFB88C 100%); }
+
+        .insight {
+            margin: 20px 0;
+            padding: 24px;
+            background: #FFFBF8;
+            border-radius: 16px;
+            border-left: 4px solid #FF9B71;
+            transition: all 0.3s;
+        }
+
+        .insight:hover {
+            background: #FFF8F3;
+            box-shadow: 0 4px 15px rgba(255, 155, 113, 0.1);
+        }
+
+        .insight h4 {
+            color: #2D2D2D;
+            margin-bottom: 14px;
+            font-size: 1.15rem;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
+        .context {
+            margin: 15px 0;
+            line-height: 1.75;
+            color: #444;
+            font-size: 0.98rem;
+        }
+
+        .quote {
+            margin: 15px 0;
+            padding: 18px;
+            background: white;
+            border-left: 4px solid #FFB88C;
+            border-radius: 8px;
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .quick-hits-section {
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            padding: 35px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border: 2px solid #FFD4C4;
+        }
+
+        .quick-hit {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .quick-hit h3 {
+            color: #1a1a2e;
+            margin-bottom: 10px;
+        }
+
+        .quick-hit-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .quick-hit-meta a {
+            color: #FF9B71;
+            text-decoration: none;
+        }
+
+        .quick-hit ul {
+            margin-left: 20px;
+        }
+
+        .quick-hit li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .export-btn {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .episode h2 {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Playful accents */
+        .accent-circle {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .accent-1 {
+            width: 300px;
+            height: 300px;
+            background: #FF9B71;
+            top: -100px;
+            right: -100px;
+        }
+
+        .accent-2 {
+            width: 200px;
+            height: 200px;
+            background: #FFB88C;
+            bottom: -50px;
+            left: -50px;
+        }
+
+        /* Anthropic-inspired doodles */
+        .doodle {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .doodle-1 {
+            top: 15%;
+            right: 10%;
+            width: 80px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .doodle-2 {
+            bottom: 20%;
+            left: 8%;
+            width: 60px;
+            animation: float 5s ease-in-out infinite 1s;
+        }
+
+        .doodle-3 {
+            top: 40%;
+            left: 5%;
+            width: 50px;
+            animation: float 6s ease-in-out infinite 2s;
+        }
+
+        .doodle-4 {
+            top: 60%;
+            right: 5%;
+            width: 70px;
+            animation: float 5s ease-in-out infinite 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Playful background accents -->
+    <div class="accent-circle accent-1"></div>
+    <div class="accent-circle accent-2"></div>
+
+    <!-- Anthropic-inspired doodles -->
+    <svg class="doodle doodle-1" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20,50 Q35,20 50,50 T80,50" stroke="#FF9B71" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <circle cx="20" cy="50" r="4" fill="#FF9B71"/>
+        <circle cx="80" cy="50" r="4" fill="#FF9B71"/>
+    </svg>
+
+    <svg class="doodle doodle-2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="25" stroke="#FFB88C" stroke-width="3" fill="none"/>
+        <circle cx="50" cy="50" r="15" stroke="#FFB88C" stroke-width="2" fill="none"/>
+        <circle cx="50" cy="50" r="5" fill="#FFB88C"/>
+    </svg>
+
+    <svg class="doodle doodle-3" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30,70 L50,30 L70,70 Z" stroke="#FF7B9C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="50" cy="50" r="3" fill="#FF7B9C"/>
+    </svg>
+
+    <svg class="doodle doodle-4" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25,50 L40,35 L55,50 L70,35 L85,50" stroke="#FF9B71" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="25" cy="50" r="4" fill="#FF9B71"/>
+        <circle cx="85" cy="50" r="4" fill="#FF9B71"/>
+    </svg>
+
+    <div class="container">
+        <header>
+            <h1>🎙️ Podcast Digest</h1>
+            <p class="stats">February 19, 2026 &bull; 5 Full Episodes &bull; 4 Quick Hits &bull; 47 Insights</p>
+        </header>
+
+        <button class="export-btn" onclick="window.print()">📄 Export as PDF</button>
+
+        <div class="themes-section">
+            <h2>🔥 Top 5 Recurring Themes</h2>
+            <ol>
+                <li><strong>Longevity &gt; Peak Performance:</strong> From Federer's career to Garry Tan's YC playbook, the dominant lesson across today's episodes is that optimizing for resilience and the long game compounds far more than optimizing for peak output. Federer's biggest win in business came 23 years after he turned pro. YC companies die from demoralization, not money. The same principle applies to AI labs that build sticky product layers vs. those racing purely on model benchmarks.</li>
+                <li><strong>AI Infrastructure Economics Are Exploding — and Restructuring:</strong> Anthropic's cloud partner revenue share is forecast at $6.4B by 2026, up from $400M last year. Meta locked in millions of Nvidia Blackwell GPUs. The AI lab landscape has fragmented into 10+ distinct categories. The infrastructure layer is where today's most significant capital flows are happening — and the terms are wildly unequal between players.</li>
+                <li><strong>Continual Learning Is the Next AI Frontier — and Mostly Vaporware Today:</strong> Every major lab has researchers working on continual learning (AI updating itself from real-world experience), but current "solutions" are mostly clever workarounds mislabeled as continual learning. The fundamental unsolved problem: distinguishing real new knowledge from injected misinformation at scale.</li>
+                <li><strong>Platform Concentration Is Reversing — Creator and AI Lab Ecosystems Are Both Fragmenting:</strong> The era of monolith mega-creators (400M+ YouTube subscribers) is ending as algorithms suppress breakout channels in favor of niche micro-giants. The AI lab market is similarly fragmenting — from 3-4 "big labs" to sovereign labs, neo-labs, dark labs, consumer labs, and more. Concentration is giving way to a fragmented ecosystem in both domains.</li>
+                <li><strong>Hands-On Building Is the New Prerequisite for Legitimacy:</strong> Both a 20VC investor and Garry Tan made the same argument independently: if you haven't personally built something with AI tools in 2026, you lack the standing to evaluate AI companies or lead AI teams. Direct experience has replaced credentials as the entry requirement for this era.</li>
+            </ol>
+        </div>
+
+        <div class="toc">
+            <h2>📑 Table of Contents</h2>
+            <h3>🔵 Core Insights</h3>
+            <ul>
+                <li>[Founders] Effortlessness is a myth backed by obsessive discipline — Federer was widely perceived as a natural, yet was a meticulous planner...</li>
+                <li>[Founders] Mental discipline, not physical talent, separates the great from the good — the gap between #3 and #4 in the world is larger than between #4 and #200...</li>
+                <li>[Founders] Building a team of trusted specialists with a long-term view of your health enabled Federer's 23-year career...</li>
+                <li>[TBPN] The AI lab landscape is far more segmented than "big labs vs. startups" — Tyler Cosgrove's 10-category taxonomy...</li>
+                <li>[TBPN] Robinhood Ventures is opening private market access to retail investors — but the closed-end fund structure has a critical flaw...</li>
+                <li>[TiTV] Continual learning is AI's next holy grail — but startups are massively overpromising on it...</li>
+                <li>[TiTV] Anthropic's cloud partner revenue share is forecast to hit $6.4B by 2026, up from $400M last year...</li>
+                <li>[TiTV] The revenue share terms differ dramatically: Amazon gets 50% of gross profit; Google gets 20-30% of net; Microsoft locked in 20% of total revenue until 2032...</li>
+                <li>[The Peel] YC has invested in 20% of all $5B+ startups since 2012 and aims to reach 30-50%...</li>
+                <li>[The Peel] Being in SF/Bay Area increases your odds of becoming a billion-dollar company by 2.5x...</li>
+                <li><em>...and more</em></li>
+            </ul>
+            <h3>🟣 Counter-Intuitive</h3>
+            <ul>
+                <li>[Founders] Consulting a performance psychologist was "widely viewed as a sign of vulnerability" — yet it was Federer's decisive competitive edge...</li>
+                <li>[Founders] The greatest competitors care more about the fight than the win — Nadal: "I love the fight. If you fight hard, the winning will come."...</li>
+                <li>[TBPN] GLP-1 drugs are reportedly being banned by some hedge funds — traders who stop being hungry for snacks also stop being hungry for profits...</li>
+                <li>[TiTV] "Continual learning" startups are mostly fake — using clever model workarounds mislabeled as continual learning...</li>
+                <li>[TiTV] Data center executives — not AI researchers — are now the most-poached talent in tech, commanding $10M+ pay packages...</li>
+                <li>[The Peel] YC's rejection rate causes real harm — 78,500 of ~80,000 annual applicants receive what Tan calls "mortal ego wounds"...</li>
+                <li>[The Peel] California's proposed billionaire tax uses voting percentage as ownership percentage — effectively seizing startup founders' entire estates...</li>
+                <li><em>...and more</em></li>
+            </ul>
+            <h3>🟢 Data Points</h3>
+            <ul>
+                <li>[Founders] In 1,526 career matches, Federer won 80% — but won only 54% of all points played...</li>
+                <li>[Founders] Federer's On (Swiss shoe company) stake was worth ~$300M when it went public; Forbes named him world's highest-paid athlete at $100M/year in 2020...</li>
+                <li>[TBPN] Tyler Cosgrove processed all ~7.5M English Wikipedia articles through an embedding model — the 2D visualization randomly looks like the United States...</li>
+                <li>[TiTV] OpenAI's revenue share with Microsoft: 20% of total revenue, running until 2032, weighted toward later years...</li>
+                <li>[The Peel] YC gives $500K for ~7% equity; accepts ~1% of 80,000 annual applicants; funds 700-800 companies per year...</li>
+                <li>[The Peel] SF has 30-40% commercial vacancy rate; ~$1 trillion in personal net worth has already left California...</li>
+                <li><em>...and more</em></li>
+            </ul>
+            <h3>🟠 Future-Looking</h3>
+            <ul>
+                <li>[Founders] Optimizing for the long game from the start compounds massively — "never burning out is one of the most important stories from Federer's career"...</li>
+                <li>[TBPN] Whether Tesla's custom silicon team can achieve high-speed single-chip inference faster than rivals is the key open question for XAI...</li>
+                <li>[TiTV] The next MrBeast won't come from YouTube — Reed Duchscher: the algorithms don't allow breakout creators anymore...</li>
+                <li>[The Peel] "Software currently touches a tiny percentage of GDP" — billions of people are about to be able to create directly...</li>
+                <li><em>...and more</em></li>
+            </ul>
+            <h3>🎯 Quick Hits</h3>
+            <ul>
+                <li>Meta's Massive Nvidia GPU Deal (TiTV)</li>
+                <li>The One Thing AI Investors Must Do (20VC)</li>
+                <li>NBA YoungBoy Is the Most Popular Rapper in America (TBPN)</li>
+                <li>Huberman's Advice for Men Over 40 (TBPN)</li>
+            </ul>
+        </div>
+
+        <!-- FULL EPISODES -->
+
+        <!-- Episode 1: Founders - Roger Federer -->
+        <div class="episode" id="founders-federer">
+            <h2>How Roger Federer Works.</h2>
+            <p class="episode-meta">Founders &bull; <a href="https://www.youtube.com/watch?v=g2-duG1-Jxc" target="_blank">Watch →</a></p>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header core">🔵 Core Insights</div>
+
+            <div class="insight">
+                <h4>Effortlessness is a myth backed by obsessive discipline — Federer was widely perceived as a natural, yet was a meticulous planner with "tremendous toil and ample self-doubt behind the scenes"</h4>
+                <p class="episode-meta">[Founders] How Roger Federer Works &bull; <a href="https://www.youtube.com/watch?v=g2-duG1-Jxc" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The public narrative around Federer centered on effortless, natural genius — the opposite of Nadal's visible grit or Djokovic's mechanical precision. But the biographical record inverts this: Federer was a systematic planner who trained obsessively, built specialized support teams decades before this was standard, and carefully managed his energy across a 24-year career. The effortlessness was itself a product of labor. The lesson for founders: the perception of effortless execution is earned, not innate, and competitors who appear to be naturally talented are often working harder on the dimensions you can't see.
+                </div>
+                <div class="quote">
+                    "Though it was rare to see Federer sweat, there was tremendous toil and ample self-doubt behind the scenes."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Mental discipline is the decisive separator at the top — the gap between #3 and #4 in the world is larger than between #4 and #200</h4>
+                <p class="episode-meta">[Founders] How Roger Federer Works &bull; <a href="https://www.youtube.com/watch?v=g2-duG1-Jxc" target="_blank">Watch →</a></p>
+                <div class="context">
+                    A performance psychologist who coaches top tennis players made a counterintuitive observation: the players ranked around #200 in the world are physically and technically very close to the #4 player. But the gap between #4 and #3 — between very good and genuinely great — is enormous. The main driver is not physical or technical but mental: the ability to stay disciplined, manage emotions during competition, and maintain focus under maximum pressure. Federer was called mentally weak as a teenager and had to deliberately build this capacity. His coaches identified his head — not his game — as the only thing that could stop him.
+                </div>
+                <div class="quote">
+                    "The 200th ranked player in the world is closer to number four than four is to number three — and the main driver was mental discipline."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Building a team with a long-term view of your health — not just your peak performance — is what enabled Federer's 23-year career and his biggest wins coming late</h4>
+                <p class="episode-meta">[Founders] How Roger Federer Works &bull; <a href="https://www.youtube.com/watch?v=g2-duG1-Jxc" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Federer's fitness coach Pierre Paganini was unusual: where most sports scientists optimize for peak output, Paganini's central message was that longevity required deliberate rest and recovery alongside tough work. The same principle applied to Federer's decision to skip tournaments — even major ones — when his body signaled it needed recovery. The payoff was structural: Federer was still winning and competing at the highest level at an age where nearly every peer had retired. His largest business win (the On shoe company stake, worth ~$300M at IPO) came 23 years after he turned pro, only possible because he optimized for survival as well as performance.
+                </div>
+                <div class="quote">
+                    "His biggest win in business came 23 years after he turned pro. Pierre Paganini had a long-term view of Federer's health and path. The central message was that tough, consistent work was necessary, but so were rest and escape if Federer wanted to last."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Controlling emotions is a learnable skill, not a fixed trait — Federer was called mentally weak as a teenager and deliberately transformed his relationship to anger</h4>
+                <p class="episode-meta">[Founders] How Roger Federer Works &bull; <a href="https://www.youtube.com/watch?v=g2-duG1-Jxc" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The young Federer was notorious for smashing rackets and losing composure. His coaches identified this as his primary liability. The transformation that followed wasn't suppressing the fire — it was redirecting it. His mental coach helped him learn to "control the flames instead of extinguishing them — converting them into slow-burning fuel rather than a bonfire of distraction." This parallels Steve Jobs's evolution from destructively volatile to thoughtfully demanding over two decades. Both cases suggest that emotional intelligence is a skill, not a trait, and that the founders who seem calmly confident have often worked the hardest on this dimension.
+                </div>
+                <div class="quote">
+                    "It was about learning to control the flames instead of extinguishing them — about converting them into slow burning fuel rather than a bonfire of distraction."
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header counter">🟣 Counter-Intuitive</div>
+
+            <div class="insight">
+                <h4>The greatest competitors care more about the fight than the winning — Nadal: "I love the fight. If you fight hard, the winning will come."</h4>
+                <p class="episode-meta">[Founders] How Roger Federer Works &bull; <a href="https://www.youtube.com/watch?v=g2-duG1-Jxc" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The conventional mental model of elite competition assumes winning is the primary motivation. The biographical evidence from Federer, Nadal, and Djokovic points in a different direction: the most durable competitors derive their energy from the competition itself, not from the result. Nadal explicitly told Larry Ellison that he loves the fight — and that winning is the byproduct. Federer similarly framed his motivation as proving something to himself, not to others. This internal orientation is what makes sustained excellence possible: it's not dependent on external validation and doesn't deflate after a win.
+                </div>
+                <div class="quote">
+                    "No, I love the fight. If you fight hard, the winning will come." — Rafael Nadal
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Stagnation is regression — the belief that staying at the same level is acceptable is itself a path to being overtaken</h4>
+                <p class="episode-meta">[Founders] How Roger Federer Works &bull; <a href="https://www.youtube.com/watch?v=g2-duG1-Jxc" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Djokovic articulated the principle that all three legends implicitly operated by: the number one requirement at the elite level is the constant desire and openness to master, improve, and evolve in every aspect. Federer was not content to maintain; he continually adapted his game — adding a new serve mechanics at age 30, developing a more aggressive forehand, building a sliced backhand that confused even the best returners. The application for founders: the product and company that was excellent last year is not excellent enough today, and treating "we haven't gotten worse" as success is how you fall behind.
+                </div>
+                <div class="quote">
+                    "The number one requirement to succeed at this level is the constant desire and open-mindedness to master and improve and evolve yourself in every aspect." — Novak Djokovic
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header data">🟢 Data Points</div>
+
+            <div class="insight">
+                <h4>Federer won 80% of career matches but only 54% of all points — tennis reveals how thin the margin is even at the absolute top</h4>
+                <p class="episode-meta">[Founders] How Roger Federer Works &bull; <a href="https://www.youtube.com/watch?v=g2-duG1-Jxc" target="_blank">Watch →</a></p>
+                <div class="context">
+                    In 1,526 career singles matches, Federer's win rate of almost 80% sounds dominant. But the underlying point-level data reveals something counterintuitive: top ranked players win barely more than half of the points they play. The entire edifice of dominance is built on a 4% edge in individual points, compounded across thousands of games, sets, and matches. This has a direct analogy for business: market leaders often win by small, consistent edges across many interactions — not by winning every exchange by a landslide. The accumulation of marginal advantages, reliably repeated, produces outsized outcomes.
+                </div>
+                <div class="quote">
+                    "In 1,526 career singles matches, Federer won almost 80% — but won only 54% of all points played. Even top ranked tennis players win barely more than half of the points they play."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Federer's commercial empire: $71M annual income by 2013, a $300M+ stake in On Running, and the world's highest-paid athlete title at $100M/year in 2020 — with only $6M from prize money</h4>
+                <p class="episode-meta">[Founders] How Roger Federer Works &bull; <a href="https://www.youtube.com/watch?v=g2-duG1-Jxc" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The financial architecture of Federer's career is instructive: in 2020, Forbes named him the world's highest-paid athlete at over $100 million per year — but prize money accounted for less than 6% of that. The vast majority was endorsements (Nike, then Uniqlo at $30M+/year), equity (On Running), and commercial deals. His decision to invest in On Running early, combined with his longevity on tour, meant his equity stake compounded for years before the IPO. He was the last of 128 players who competed at the 1999 French Open — his debut Grand Slam — still playing on tour when he retired.
+                </div>
+                <div class="quote">
+                    "By 2020, Forbes named him the world's highest paid athlete at over $100 million per year, with only $6 million from prize money."
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header future">🟠 Future-Looking</div>
+
+            <div class="insight">
+                <h4>Optimizing for never burning out — not peak performance — is the most underrated compound advantage available to founders and athletes alike</h4>
+                <p class="episode-meta">[Founders] How Roger Federer Works &bull; <a href="https://www.youtube.com/watch?v=g2-duG1-Jxc" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The episode's central argument is a direct challenge to the "hustle harder" ideology: Federer's biggest achievements came because he prioritized sustainable energy management, not because he outworked everyone in pure hours. He skipped tournaments to rest. He invested in specialists who thought about his 10-year trajectory, not his next match. He built systems — emotional, physical, professional — designed for decades. For founders and knowledge workers, the implication is that the most important optimization is not maximizing output in any given week but building the conditions for still being sharp, engaged, and creative 20 years later.
+                </div>
+                <div class="quote">
+                    "Never burning out is one of the most important stories from Roger Federer's career."
+                </div>
+            </div>
+        </div>
+
+        <!-- Episode 2: TBPN - Diet TBPN / AI Lab Map -->
+        <div class="episode" id="tbpn-diet">
+            <h2>The AI Lab Market Map, Robinhood Brings Startups to Retail, GLPs &amp; Hedge Funds</h2>
+            <p class="episode-meta">TBPN &bull; <a href="https://www.youtube.com/watch?v=9uF-h-Bk_Vk" target="_blank">Watch →</a></p>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header core">🔵 Core Insights</div>
+
+            <div class="insight">
+                <h4>The AI lab landscape is far more segmented than "big labs vs. startups" — a 10-category taxonomy reveals the true competitive map</h4>
+                <p class="episode-meta">[TBPN] The AI Lab Market Map &bull; <a href="https://www.youtube.com/watch?v=9uF-h-Bk_Vk" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Tyler Cosgrove's taxonomy, developed by embedding all 7.5 million English Wikipedia articles and mapping the resulting clusters, distinguishes: Big/Trad Labs (OpenAI, Anthropic, DeepMind, XAI), Sovereign Labs (Mistral, Cohere — non-US national champions), Legacy Labs (Microsoft Research, Bell Labs, FAIR), NeoLabs proper (Prime Intellect, Thinking Machines, SSI), Trad SaaS Labs (enterprise AI on internal company data), NeoSaaS Labs (Cursor, Cognition, Winds), Consumer Labs (Eureka Labs), Visual Labs, Auditory Labs, and Dark Labs (Shield AI, DARPA). Treating these as a single category ("AI companies") obscures dramatically different competitive dynamics, risk profiles, and business models.
+                </div>
+                <div class="quote">
+                    "Tyler Cosgrove's taxonomy distinguishes Big/Trad Labs, Sovereign Labs, Legacy Labs, NeoLabs, Trad SaaS Labs, NeoSaaS Labs, Consumer Labs, Visual Labs, Auditory Labs, and Dark Labs — each with distinct competitive dynamics."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Robinhood Ventures is opening private market access to retail investors — but the closed-end fund structure is fundamentally broken and could burn retail investors badly</h4>
+                <p class="episode-meta">[TBPN] Robinhood Brings Startups to Retail &bull; <a href="https://www.youtube.com/watch?v=9uF-h-Bk_Vk" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Robinhood's fund includes exposure to Databricks, Revolut, Airwalk, Boom Supersonic, Ramp, and Stripe (pending) — legitimate pre-IPO names. But the structure is a closed-end fund, which means the price can diverge significantly from the net asset value of the underlying assets. With FOMO-driven demand from retail investors eager for startup access, the fund could easily trade at a dramatic premium to NAV. A retail investor who buys in at 2x NAV — thinking they're getting direct exposure to these companies — is actually paying twice the fair value and will be devastated when the premium compresses. The access is real; the structural risk is also real.
+                </div>
+                <div class="quote">
+                    "The structure of this fund is broken as a closed end fund. The price can diverge very significantly from the net asset value of the underlying assets with FOMO from access. This could easily trade at a very high multiple to NAV leading to a lot of retail investors getting their face ripped off."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Anthropic has blocked Claude Code OAuth tokens from being used outside their platform — a significant policy change that restricts third-party agent builders</h4>
+                <p class="episode-meta">[TBPN] The AI Lab Market Map &bull; <a href="https://www.youtube.com/watch?v=9uF-h-Bk_Vk" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Announced during the episode: Anthropic has clarified that OAuth authentication tokens — used with free, pro, and max plans — are intended exclusively for Claude.ai. Using these tokens in any other product, tool, or service, including the Agent SDK, constitutes a violation of consumer terms. This affects developers who were building third-party agent tools on top of Claude Code's free-tier access, forcing them either to use the paid API (with explicit per-token pricing) or to stop building. It signals Anthropic is tightening its platform boundaries as Claude Code grows commercially significant.
+                </div>
+                <div class="quote">
+                    "OAuth authentication which is used with the free, pro and max plans is intended exclusively for Claude.ai... using OAuth tokens in any other product, tool or service including the agent SDK is not permitted and constitutes a violation of consumer terms."
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header counter">🟣 Counter-Intuitive</div>
+
+            <div class="insight">
+                <h4>GLP-1 drugs (Ozempic) are reportedly being banned by some hedge funds — the theory: traders who stop being hungry for snacks also stop being hungry for profits</h4>
+                <p class="episode-meta">[TBPN] GLPs &amp; Hedge Funds &bull; <a href="https://www.youtube.com/watch?v=9uF-h-Bk_Vk" target="_blank">Watch →</a></p>
+                <div class="context">
+                    A data point that sounds absurd but is consistent with what we know about GLP-1 drugs' cognitive and motivational effects: several hedge funds are reportedly restricting or discouraging GLP-1 use among traders, based on the observation that appetite suppression isn't limited to food. The proposed solution is itself remarkable — macro-dose testosterone to "amplify psychological appetite" while micro-dosing tirzepatide (Mounjaro) for physical appetite control. Whether or not this is medically sound, it reveals how seriously some trading firms are taking the cognitive side effects of drugs primarily marketed for metabolic health.
+                </div>
+                <div class="quote">
+                    "You're not hungry for snacks. You're not hungry for profits. You lose your edge."
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header data">🟢 Data Points</div>
+
+            <div class="insight">
+                <h4>Processing 7.5 million Wikipedia articles through an embedding model produces a 2D map that randomly looks like the United States — revealing latent geographic structure in human knowledge</h4>
+                <p class="episode-meta">[TBPN] AI Lab Market Map &bull; <a href="https://www.youtube.com/watch?v=9uF-h-Bk_Vk" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Tyler Cosgrove ran all approximately 7.5 million English Wikipedia articles through a Qwen 3 (4B parameter) embedding model, then visualized the resulting high-dimensional clusters in 2D using dimensionality reduction. The unexpected finding: the knowledge cluster map, when plotted spatially, resembles the shape of the United States. This likely reflects the editorial bias of English Wikipedia — more articles about things that happened in or relate to American geography and culture — but it's also a striking visual demonstration of how geographic and cultural proximity shape the latent structure of human knowledge, even in a supposedly universal encyclopedia.
+                </div>
+                <div class="quote">
+                    "Tyler Cosgrove processed all ~7.5 million English Wikipedia articles through an embedding model — the 2D visualization randomly looked like the United States."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Goodfire AI — a mechanistic interpretability safety lab — raised at a $1.25 billion valuation</h4>
+                <p class="episode-meta">[TBPN] AI Lab Market Map &bull; <a href="https://www.youtube.com/watch?v=9uF-h-Bk_Vk" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Goodfire AI's $1.25B valuation for a mechanistic interpretability lab signals that the market is beginning to price AI safety research as a commercially valuable asset, not just a cost center. Mechanistic interpretability — understanding what's actually happening inside neural networks at the circuit level — is foundational to building trustworthy AI agents and to regulatory compliance as AI oversight frameworks mature. The valuation suggests investors believe this work will become a required input to AI product development, not optional academic research.
+                </div>
+                <div class="quote">
+                    "Goodfire AI (mechanistic interpretability safety lab) raised at a $1.25 billion valuation."
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header future">🟠 Future-Looking</div>
+
+            <div class="insight">
+                <h4>Whether Tesla's custom silicon team can achieve high-speed single-chip inference faster than rivals is the key open question for XAI's compute advantage</h4>
+                <p class="episode-meta">[TBPN] AI Lab Market Map &bull; <a href="https://www.youtube.com/watch?v=9uF-h-Bk_Vk" target="_blank">Watch →</a></p>
+                <div class="context">
+                    XAI (Elon Musk's lab) is moving away from traditional academic benchmarks toward "maximal utility for real world engineering and software development," with Grok 4.2 using a novel four-agent architecture. The less-discussed competitive advantage: Tesla has been doing custom silicon (AI chips for self-driving inference) for years. If that team can iterate toward high-speed single-chip inference at the speed Cerebras demonstrated, XAI would have a structural infrastructure advantage. The question is whether Tesla's chip expertise transfers to LLM inference workloads, which are architecturally different from computer vision inference.
+                </div>
+                <div class="quote">
+                    "They do custom silicon and they've done it for a long time — the open question is whether Tesla's chip expertise can transfer to high-speed single-chip LLM inference workloads."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Jeff Bezos publicly committed Blue Origin to beating SpaceX to the Moon by 2028 — reframing the lunar race as "whoever gets there first gets the contracts"</h4>
+                <p class="episode-meta">[TBPN] AI Lab Market Map &bull; <a href="https://www.youtube.com/watch?v=9uF-h-Bk_Vk" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The new NASA administrator Jared Isaacman's framing — whoever can get to the Moon first gets the contracts — explicitly turns the lunar program into a competition rather than a bureaucratic award process. Bezos publicly committed to "move heaven and earth to get to the moon first" by 2028. This competitive framing changes the calculus for Blue Origin: previously a distant second in public perception, it now has a specific race condition with a contract prize attached. If the policy holds, we may see far more aggressive Blue Origin timelines than historically announced.
+                </div>
+                <div class="quote">
+                    "We will move heaven and earth to get to the moon first." — Jeff Bezos
+                </div>
+            </div>
+        </div>
+
+        <!-- Episode 3: TiTV - AI's Next Holy Grail -->
+        <div class="episode" id="titv-continual-learning">
+            <h2>AI's Next "Holy Grail" — Continual Learning</h2>
+            <p class="episode-meta">TiTV (The Information) &bull; <a href="https://www.youtube.com/watch?v=ZF-5QpLLmJw" target="_blank">Watch →</a></p>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header core">🔵 Core Insights</div>
+
+            <div class="insight">
+                <h4>Continual learning — AI updating itself in real-time from real-world experience — is the next major research frontier, with every major lab working on it</h4>
+                <p class="episode-meta">[TiTV] AI's Next Holy Grail &bull; <a href="https://www.youtube.com/watch?v=ZF-5QpLLmJw" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Current AI models learn during formal training runs and then are frozen — they cannot update their knowledge from user interactions or real-world experience without a new training cycle. Continual learning would enable AI to update itself on the fly, similar to how humans learn from experience without resetting their prior knowledge. This capability is seen as potentially transformative: an AI that genuinely learns from every interaction would accumulate expertise in ways that scheduled training runs cannot replicate. The research problem has caught on as a buzzword in the last six months, with every major lab now reportedly running active research programs on it.
+                </div>
+                <div class="quote">
+                    "Every single AI lab right now probably has researchers working on this problem."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Startups are massively overpromising on continual learning — most are using clever workarounds (model "scratch pads") and mislabeling them as the real thing</h4>
+                <p class="episode-meta">[TiTV] AI's Next Holy Grail &bull; <a href="https://www.youtube.com/watch?v=ZF-5QpLLmJw" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Investors are being pitched by startups claiming to have solved continual learning, but diligence reveals most are using workarounds: external memory stores, retrieval augmented generation systems, or model "cheat sheets" that append new information to each prompt context. These are useful engineering solutions, but they're not continual learning in any technically meaningful sense — the model's weights are not updating. The distinction matters because "superintelligence" conceptually implies an AI that is genuinely integrating experience, not one that is consulting a periodically updated external document.
+                </div>
+                <div class="quote">
+                    "Most people whenever they imagine superintelligence, you're not really thinking of an AI model that's kind of like looking at a cheat sheet."
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header counter">🟣 Counter-Intuitive</div>
+
+            <div class="insight">
+                <h4>The core unsolved problem in continual learning isn't learning new things — it's distinguishing real new information from injected misinformation at scale</h4>
+                <p class="episode-meta">[TiTV] AI's Next Holy Grail &bull; <a href="https://www.youtube.com/watch?v=ZF-5QpLLmJw" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Startup Ryder built a model that could actually update its weights with new information in late 2024 — a genuine technical achievement. But they immediately ran into an adversarial problem: the model couldn't distinguish real new knowledge from made-up information that someone might try to inject. An AI that continually learns is also an AI that can be continually manipulated. This is trivially manageable in a controlled research setting with a single user, but it becomes intractable when deployed to hundreds of millions of users, any of whom might try to corrupt the model's beliefs. The security and verification problem may be harder than the learning problem itself.
+                </div>
+                <div class="quote">
+                    "The model couldn't actually distinguish when it's given new information, like what is actually new knowledge versus just made up information that somebody might be trying to feed to it."
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header data">🟢 Data Points</div>
+
+            <div class="insight">
+                <h4>Continual learning as a category buzzword exploded in the last 6 months — but the underlying research has been an unsolved problem for decades</h4>
+                <p class="episode-meta">[TiTV] AI's Next Holy Grail &bull; <a href="https://www.youtube.com/watch?v=ZF-5QpLLmJw" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The current hype cycle around continual learning is new (the last six months as of February 2026), but the research problem itself is old — AI researchers have been working on "lifelong learning" and "catastrophic forgetting" problems for decades. The challenge of updating neural networks with new information without overwriting prior knowledge (catastrophic forgetting) was identified as a fundamental obstacle in the 1990s. What's new is the scale of investment now being directed at it and the commercial urgency of solving it for frontier AI deployment.
+                </div>
+                <div class="quote">
+                    "Continual learning as a buzzword really caught on in the AI industry in the last six months or so."
+                </div>
+            </div>
+        </div>
+
+        <!-- Episode 4: TiTV - Anthropic Revenue Share + Creator Economy -->
+        <div class="episode" id="titv-anthropic-revenue">
+            <h2>Anthropic's $6.4B+ Revenue Share, Meta &amp; Nvidia's Partnership, $10M Paydays for Data Center Execs</h2>
+            <p class="episode-meta">TiTV (The Information) &bull; <a href="https://www.youtube.com/watch?v=kK-oPAV2zRQ" target="_blank">Watch →</a></p>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header core">🔵 Core Insights</div>
+
+            <div class="insight">
+                <h4>Anthropic's cloud partner revenue share is forecast to hit $6.4B by 2026 — up from $400M last year and $1.3M the year before — an extraordinary growth trajectory</h4>
+                <p class="episode-meta">[TiTV] Anthropic's Revenue Share &bull; <a href="https://www.youtube.com/watch?v=kK-oPAV2zRQ" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The revenue share numbers reveal how dramatically Anthropic's enterprise traction has accelerated. The 2024 cloud partner share was approximately $400M — itself representing massive growth from the prior year's $1.3M. The 2025 forecast is $1.9B, and 2026 is projected at $6.4B. This is the revenue Anthropic shares back to Amazon, Google, and Microsoft for reselling Anthropic's models to their enterprise cloud customers — meaning Anthropic's total gross revenue is significantly larger still. The scale of the enterprise channel is far larger than Anthropic's direct consumer business suggests, and it's growing faster than almost any comparable software business in history.
+                </div>
+                <div class="quote">
+                    "Previously Anthropic shared ~$1.3M with cloud partners in 2024. That increased to ~$400M. 2025 forecast: $1.9B. 2026 forecast: $6.4B in partner revenue share."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>The revenue share terms between Anthropic and its cloud partners are wildly different — Amazon gets 50% of gross profit; Google gets 20-30% of net; Microsoft locked in 20% of total revenue with OpenAI until 2032</h4>
+                <p class="episode-meta">[TiTV] AI Lab Revenue Structures &bull; <a href="https://www.youtube.com/watch?v=kK-oPAV2zRQ" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The economic architecture of AI lab-cloud partnerships is not standardized, and the terms reveal very different leverage positions. Amazon's deal with Anthropic (50% of gross profit for resold revenue) gives Amazon a highly favorable take rate but was negotiated when Anthropic needed capital urgently. Google's deal (20-30% of net revenue minus infrastructure costs) is structured around net economics and is less favorable to Google. OpenAI's Microsoft deal (20% of total revenue, locked in until 2032, payments weighted toward later years) was struck early and is now generating an enormous stream to Microsoft — which explains Microsoft's resistance to renegotiating. Understanding these structures is essential context for evaluating both cloud revenues and lab profitability.
+                </div>
+                <div class="quote">
+                    "Anthropic shares 50% of gross profit back to Amazon for any revenue Amazon sells to customers. Google gets 20-30% of net revenue minus infrastructure costs. Microsoft's terms with OpenAI were locked in early and extend until 2032."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Meta and Nvidia signed a multi-year strategic partnership — millions of Blackwell and Vera Rubin GPUs, with Nvidia engineers embedded to help refine Meta's AI models</h4>
+                <p class="episode-meta">[TiTV] Meta &amp; Nvidia's Partnership &bull; <a href="https://www.youtube.com/watch?v=kK-oPAV2zRQ" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The partnership goes beyond a supply agreement. Nvidia engineers will be embedded with Meta teams to help refine Meta's AI models — a level of access that goes well beyond chip sales. Meta commits to install Nvidia's upcoming Vera Rubin architecture (not yet shipping at deal signing) and to use Nvidia for networking and traditional workloads. Critically, this did not end Meta's separate ongoing discussions with Google about using TPUs. Meta appears to be maintaining optionality with multiple chip architectures while locking in favorable Nvidia supply terms during what may be the last window before Vera Rubin demand spikes.
+                </div>
+                <div class="quote">
+                    "Meta and Nvidia signed a multi-year strategic partnership where Meta commits to installing millions of Nvidia Blackwell GPUs and upcoming Vera Rubin chips, with Nvidia engineers embedded to help refine Meta's AI models."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>The creator economy is entering a "micro-giants" era — algorithms now suppress breakout creators and favor 1-5M subscriber channels with highly engaged niche audiences</h4>
+                <p class="episode-meta">[TiTV] Creator Economy &bull; <a href="https://www.youtube.com/watch?v=kK-oPAV2zRQ" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Night Media CEO Reed Duchscher (who manages MrBeast among others) described a structural shift in how platform algorithms route creator content. The era of massive breakout channels accumulating hundreds of millions of subscribers is likely over — platforms are now tuned to surface existing known preferences rather than discover new voices. The new model favors smaller channels (1-5M subscribers) that serve highly specific niches with exceptional engagement rates. This is actually better economics for most creators: niche audiences convert to product sales and merchandise at far higher rates than the broad audiences of mega-creators.
+                </div>
+                <div class="quote">
+                    "The algorithms don't allow someone to break through all the noise. They kind of feed content the type of content that people want to watch."
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header counter">🟣 Counter-Intuitive</div>
+
+            <div class="insight">
+                <h4>Data center executives — not AI researchers — are now the most-poached talent in tech, commanding $10M+ pay packages; most are 20+ year veterans who pre-date AI</h4>
+                <p class="episode-meta">[TiTV] $10M Paydays for Data Center Execs &bull; <a href="https://www.youtube.com/watch?v=kK-oPAV2zRQ" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The AI infrastructure boom has created scarcity in an unexpected talent pool: operators who have been building and managing large-scale data centers for 20+ years. These are not AI researchers, ML engineers, or product managers — they are operations specialists who understand power procurement, cooling infrastructure, network topology, and data center construction at industrial scale. This expertise is now worth more than almost any technical AI credential. One key figure (who helped build OpenAI's Abilene, TX data center) had literally retired before being recruited back into the industry by an AI company offering an eight-figure compensation package.
+                </div>
+                <div class="quote">
+                    "Data center executives — not AI researchers — are the new most-poached talent in tech, now commanding $10M+ pay packages. Most are 20+ year veterans who were building data centers before AI made them relevant."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>The next MrBeast won't come from YouTube — Reed Duchscher says it may come from Twitch or somewhere else entirely</h4>
+                <p class="episode-meta">[TiTV] Creator Economy &bull; <a href="https://www.youtube.com/watch?v=kK-oPAV2zRQ" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Reed Duchscher's analysis: YouTube's algorithm has become self-reinforcing in ways that protect incumbents. New creators building toward the scale of MrBeast (closing in on 500M subscribers) face an algorithm that routes attention to established channels rather than discovering new ones. Breakthrough scale will likely come from platforms that are still in their early, more chaotic phase — potentially Twitch (where live discovery still works differently) or from entirely new platforms we can't yet predict. This creates an interesting asymmetry: the best discovery mechanism for the next generation of mega-creators may not exist yet.
+                </div>
+                <div class="quote">
+                    "The algorithms don't allow someone to break through all the noise... Reed Duchscher: it may come from Twitch or somewhere else entirely."
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header data">🟢 Data Points</div>
+
+            <div class="insight">
+                <h4>OpenAI's revenue share with Microsoft runs until 2032 — two years longer than previously reported — with payments weighted toward later years</h4>
+                <p class="episode-meta">[TiTV] AI Revenue Structures &bull; <a href="https://www.youtube.com/watch?v=kK-oPAV2zRQ" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The revised timeline — 2032, not the previously reported 2030 — extends Microsoft's revenue share position deeper into the period when AI model commoditization is expected to be well underway. The back-loading of payments means Microsoft's peak economic benefit from the OpenAI deal comes precisely when OpenAI needs the most flexibility to compete against an increasingly competitive market. This structure was locked in during OpenAI's capital-scarce early days and helps explain why OpenAI has been exploring ways to restructure its corporate governance: the existing Microsoft terms are a significant constraint on financial flexibility.
+                </div>
+                <div class="quote">
+                    "OpenAI's revenue share with Microsoft: 20% of total revenue, running until 2032 (revised from the previously reported 2030), with payments weighted toward later years."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Night Media raised $70M to expand into music, gaming, and live events — and has founded 12 companies in 11 years; Jimmy (MrBeast) is closing in on 500M YouTube subscribers</h4>
+                <p class="episode-meta">[TiTV] Creator Economy &bull; <a href="https://www.youtube.com/watch?v=kK-oPAV2zRQ" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Night Media's trajectory illustrates how talent management in the creator economy has evolved into full-stack enterprise building. Starting as a management shop, Night has spun out or co-founded 12 companies over 11 years — merchandise, food brands, gaming, and now music, live events, and gaming. The $70M raise is intended to accelerate this flywheel. MrBeast's trajectory toward 500M subscribers is a useful data point for understanding just how exceptional his growth has been: he is the first solo creator to approach this scale, and even the algorithm shift Duchscher describes has not stopped his accumulation.
+                </div>
+                <div class="quote">
+                    "Night Media raised $70 million to expand into music, gaming, and live events. Jimmy (MrBeast) is closing in on 500 million YouTube subscribers."
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header future">🟠 Future-Looking</div>
+
+            <div class="insight">
+                <h4>Within 5 years, Reed Duchscher predicts talent agents and managers will merge into "single representation companies" — WME will own management firms</h4>
+                <p class="episode-meta">[TiTV] Creator Economy &bull; <a href="https://www.youtube.com/watch?v=kK-oPAV2zRQ" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The Hollywood distinction between agents (who book jobs and take 10%) and managers (who advise strategy and take 15%) has historically been enforced by industry norms and some state laws. Duchscher's prediction: within 5 years, this distinction will collapse. The economic logic is clear — in the creator economy, "booking" and "strategy" are not separable activities. Netflix signing creator deals, studios doing multi-picture deals with individual creators, and the blurring of distribution channels all point toward a world where a single relationship covers everything. WME and CAA are actively building this out.
+                </div>
+                <div class="quote">
+                    "Within 5 years, the distinction between talent agents and managers will collapse into single representation companies — WME will own management companies, managers will do booking."
+                </div>
+            </div>
+        </div>
+
+        <!-- Episode 5: The Peel - Garry Tan / YC -->
+        <div class="episode" id="peel-garry-tan">
+            <h2>Garry Tan on the Past, Present, and Future of YC</h2>
+            <p class="episode-meta">The Peel &bull; <a href="https://www.youtube.com/watch?v=rEwK7MIQ-QA" target="_blank">Watch →</a></p>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header core">🔵 Core Insights</div>
+
+            <div class="insight">
+                <h4>YC has invested in 20% of all $5B+ startups since 2012 — and the goal is to reach 30-50% by making YC the managed marketplace for the world's most ambitious founders</h4>
+                <p class="episode-meta">[The Peel] Garry Tan on YC &bull; <a href="https://www.youtube.com/watch?v=rEwK7MIQ-QA" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Garry Tan's framing of YC's ambition is precise: it is a managed marketplace for all the smartest people starting the next companies. The 20% penetration of $5B+ startups is remarkable given the universe of companies that exist — but Tan sees it as evidence of the floor, not the ceiling. The path to 30-50% requires making YC indispensable earlier in founder journeys, expanding internationally, and building alumni networks that create self-reinforcing value: a YC founder is more likely to hire, fund, and buy from other YC founders, which increases the value of being in the network.
+                </div>
+                <div class="quote">
+                    "YC has invested in 20% of all startups worth $5B or more started since 2012, and the goal is to raise that to 30-50%. YC is 'a managed marketplace for all the smartest people starting the next companies.'"
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Being in SF/Bay Area increases your odds of becoming a billion-dollar company by 2.5x — because ambient ambition raises your own ceiling</h4>
+                <p class="episode-meta">[The Peel] Garry Tan on YC &bull; <a href="https://www.youtube.com/watch?v=rEwK7MIQ-QA" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The 2.5x multiplier for Bay Area companies (New York: 2x) is not primarily about access to capital or talent pipelines, though those matter. Tan's explanation centers on ambient ambition: when everyone around you is doing something extraordinary, your own sense of what's possible recalibrates upward. "You get access to way smarter people who have actually done the things that you need to do." The practical corollary for YC's strategy: Tan reversed the COVID-era decision to go fully remote and moved YC back to San Francisco, believing the in-person density effect is too valuable to trade away for flexibility.
+                </div>
+                <div class="quote">
+                    "You're around people who are very ambitious. So your ambition rises when all your friends' ambition is really, really high. You get access to way smarter people who have actually done the things that you need to do."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>The most common reason YC companies die is demoralization and co-founder conflict — not running out of money</h4>
+                <p class="episode-meta">[The Peel] Garry Tan on YC &bull; <a href="https://www.youtube.com/watch?v=rEwK7MIQ-QA" target="_blank">Watch →</a></p>
+                <div class="context">
+                    This is a recurring empirical finding that surprises outsiders: the proximate cause of most startup deaths is not financial, it's emotional. YC companies tend to have enough runway to keep going — but founders stop going when the emotional cost exceeds what they're willing to pay. Co-founder conflicts are a major contributor, which explains why YC allocates significant resources to co-founder matching (not just company selection) and to conflict resolution coaching. The implication for founders: the most important due diligence you can do before starting a company is on your co-founders' conflict resolution styles, not their technical skills.
+                </div>
+                <div class="quote">
+                    "YC companies tend not to die because they ran out of money because they have some money usually. They shut down because they get tired, they get demoralized. Often co-founder issues."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>Garry Tan's AI workflow: "meta-prompting" — iterating on prompts themselves rather than on outputs, with his YouTube prompt now at V27</h4>
+                <p class="episode-meta">[The Peel] Garry Tan on YC &bull; <a href="https://www.youtube.com/watch?v=rEwK7MIQ-QA" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Tan's practical AI workflow involves "meta-prompting": drop a set of inputs and outputs into a context window, then ask the model to write a prompt that acts as an agent to produce those outputs from those inputs. Then iteratively improve the prompt itself across versions. He now maintains a folder of prompts he uses regularly — his YouTube optimization prompt is on V27. This approach reframes AI work: the asset being built is not the output of any individual prompt, but the prompt system itself. As prompts become more refined, they function like trained employees — requiring less oversight to produce reliable outputs.
+                </div>
+                <div class="quote">
+                    "I have a folder now of prompts that I use all the time and I'm trying to iterate. My YouTube prompt one is on like V27."
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header counter">🟣 Counter-Intuitive</div>
+
+            <div class="insight">
+                <h4>YC's rejection rate causes real harm — 78,500 "mortal ego wounds" per year — and Tan thinks about this deeply, especially for founders who were incorrectly rejected</h4>
+                <p class="episode-meta">[The Peel] Garry Tan on YC &bull; <a href="https://www.youtube.com/watch?v=rEwK7MIQ-QA" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The flip side of YC's selectivity is visible harm: approximately 78,500 of 80,000 annual applicants are rejected, and Tan is unusually candid about calling these "mortal ego wounds." But the data on re-applicants is instructive: founders who survive multiple rejections and keep coming back are proving the exact resilience that matters most in startup building. Tan says he particularly loves funding founders that YC previously rejected — not just to make amends, but because their persistence is itself signal. The cruel filter may be incidentally selecting for the right character trait.
+                </div>
+                <div class="quote">
+                    "Something like a third of the batch, maybe even half of the batch, will have been rejected prior to getting in. About 78,500 of ~80,000 annual applicants are rejected — mortal ego wounds. I particularly love funding founders who we might have gotten it wrong."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>California's proposed "billionaire tax" would tax Larry and Sergey on 60% of Alphabet's value — because it uses voting percentage, not economic ownership</h4>
+                <p class="episode-meta">[The Peel] Garry Tan on YC &bull; <a href="https://www.youtube.com/watch?v=rEwK7MIQ-QA" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The proposed California ballot initiative (5% annual tax on net worth over $1B) uses voting percentage as the proxy for ownership — which produces absurd results for founders who retain voting control through dual-class share structures. Larry Page and Sergey Brin each own approximately 3% of Alphabet's economic value but control roughly 60% of votes. Under the proposed formula, they would each be taxed on 60% of Alphabet's market cap — potentially their entire personal estate. Tan sees this as a direct attack on the dual-class structure that enables long-term thinking in publicly traded tech companies, and cites it as a major driver of the ~$1T in personal net worth that has already left California.
+                </div>
+                <div class="quote">
+                    "The ballot initiative taxes 5% of net worth over $1B — but uses voting percentage as the ownership percentage, meaning Larry and Sergey would be taxed on 60% of Alphabet's value, which is literally their entire estate."
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header data">🟢 Data Points</div>
+
+            <div class="insight">
+                <h4>YC stats: $500K for ~7% equity; ~1% acceptance rate from 80,000 applicants; 700-800 companies per year; Initialized Capital Fund 1 returned 55x DPI (mostly Coinbase + Instacart)</h4>
+                <p class="episode-meta">[The Peel] Garry Tan on YC &bull; <a href="https://www.youtube.com/watch?v=rEwK7MIQ-QA" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The YC numbers are striking in context: started at $13,000 per company per batch, now at $500,000 for approximately 7% equity. The 1% acceptance rate from 80,000 annual applicants makes YC more selective than Harvard (3.4% acceptance). The 700-800 companies per year is an enormous volume for a program that still conducts personalized in-person interviews. Tan's personal track record at Initialized Capital — 55x DPI on Fund 1, driven largely by early Coinbase and Instacart bets — provides evidence that his pattern recognition is not just institutional but personal.
+                </div>
+                <div class="quote">
+                    "YC started with $13,000 per company per batch. Now gives $500,000 for ~7% equity. Accepts ~1% of 80,000 annual applicants. Funds 700-800 companies per year. Initialized Capital Fund 1 returned 55x DPI."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>San Francisco has 30-40% commercial vacancy; ~$1 trillion in personal net worth has left California; SF tried to ban AI labs from the Mission District</h4>
+                <p class="episode-meta">[The Peel] Garry Tan on YC &bull; <a href="https://www.youtube.com/watch?v=rEwK7MIQ-QA" target="_blank">Watch →</a></p>
+                <div class="context">
+                    The data on California's decline is stark but coexists with the 2.5x company formation advantage. Tan's analysis: the gross receipts tax drove Stripe, Square, and many fintechs out of the city; the commercial vacancy rate reflects both COVID WFH and the tax-driven exodus; the $1T wealth departure creates a fiscal spiral as high earners leave and the tax base shrinks, leading to service cuts that accelerate further departures. The attempted ban on R&amp;D labs in the Mission (which would have required a special council approval to open a cancer lab) was blocked only narrowly — and would have destroyed the very ecosystem that makes SF 2.5x.
+                </div>
+                <div class="quote">
+                    "San Francisco has a 30-40% commercial vacancy rate. The gross receipts tax drove Stripe, Square, and numerous fintechs out of the city. About $1 trillion in personal net worth has already left California."
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-category">
+            <div class="category-header future">🟠 Future-Looking</div>
+
+            <div class="insight">
+                <h4>"Software currently touches a tiny percentage of GDP" — as billions of people become able to create directly, we're entering an era of more markets, more capitalism, not fewer</h4>
+                <p class="episode-meta">[The Peel] Garry Tan on YC &bull; <a href="https://www.youtube.com/watch?v=rEwK7MIQ-QA" target="_blank">Watch →</a></p>
+                <div class="context">
+                    Tan uses the firewood analogy to preempt the job displacement argument: firewood was once ~25% of US GDP, then was replaced by better energy sources, and the economy that emerged was dramatically larger. The AI transition will not shrink economic activity — it will unlock new markets that currently cannot exist because they require capabilities (code, design, analysis) that are gatekept by a 10-20 million person global expert class. When billions of people can directly instantiate their ideas into software products, the number of markets expands, not contracts. The correct frame is abundance, not displacement.
+                </div>
+                <div class="quote">
+                    "There are only 10-20 million people in the world who are actually good at code. We're about to enter this other moment where billions of people can actually just very directly create their own stuff. This means more markets, more capitalism, not fewer."
+                </div>
+            </div>
+
+            <div class="insight">
+                <h4>YC is experimenting with "rebatching" — running YC-style structured cohorts for post-Series A companies that have lost the collaborative intensity of early stage</h4>
+                <p class="episode-meta">[The Peel] Garry Tan on YC &bull; <a href="https://www.youtube.com/watch?v=rEwK7MIQ-QA" target="_blank">Watch →</a></p>
+                <div class="context">
+                    One of the consistent feedback patterns Tan hears from post-Series A founders: they miss the structured accountability, peer pressure, and shared sprint mentality of the YC batch experience. The "rebatching" concept is an attempt to recreate this at later stages — giving companies that have already raised institutional capital a fresh cohort experience with new cohort peers, structured goals, and the YC office hours format. If it works, it extends YC's value-add well beyond the 3-month batch and deepens alumni relationships at the stage when most companies are making their most consequential organizational decisions.
+                </div>
+                <div class="quote">
+                    "Post Series A, like after you get your Series A, like we should give you another batch."
+                </div>
+            </div>
+        </div>
+
+        <!-- QUICK HITS SECTION -->
+        <div class="quick-hits-section">
+            <h2 style="color: #FF9B71; margin-bottom: 25px; font-size: 1.8rem;">⚡ Quick Hits</h2>
+
+            <div class="quick-hit">
+                <h3>Meta's Massive Nvidia GPU Deal</h3>
+                <p class="quick-hit-meta">TiTV (The Information) &bull; <a href="https://www.youtube.com/watch?v=F0uUO-kEjng" target="_blank">Watch →</a></p>
+                <ul>
+                    <li>Meta and Nvidia announced a multi-year strategic partnership to install "millions" of Blackwell GPUs and upcoming Vera Rubin chips, with Nvidia engineers embedded at Meta to help refine its AI models — a level of integration that goes well beyond a standard supply agreement.</li>
+                    <li>Meta's earlier discussions with Google about using TPUs are not necessarily dead — the Nvidia deal is not viewed as a replacement, meaning Meta is maintaining chip architecture optionality while locking in Nvidia supply terms ahead of Vera Rubin demand spikes.</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>The One Thing AI Investors MUST Do</h3>
+                <p class="quick-hit-meta">20VC &bull; <a href="https://www.youtube.com/watch?v=bmLQ-nJlOic" target="_blank">Watch →</a></p>
+                <ul>
+                    <li>"If I meet investors today that haven't actually downloaded and tried to build something themselves, I think they don't have the skill set to make an evaluation of the company they're looking at. I think it's so critical to actually just understand how powerful these tools are today before you make those decisions." — The single non-negotiable for AI investors in 2026: personal, hands-on building experience with the tools, not second-hand briefings or demos.</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>NBA YoungBoy Is the Most Popular Rapper in America</h3>
+                <p class="quick-hit-meta">TBPN &bull; <a href="https://www.youtube.com/watch?v=j5krCE0RIsQ" target="_blank">Watch →</a></p>
+                <ul>
+                    <li>NBA YoungBoy has been the most-streamed artist on YouTube for 5 consecutive years and had the #1 debut solo rapper tour (~$70M in ticket sales) — yet remains largely invisible to the mainstream demographic that still associates him with SoundCloud. His reported investment returns are described as "outpacing the S&P 500."</li>
+                    <li>The platform demographics divide is stark: YoungBoy is a genuine cultural and commercial phenomenon in one part of the country and essentially unknown in another. Distribution strategy explains the entire divergence — the same quality of content creates wildly different outcomes depending on where and how it surfaces.</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>Huberman's Advice for Men Over 40</h3>
+                <p class="quick-hit-meta">TBPN &bull; <a href="https://www.youtube.com/watch?v=gR-LU9Is1wA" target="_blank">Watch →</a></p>
+                <ul>
+                    <li>Andrew Huberman: "Most every male 40 and older should probably be taking somewhere between 2.5 and 5 milligrams of tadalafil — not necessarily for erectile function — to lower blood pressure and to improve vasodilation for the brain, for the prostate." Attributed to research from Stanford's head of male sexual health endocrinology, and positioned as a preventative measure potentially beginning as early as age 35.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
