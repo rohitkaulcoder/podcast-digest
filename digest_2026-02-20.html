@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast Digest - February 20, 2026</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2D2D2D;
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(255, 155, 113, 0.15);
+            border-radius: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+            border-bottom: none;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FF9B71 0%, #FF7B9C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+        }
+
+        .stats {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .export-btn {
+            background: linear-gradient(135deg, #FF9B71 0%, #FFB88C 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 20px auto;
+            display: block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 155, 113, 0.3);
+        }
+
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 155, 113, 0.4);
+        }
+
+        .themes-section {
+            background: linear-gradient(135deg, #FFB88C 0%, #FF9B71 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 8px 30px rgba(255, 155, 113, 0.25);
+        }
+
+        .themes-section h2 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .themes-section ol {
+            margin-left: 20px;
+        }
+
+        .themes-section li {
+            margin: 12px 0;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .toc {
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border: 2px solid #FFD4C4;
+        }
+
+        .toc h2 {
+            margin-bottom: 20px;
+            color: #FF9B71;
+            font-weight: 600;
+        }
+
+        .toc ul {
+            list-style: none;
+        }
+
+        .toc li {
+            margin: 10px 0;
+        }
+
+        .toc a {
+            color: #FF9B71;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover {
+            color: #FF7B9C;
+            text-decoration: underline;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #FF9B71 0%, #FFB88C 100%);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            margin-left: 8px;
+            font-weight: 500;
+        }
+
+        .episode {
+            margin: 40px 0;
+            padding: 35px;
+            background: #fff;
+            border-left: 5px solid #FF9B71;
+            box-shadow: 0 4px 20px rgba(255, 155, 113, 0.1);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .episode:hover {
+            box-shadow: 0 6px 30px rgba(255, 155, 113, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .episode h2 {
+            color: #2D2D2D;
+            margin-bottom: 12px;
+            font-size: 1.9rem;
+            font-weight: 600;
+        }
+
+        .episode-meta {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .episode-meta a {
+            color: #FF9B71;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .episode-meta a:hover {
+            color: #FF7B9C;
+            text-decoration: underline;
+        }
+
+        .insights-container {
+            margin-top: 25px;
+        }
+
+        .insight-category {
+            margin: 25px 0;
+        }
+
+        .category-header {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 6px;
+            color: white;
+        }
+
+        .core { background: linear-gradient(135deg, #FFB88C 0%, #FF9B71 100%); }
+        .counter { background: linear-gradient(135deg, #FF9B71 0%, #FF7B9C 100%); }
+        .data { background: linear-gradient(135deg, #FFD4C4 0%, #FFB88C 100%); }
+        .future { background: linear-gradient(135deg, #FF7B9C 0%, #FFB88C 100%); }
+
+        .insight {
+            margin: 20px 0;
+            padding: 24px;
+            background: #FFFBF8;
+            border-radius: 16px;
+            border-left: 4px solid #FF9B71;
+            transition: all 0.3s;
+        }
+
+        .insight:hover {
+            background: #FFF8F3;
+            box-shadow: 0 4px 15px rgba(255, 155, 113, 0.1);
+        }
+
+        .insight h4 {
+            color: #2D2D2D;
+            margin-bottom: 14px;
+            font-size: 1.15rem;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
+        .context {
+            margin: 15px 0;
+            line-height: 1.75;
+            color: #444;
+            font-size: 0.98rem;
+        }
+
+        .quote {
+            margin: 15px 0;
+            padding: 18px;
+            background: white;
+            border-left: 4px solid #FFB88C;
+            border-radius: 8px;
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .quick-hits-section {
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            padding: 35px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border: 2px solid #FFD4C4;
+        }
+
+        .quick-hit {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .quick-hit h3 {
+            color: #1a1a2e;
+            margin-bottom: 10px;
+        }
+
+        .quick-hit-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .quick-hit-meta a {
+            color: #FF9B71;
+            text-decoration: none;
+        }
+
+        .quick-hit ul {
+            margin-left: 20px;
+        }
+
+        .quick-hit li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .export-btn {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .episode h2 {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Playful accents */
+        .accent-circle {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .accent-1 {
+            width: 300px;
+            height: 300px;
+            background: #FF9B71;
+            top: -100px;
+            right: -100px;
+        }
+
+        .accent-2 {
+            width: 200px;
+            height: 200px;
+            background: #FFB88C;
+            bottom: -50px;
+            left: -50px;
+        }
+
+        /* Anthropic-inspired doodles */
+        .doodle {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .doodle-1 {
+            top: 15%;
+            right: 10%;
+            width: 80px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .doodle-2 {
+            bottom: 20%;
+            left: 8%;
+            width: 60px;
+            animation: float 5s ease-in-out infinite 1s;
+        }
+
+        .doodle-3 {
+            top: 40%;
+            left: 5%;
+            width: 50px;
+            animation: float 6s ease-in-out infinite 2s;
+        }
+
+        .doodle-4 {
+            top: 60%;
+            right: 5%;
+            width: 70px;
+            animation: float 5s ease-in-out infinite 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Playful background accents -->
+    <div class="accent-circle accent-1"></div>
+    <div class="accent-circle accent-2"></div>
+
+    <!-- Anthropic-inspired doodles -->
+    <svg class="doodle doodle-1" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20,50 Q35,20 50,50 T80,50" stroke="#FF9B71" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <circle cx="20" cy="50" r="4" fill="#FF9B71"/>
+        <circle cx="80" cy="50" r="4" fill="#FF9B71"/>
+    </svg>
+
+    <svg class="doodle doodle-2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="25" stroke="#FFB88C" stroke-width="3" fill="none"/>
+        <circle cx="50" cy="50" r="15" stroke="#FFB88C" stroke-width="2" fill="none"/>
+        <circle cx="50" cy="50" r="5" fill="#FFB88C"/>
+    </svg>
+
+    <svg class="doodle doodle-3" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30,70 L50,30 L70,70 Z" stroke="#FF7B9C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="50" cy="50" r="3" fill="#FF7B9C"/>
+    </svg>
+
+    <svg class="doodle doodle-4" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25,50 L40,35 L55,50 L70,35 L85,50" stroke="#FF9B71" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="25" cy="50" r="4" fill="#FF9B71"/>
+        <circle cx="85" cy="50" r="4" fill="#FF9B71"/>
+    </svg>
+
+    <div class="container">
+        <header>
+            <h1>Podcast Digest</h1>
+            <p class="stats">February 20, 2026 • 5 Full Episodes • 5 Quick Hits • 52 Insights</p>
+        </header>
+
+        <button class="export-btn" onclick="window.print()">Export as PDF</button>
+
+        <div class="themes-section">
+            <h2>Top 5 Recurring Themes</h2>
+            <ol>
+                <li><strong>The SaaS Apocalypse Is Cancelled — But Only for the Unstoppable:</strong> The enterprise software selloff was always an indiscriminate hammer. Today's episodes reveal the bifurcation: companies that integrate AI effectively (Shopify, Spotify, Figma) are thriving, while those with weak moats face existential threats. Google, Meta, and Salesforce survived their SaaS apocalypses. The verdict: AI is disruptive, but product strength and network effects still matter more than fear.</li>
+                <li><strong>Capital Intensity Is the New Competitive Moat in AI:</strong> OpenAI is finalizing $100B+ in commitments. AMD is acting as a financial backstop for Crusoe's chip purchases. Enterprise software cost savings are being rotated into GPU infrastructure, not profits. The AI era rewards capital deployment at unprecedented scale — and the ability to access it cheaply becomes the defining advantage.</li>
+                <li><strong>Taste Is the Differentiator When AI Commodifies Creation:</strong> Dylan Field (Figma CEO) made the definitive case: if an agent can do it for you, an agent can do it for everyone else. The only sustainable edge is taste, design judgment, and the ability to explore wide before converging. Steve Jobs had varied training data. Matthew McConaughey is trademarking his voice. In a world of infinite outputs, curation and aesthetic judgment become the scarce resource.</li>
+                <li><strong>IPOs Are Back — But Only for High-Quality Businesses:</strong> OpenAI could IPO as soon as Q4 2026. SpaceX merged with XAI and may beat everyone to market. Hungry Root (grocery delivery) is prepping an offering. The new IPO cohort is fundamentally different: profitable or path-to-profitable businesses with real unit economics, not growth-at-all-costs plays from 2021. Consumer, AI, and space are the hot sectors.</li>
+                <li><strong>Infrastructure Spend Is Exploding — and Restructuring Global Power:</strong> PWC clients are shifting enterprise software spend into hardware and capital infrastructure. Financial services companies are vertically integrating their own compute. The rotation out of software margins into hardware margins reflects a structural shift: in 10 years, the new form of capital may be "how much compute do you own" rather than "how much software revenue do you generate."</li>
+            </ol>
+        </div>
+
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <h3>Core Insights</h3>
+            <ul>
+                <li><a href="#tbpn-saaspocalypse">The SaaS Apocalypse is cancelled — for companies that were never sloppable</a></li>
+                <li><a href="#figma-taste">Taste is the real moat when agents can build anything</a></li>
+                <li><a href="#openai-funding">OpenAI is finalizing $100B+ funding from Amazon, Nvidia, Microsoft, and SoftBank</a></li>
+                <li><a href="#enterprise-ai">Enterprise software isn't dead — it's being replatformed with AI orchestration layers</a></li>
+                <li><a href="#figma-growth">Figma grew 40% YoY with 70% QoQ growth in Make users — 60% are non-designers</a></li>
+            </ul>
+            <h3>Counter-Intuitive</h3>
+            <ul>
+                <li><a href="#agentic-commerce">Agentic commerce doesn't replace Shopify — it uses Shopify checkout as infrastructure</a></li>
+                <li><a href="#ai-music">AI-generated music massively underperforms human music on Spotify by engagement</a></li>
+                <li><a href="#celebrity-ai">Matthew McConaughey says own your voice and likeness before AI does</a></li>
+            </ul>
+            <h3>Data Points</h3>
+            <ul>
+                <li><a href="#openai-ipo">OpenAI's Series C: $100B+ at $730B pre-money valuation, potential Q4 2026 IPO</a></li>
+                <li><a href="#figma-numbers">Figma Q4 2025: $304M revenue, 40% YoY growth, 8 products shipped</a></li>
+                <li><a href="#hungry-root">Hungry Root: $700M revenue in 2025, 55% growth, eyeing IPO this year</a></li>
+            </ul>
+            <h3>Future-Looking</h3>
+            <ul>
+                <li><a href="#compute-capital">In 10 years, the new form of capital may be "how much compute you own"</a></li>
+                <li><a href="#ipo-race">The race to IPO: OpenAI vs. Anthropic vs. SpaceX/XAI</a></li>
+                <li><a href="#software-gdp">Software currently touches a tiny percentage of GDP — billions about to create directly</a></li>
+            </ul>
+            <h3>Quick Hits</h3>
+            <ul>
+                <li>Bezos vs Elon: The moon race (TBPN)</li>
+                <li>All stainless steel coffee maker (TBPN)</li>
+                <li>How The World's Largest Fund Manager Gets People to Disagree With Him (The Knowledge Project)</li>
+                <li>Open Platforms are at RISK (20VC)</li>
+                <li>Can China Stop the Deal? (The Generalist)</li>
+            </ul>
+        </div>
+
+        <!-- FULL EPISODES -->
+
+        <!-- Episode 1: TBPN - SaaSpocalypse Cancelled -->
+        <div class="episode" id="tbpn-saaspocalypse">
+            <h2>We're Cancelling the SaaSpocalypse</h2>
+            <p class="episode-meta">TBPN • <a href="https://www.youtube.com/watch?v=pO8SO-__dvI" target="_blank">Watch →</a></p>
+
+            <div class="insight-category">
+                <div class="category-header core">Core Insights</div>
+
+                <div class="insight">
+                    <h4 id="saaspocalypse-bifurcation">The SaaS apocalypse is over — but only for companies that were never "sloppable" in the first place</h4>
+                    <div class="context">
+                        The $2 trillion SaaS selloff was an indiscriminate hammer that hit every enterprise software company regardless of AI resilience. But earnings season revealed the bifurcation: Google survived the "why would anyone search when LLMs exist?" apocalypse by shipping AI Overviews and using Gemini to improve ad targeting on complex queries. Meta is thriving despite not having rolled out Llama 3 consumer products because their transformer-based ad targeting is printing money. Shopify, Spotify, and Salesforce are all growing — even Anthropic is hiring a Salesforce admin. The companies dying are those with weak moats and no clear AI integration story.
+                    </div>
+                    <div class="quote">
+                        "We're starting to see a bifurcation in the sloppable companies and the unsloppable companies."
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4>Figma grew revenue 40% YoY to $304M in Q4 2025 — launched 8 products and 200+ features in the year</h4>
+                    <div class="context">
+                        Dylan Field appeared on TBPN after Figma's earnings to discuss the company's explosive growth. The headline numbers: 40% year-over-year revenue growth, 70% quarter-over-quarter growth in Figma Make weekly active users, and 60% of Make files are created by non-designers. Figma shipped a code-to-design pathway enabling round-trip workflows between code and canvas. Field's thesis: in an AI era where anyone can generate outputs, taste and design judgment become the differentiator. Linear coding is fast but directionally wrong without visual exploration.
+                    </div>
+                    <div class="quote">
+                        "If an agent can do it for you, then unless you got some amazing sophisticated prompting that's super unique, an agent can do it for someone else. What is different about your setup?"
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4>Spotify doesn't need to invest in generative AI — it just needs to filter the slop and surface the best AI music</h4>
+                    <div class="context">
+                        The analogy: should Spotify have released a guitar so people can make more music? No — artists will use whatever tools are available (including AI) and upload to Spotify. The platform's job is algorithmic filtering. Current data shows AI music dramatically underperforms human music on engagement metrics despite high upload volume. Even if that flips, Spotify benefits as the aggregator. The same logic applies to Roblox (67% of global non-China gaming spending growth went to Roblox last year) — vibe-coding games is possible, but the network and curation layer is the moat.
+                    </div>
+                    <div class="quote">
+                        "Slop will be in the trough, but only the most delicious slop will bubble to the top."
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-category">
+                <div class="category-header counter">Counter-Intuitive</div>
+
+                <div class="insight">
+                    <h4 id="agentic-commerce">Agentic commerce doesn't replace Shopify checkout — it's just a front-end interface that routes to Shopify infrastructure</h4>
+                    <div class="context">
+                        The fear narrative: AI agents will let users "just buy stuff" without visiting e-commerce sites, killing Shopify. The reality: agentic commerce still needs payment rails, inventory systems, shipping APIs, and checkout infrastructure. Shopify provides all of that. An AI agent ordering products on your behalf is functionally identical to mobile commerce — a new interface layer that increases transaction volume for the underlying platform. If anything, agentic commerce drives activity and benefits Shopify's usage-based revenue model.
+                    </div>
+                    <div class="quote">
+                        "Agentic commerce doesn't replace Shopify checkout. It's just a front end to the checkout, much more like mobile."
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4>Anthropic is hiring a full-time Salesforce admin despite the "SaaS is dead" narrative</h4>
+                    <div class="context">
+                        The meme writes itself: "Unemployed vibe coder: 'Bro SaaS is dead. You can build a CRM in minutes.' Meanwhile, Anthropic job listing: Salesforce Admin needed full-time." Anthropic is growing so fast internally that they need dedicated headcount just to manage their Salesforce deployment. Revealed preference trumps Twitter takes. Enterprise SaaS companies with real switching costs and deep integrations aren't being displaced by vibe-coded alternatives — at least not yet.
+                    </div>
+                    <div class="quote">
+                        "Anthropic is hiring a Salesforce admin because they're growing so fast and so big that they need someone full-time to manage their internal Salesforce."
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-category">
+                <div class="category-header data">Data Points</div>
+
+                <div class="insight">
+                    <h4>The SaaS sector is down ~25% from market highs in Fall 2025 — $2 trillion in market cap lost</h4>
+                    <div class="context">
+                        The selloff was triggered by a combination of factors: Anthropic launching a legal research tool, DeepSeek releasing competitive models cheaply, and a general fear that agentic AI would eliminate seat-based SaaS pricing. But the indiscriminate nature of the selloff (hitting strong and weak companies equally) suggests it was more sentiment-driven than fundamentals-driven. Companies with real AI integration stories and strong unit economics are now separating from the pack.
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4>Roblox captured 67% of global non-China gaming spending growth in 2025 — stock down 50% despite dominance</h4>
+                    <div class="context">
+                        Gaming had a rough year overall, but Roblox's growth was extraordinary: 67% of all new gaming spending outside China went to Roblox. The monetization rate per minute is still ~5x lower than TikTok or Instagram, implying significant upside from ads or in-game purchases. The stock decline reflects concerns about user aging and retention, but the platform's network effects and content curation create a moat against AI-generated game competition.
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-category">
+                <div class="category-header future">Future-Looking</div>
+
+                <div class="insight">
+                    <h4>It's war time — SaaS companies must explain why they were never "sloppable" or risk continued selloff</h4>
+                    <div class="context">
+                        Shopify CEO Harley Finkelstein had to spend multiple earnings call Q&A sessions re-explaining that agentic checkout uses Shopify infrastructure, not replaces it. This will become standard for every SaaS earnings call: CEOs must articulate their AI integration strategy and explain their structural defensibility against AI-native competitors. Companies without a compelling answer will continue bleeding market cap. The era of "we're a SaaS company, we grow 20% annually" is over — you must explain your AI positioning.
+                    </div>
+                    <div class="quote">
+                        "It's war time. It's founder mode time. You need to explain why you were never sloppable in the first place."
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Episode 2: TBPN - Figma CEO Dylan Field -->
+        <div class="episode" id="figma-earnings">
+            <h2>Post Earnings with Figma CEO Dylan Field</h2>
+            <p class="episode-meta">TBPN • <a href="https://www.youtube.com/watch?v=m3op9RlSDfs" target="_blank">Watch →</a></p>
+
+            <div class="insight-category">
+                <div class="category-header core">Core Insights</div>
+
+                <div class="insight">
+                    <h4 id="figma-taste">Taste is the real moat when AI agents can build anything — if an agent can do it for you, it can do it for everyone</h4>
+                    <div class="context">
+                        Dylan Field's central argument: in an AI era where code generation is commodified, the differentiator is taste, design judgment, and the ability to explore the possibility space before converging on a solution. Most people using AI for "toy projects" skip the exploration phase and accept the first output. But premium products require sampling wide, critiquing rigorously, and iterating toward an aesthetic vision. If your only edge is prompting skills, you have no edge — everyone has access to the same models.
+                    </div>
+                    <div class="quote">
+                        "If an agent can do it for you, then unless you got some amazing sophisticated prompting that's super unique, an agent can do it for someone else. What is different about your setup?"
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4 id="figma-growth">Figma Make users grew 70% quarter-over-quarter — 60% of files are created by non-designers</h4>
+                    <div class="context">
+                        Figma Make launched as a visual-first AI building tool, and adoption is exploding among non-designers. 60% of files created in Make are by people who don't identify as product designers, validating the original Figma thesis that design tools should expand beyond the traditional designer TAM. Field emphasized that Make is still "too linear" for his taste — the goal is to enable divergent visual exploration, not just faster linear coding.
+                    </div>
+                    <div class="quote">
+                        "60% of files created in Figma Make are by non-designers. Make users grew 70% quarter over quarter."
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4>Figma shipped a code-to-design pathway enabling full round-trip workflows between code and canvas</h4>
+                    <div class="context">
+                        Previously, Figma's workflow was design-to-code (export designs as code for developers). The new feature enables the reverse: import code into Figma's visual canvas for manipulation and iteration. This creates a true round-trip loop where designers and developers can start from either end and meet in the middle. Field's vision: "wherever you start, we can give you a way to go anywhere on the Figma platform." The implication is that Figma becomes the universal design system layer for all software, regardless of whether it's coded first or designed first.
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4>Linear coding is fast but directionally wrong — you might be running fast toward the wrong solution</h4>
+                    <div class="context">
+                        Field pushed back against the "just vibe code it" mentality dominating AI discourse. His argument: coding is linear and forward-moving, which is efficient only if you already know the right direction. Design requires exploring the option space, trying multiple directions, and critiquing outcomes. Enterprise products especially need design systems, component libraries, and brand consistency across touchpoints — none of which emerge naturally from agentic coding without intentional design leadership.
+                    </div>
+                    <div class="quote">
+                        "Just being in code I think is very linear. You might be running fast but you might be running towards the wrong direction."
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-category">
+                <div class="category-header counter">Counter-Intuitive</div>
+
+                <div class="insight">
+                    <h4>Great designers come from wildly different backgrounds — there's no pattern to what creates taste</h4>
+                    <div class="context">
+                        When asked about the "varied training data" thesis (Steve Jobs traveled the world, had diverse experiences), Field disagreed. The great designers he's met have come from rigorous design programs, self-taught graphic design backgrounds, meditation retreats, and straight-laced corporate paths. There's no pattern. Some are buttoned-up, some are chaotic. The only commonality is that they've all developed a strong point of view through iteration and critique, regardless of how they got there.
+                    </div>
+                    <div class="quote">
+                        "Great designers come from so many different backgrounds. Some went through rigorous design training, some crashed on someone's couch and became product designers. There's no pattern matching."
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4>Figma won't do edge computing — they're partnering, not building infrastructure</h4>
+                    <div class="context">
+                        When asked about Figma Make's expansion into hosting, deployment, uptime, and edge distribution, Field drew a clear line: Figma will partner for infrastructure. The thesis is visual-first creation, not competing with Vercel or Cloudflare. This focus discipline is notable in an era where platform companies are tempted to vertically integrate everything. Figma is betting that being the best visual creation layer and integrating with best-in-class infrastructure partners wins over owning the full stack.
+                    </div>
+                    <div class="quote">
+                        "Edge computing? I don't think that's going to happen. All of you folks out there working on edge computing, come partner with us. We're not in your space."
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-category">
+                <div class="category-header data">Data Points</div>
+
+                <div class="insight">
+                    <h4 id="figma-numbers">Figma Q4 2025: $304M revenue, 40% YoY growth, shipped 8 products and 200+ features in 2025</h4>
+                    <div class="context">
+                        The numbers validate Figma's aggressive product velocity. The company went from 4 products to 8 products in a single year while shipping over 200 individual features. Revenue growth remains strong at 40% despite the SaaS apocalypse narrative. The combination of traditional Figma Design growth plus explosive Make adoption suggests the TAM is expanding beyond designers into the broader "anyone who wants to create software" market.
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-category">
+                <div class="category-header future">Future-Looking</div>
+
+                <div class="insight">
+                    <h4>The internet is about to get wildly dynamic and visually diverse again — breaking free from Swiss minimalism uniformity</h4>
+                    <div class="context">
+                        Field's prediction: we're exiting the era of homogeneous design (Swiss minimalism, flat UI, identical mobile-first layouts) and entering a Cambrian explosion of visual diversity. The flash/GeoCities era had wild variation but low quality. The iPhone era had high quality but low variation. AI tools enable high quality AND high variation for the first time. To stand out in an exponentially growing content landscape, you need aesthetic differentiation — not just in visuals but in interaction patterns, information architecture, and navigation paradigms.
+                    </div>
+                    <div class="quote">
+                        "We're going to see the internet get really dynamic and really visual. People will try things we haven't seen in a while and things people haven't seen ever. That's what it's going to take to stand out."
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4>The length of time an artifact exists is inversely proportional to whether it will be AI-generated</h4>
+                    <div class="context">
+                        Field's framework: a billboard that lives for a month gets human design. A meme responding to news gets AI-generated in seconds. The more permanent and visible an asset, the more human judgment and iteration it deserves. This creates a barbell: throwaway content is fully automated, while high-stakes creative work becomes more human-intensive than ever because taste and judgment can't be commodified. The middle tier (e.g., standard marketing assets) is the battleground.
+                    </div>
+                    <div class="quote">
+                        "The length of time that an artifact will exist for is inversely proportional to the likelihood it's going to be generated."
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Episode 3: TiTV - OpenAI $100B Funding -->
+        <div class="episode" id="openai-funding-round">
+            <h2>OpenAI's $100B Funding Round, SpaceX 2026 IPO, and AMD's Debt Play</h2>
+            <p class="episode-meta">TiTV (The Information) • <a href="https://www.youtube.com/watch?v=lxqJTB90PEE" target="_blank">Watch →</a></p>
+
+            <div class="insight-category">
+                <div class="category-header core">Core Insights</div>
+
+                <div class="insight">
+                    <h4 id="openai-funding">OpenAI is finalizing $100B+ in Series C funding at $730B pre-money valuation from Amazon, Nvidia, Microsoft, and SoftBank</h4>
+                    <div class="context">
+                        The Information broke the story: OpenAI is finalizing first commitments for its massive Series C round. Amazon can invest up to $50B, Nvidia up to $30B, Microsoft in the low billions, and SoftBank up to $30B split across three $10B installments over the year. The $730B pre-money valuation implies a post-money valuation over $830B if the full $100B+ is raised. Strategic investors (cloud providers and chip makers) dominate because they have balance sheet capacity for checks this large. Financial investors like Thrive, Khosla, and Sequoia are also expected to participate.
+                    </div>
+                    <div class="quote">
+                        "OpenAI is finalizing its first commitments for a $100B+ Series C round at $730B pre-money valuation. Amazon: $50B, Nvidia: $30B, SoftBank: $30B."
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4>The Series C structure includes 1x liquidation preference and converts to common stock on exit — standard deal terms returning after restructuring</h4>
+                    <div class="context">
+                        The deal structure is notable because it's "normal" — traditional preferred shares with 1x liquidation preference (investors get their money back first in a sale) that convert to common stock on IPO. This was only possible after OpenAI's corporate restructuring from a nonprofit-controlled entity to a traditional for-profit structure. The return to standard terms makes OpenAI investable for institutional capital that couldn't participate under the previous capped-return nonprofit structure.
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4 id="openai-ipo">OpenAI is preparing for a potential Q4 2026 IPO — but the $100B round gives them flexibility to delay into 2027</h4>
+                    <div class="context">
+                        OpenAI is laying groundwork for an IPO as soon as Q4 2026, but the massive capital raise provides runway to optimize timing. The company crossed $13B in revenue in 2025 and previously disclosed plans to spend $450B between 2025-2030 on training, inference, and backup servers. The $100B round funds roughly 2-3 years of that roadmap, allowing OpenAI to time the IPO based on market conditions rather than capital needs. Going public is when conditions are right, not when cash runs out.
+                    </div>
+                    <div class="quote">
+                        "The company's preparing for a Q4 2026 IPO, but the $100B+ round gives them runway to time it exactly when they want. It could go into 2027."
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4>AMD is acting as a financial backstop for Crusoe's $300M loan to buy AMD chips — taking a page from Nvidia's playbook</h4>
+                    <div class="context">
+                        Crusoe (an AI cloud startup) raised $300M in debt from Goldman Sachs at 6% interest to purchase AMD chips. AMD guaranteed they would rent the chips if Crusoe couldn't find customers, de-risking the loan and enabling favorable terms. This mirrors Nvidia's strategy of providing financial support to cloud customers to drive chip sales. AMD is betting that smaller, flexible customers (not locked into 5-year take-or-pay contracts like Microsoft) will drive incremental demand and prove AMD chips are viable alternatives to Nvidia.
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-category">
+                <div class="category-header counter">Counter-Intuitive</div>
+
+                <div class="insight">
+                    <h4>Strategic investors dominate AI mega-rounds not because they're strategic, but because they have balance sheets large enough to write $30B+ checks</h4>
+                    <div class="context">
+                        The framing around Amazon, Nvidia, and Microsoft investing in OpenAI emphasizes strategic alignment (cloud distribution, chips, etc.). But the simpler explanation: there aren't many entities capable of writing $30-50B checks. Financial VCs can participate (and are), but their fund sizes cap out in the low billions. The strategic investors aren't just strategically aligned — they're the only players with balance sheet capacity to participate at this scale. The strategic narrative follows the capital reality, not vice versa.
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4>OpenAI calling this a "Series C" is technically accurate — they've only raised three traditional rounds despite the massive scale</h4>
+                    <div class="context">
+                        The "Series C" label sounds jarring for a $730B valuation company, but it's accurate: OpenAI raised Series A ($6.6B in 2024), Series B ($41B in 2025), and now Series C ($100B+). The Microsoft investment wasn't structured as a traditional equity round. Most startups doing a Series C are sub-$1B valuation, but OpenAI's Series C is larger than most Series F or G rounds in history. The nomenclature is technically correct but emotionally misleading.
+                    </div>
+                    <div class="quote">
+                        "OpenAI is calling this a Series C, which is accurate — they've only raised three traditional rounds — but it's the largest Series C in history by 100x."
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-category">
+                <div class="category-header data">Data Points</div>
+
+                <div class="insight">
+                    <h4>OpenAI crossed $13B in revenue in 2025 and plans to spend $450B from 2025-2030 on infrastructure and models</h4>
+                    <div class="context">
+                        The revenue and spending projections frame OpenAI's capital needs. $13B in annual revenue is extraordinary for a company that didn't exist in its current form before 2022, but $450B in planned spending over 5 years ($90B/year) dwarfs the revenue. The business model is fundamentally capital-intensive: training runs, inference compute, backup servers, and data center buildouts all require massive upfront investment before revenue materializes. This is more similar to a semiconductor fab or telecom infrastructure buildout than a software startup.
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4>Hungry Root: $700M revenue in 2025, 55% growth, preparing for IPO as soon as this year</h4>
+                    <div class="context">
+                        Hungry Root (an AI-powered grocery delivery and meal planning service) represents the new cohort of consumer IPOs: profitable or near-profitable, high-quality unit economics, real growth. The company grew 55% to $700M revenue in 2025. Unlike the 2021 consumer IPO wave (Allbirds, Warby Parker, Rent the Runway) that prioritized growth over profitability, Hungry Root and peers like Once Upon a Farm and Suja Life are coming to market with sustainable business models. The consumer IPO window is reopening, but only for disciplined operators.
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4>Renaissance Capital: dual-class share structures are becoming standard for visionary founder-led IPOs</h4>
+                    <div class="context">
+                        Avery Marquez from Renaissance Capital (an IPO research firm) noted that dual-class structures (where founders retain outsized voting power through super-voting shares) are increasingly common for large tech IPOs. Examples: 10 votes per share, 20 votes per share, or even 100 votes per share (StubHub). This allows founders to retain control while accessing public market capital. For OpenAI, Anthropic, and SpaceX, dual-class structures are likely to ensure the founding vision isn't diluted by quarterly earnings pressure.
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-category">
+                <div class="category-header future">Future-Looking</div>
+
+                <div class="insight">
+                    <h4 id="ipo-race">The race to IPO: OpenAI vs. Anthropic vs. SpaceX/XAI — going first captures buzz but also exposes you to risk</h4>
+                    <div class="context">
+                        Renaissance Capital's take: being first to IPO in a hot sector captures maximum attention and investor buzz. But being first also means maximum exposure — if your stock underperforms, it can poison the IPO market for the entire sector. The game theory is complex: everyone wants to go second (let someone else test the waters), but everyone also wants to go first (capture the hype). OpenAI preparing for Q4 2026, SpaceX potentially beating them via the XAI merger, and Anthropic reportedly exploring timelines all suggest 2026-2027 will be the AI IPO moment.
+                    </div>
+                    <div class="quote">
+                        "There is a race to capture early buzz and excitement around AI. But there's also that voice saying maybe it's better to let the other one go first and see how markets respond."
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4>AMD's chip demand is growing, but the real question is whether it can sustain premium pricing against Nvidia</h4>
+                    <div class="context">
+                        AMD CEO Lisa Su set a goal of "tens of billions" in AI chip revenue by next year. Meta, XAI, and OpenAI have all committed to using AMD chips alongside Nvidia. But AMD's leverage in the market is still unclear: are customers buying AMD because they prefer it, or because Nvidia supply is constrained? The Crusoe deal (AMD backstopping chip purchases) suggests AMD is still in the "prove it" phase where they need to subsidize adoption to build market share.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Episode 4: TBPN - SaaSpocalypse Full Episode -->
+        <div class="episode" id="tbpn-full-episode">
+            <h2>SaaSpocalypse Cancelled, Handshake Tutorial, Ideal Private Jet Budget, AI Rappers</h2>
+            <p class="episode-meta">TBPN • <a href="https://www.youtube.com/watch?v=UrebAsni59k" target="_blank">Watch →</a></p>
+
+            <div class="insight-category">
+                <div class="category-header core">Core Insights</div>
+
+                <div class="insight">
+                    <h4>AI is a disruptive innovation counterpositioned against seat-based SaaS pricing — not a sustaining innovation like mobile or cloud</h4>
+                    <div class="context">
+                        The fundamental reason the SaaS apocalypse narrative took hold: agentic AI, co-pilots, and foundation models directly threaten the seat-based pricing model that defines enterprise SaaS. Mobile and cloud were sustaining innovations — they made existing SaaS better without changing the business model. AI is disruptive — it changes who uses the software (agents, not humans), how it's priced (consumption, not seats), and what value it delivers (outcomes, not access). Legacy companies can't pivot by flipping a switch; it requires rewiring incentives, culture, and go-to-market.
+                    </div>
+                    <div class="quote">
+                        "Agentic AI systems and foundation models are disruptive innovations fundamentally counterpositioned against traditional seat-based SaaS pricing. This is not a sustaining innovation like mobile or cloud."
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4>Meta's transformer-based ad targeting is reaccelerating revenue despite no consumer Llama 3 rollout</h4>
+                    <div class="context">
+                        Meta's core business is thriving not because they've shipped consumer AI products (Meta AI has low adoption, Llama 3 isn't driving product usage), but because their ML-powered ad targeting is improving. Transformer models help Meta understand user intent on longer, more complex interactions, enabling better ad placements and higher conversion. This is the "invisible AI" that matters for revenue: backend systems that improve unit economics without being marketed as AI features.
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4>Salesforce, Shopify, and Figma are all growing despite the apocalypse — the growth hasn't slowed, but fear is at all-time highs</h4>
+                    <div class="context">
+                        Figma: 40% revenue growth. Salesforce: still growing (Anthropic hiring admins). Shopify: strong earnings, CEO had to re-explain multiple times that agentic commerce uses Shopify infrastructure. The disconnect between narrative (SaaS is dying) and reality (SaaS is growing) reflects fear of future disruption, not present-day revenue declines. The market is forward-pricing the apocalypse even though it hasn't arrived in financials yet.
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-category">
+                <div class="category-header counter">Counter-Intuitive</div>
+
+                <div class="insight">
+                    <h4 id="celebrity-ai">Matthew McConaughey: "Own yourself — voice, likeness, trademark it — before AI makes it ownable by someone else"</h4>
+                    <div class="context">
+                        McConaughey's statement in Variety: "It's coming. It's already here. Don't deny it. There's too much money to be made and it's too productive. Own yourself." This is the celebrity version of Garry Tan's "California billionaire tax will tax you on voting control" argument — if you don't proactively establish ownership of your digital assets (voice, likeness, persona), the default legal regime may screw you. McConaughey isn't anti-AI; he's pro-ownership. The deals are coming; negotiate from strength, not desperation.
+                    </div>
+                    <div class="quote">
+                        "It's coming. It's already here. Don't deny it. There's too much money to be made and it's too productive. Own yourself — voice, likeness, trademark it."
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4>Soulja Boy launched the first AI rapper voice clone with Bland AI — 1M views, only 600 likes</h4>
+                    <div class="context">
+                        Bland AI (conversational AI company) partnered with Soulja Boy to launch "Soulja AI" — an AI voice clone that can answer business phone calls in Soulja Boy's voice. The pitch: "I was the first rapper on YouTube, the first rapper with an iPhone app, and now I'm the first rapper to augment his voice with AI." The video got 1M views but only 600 likes (typical ratio is 20K-30K likes per 1M views), suggesting low resonance. The concept is clever but the execution didn't land — possibly because Soulja Boy isn't at career peak and the use case (business phone answering) is niche.
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4>Ice-T is an AI accelerationist: "Expensive music videos are over. AI is the only sensible way to add visuals to a song."</h4>
+                    <div class="context">
+                        Ice-T pushed back against AI skeptics on Twitter: "Fans want us to make music, then shoot an expensive video, then they get it for free on Spotify (0.007 cents per stream). The days of expensive videos are over. AI is the only sensible way to add visuals." His argument: streaming economics killed the music video budget, and AI is the only cost structure that makes sense for visual content in 2026. This is the artist-side version of the "software cost savings rotate into infrastructure" thesis — production budgets collapse, AI fills the gap.
+                    </div>
+                    <div class="quote">
+                        "The days of expensive videos are over. There isn't even MTV. AI is the only sensible way to add visuals to a song. You can hate it all you want. It's the future."
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-category">
+                <div class="category-header data">Data Points</div>
+
+                <div class="insight">
+                    <h4>Fax machine sales dropped 10% in 1999 — the first year showing significant decline after gradual slowing</h4>
+                    <div class="context">
+                        The historical precedent for technology displacement: fax machines didn't die overnight. Sales slowed gradually throughout the 1990s as email adoption grew, but 1999 was the inflection year where the decline became sharp (-10% YoY). The SaaS apocalypse may follow the same pattern: gradual pressure for years, then a sudden inflection when adoption crosses a threshold. We may be in the "gradual slowing" phase now, with the "fall off a cliff" moment still ahead.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Episode 5: TiTV - Is Enterprise Software Dead? -->
+        <div class="episode" id="enterprise-software-dead">
+            <h2>Is Enterprise Software Dead?</h2>
+            <p class="episode-meta">TiTV (The Information) • <a href="https://www.youtube.com/watch?v=iURjfHb5B70" target="_blank">Watch →</a></p>
+
+            <div class="insight-category">
+                <div class="category-header core">Core Insights</div>
+
+                <div class="insight">
+                    <h4 id="enterprise-ai">"SaaS is dead, long live SaaS" — enterprise software isn't dying, it's being replatformed with AI orchestration layers</h4>
+                    <div class="context">
+                        Dallas Dolan (PWC tech practice leader) coined the phrase "SaaS is dead, long live SaaS" to describe the transformation underway. Enterprise clients aren't abandoning Salesforce, Office 365, or Google Workspace — they're augmenting them with AI orchestration tools (LLMs, GitHub, visual design tools) to extract more value from existing platforms. The shift is from "how many seats do we need?" to "how do we use AI to get more value per seat?" This is a reconsideration of platform dynamics, not a wholesale replacement.
+                    </div>
+                    <div class="quote">
+                        "SaaS is dead, long live SaaS. We're seeing a quantum shift in how corporations think about their tech budgets — not spending less on software, but recontemplating where the money is spent."
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4>PWC's M&A teams have shifted from PowerPoint screens to coding screens — using visual design, GitHub, and LLMs to build workflows</h4>
+                    <div class="context">
+                        Dolan's on-the-ground observation: walking through PWC's M&A offices, screens have changed from research pages and slide decks to "black coding screens" — employees using low-code tools (Vertex AI, visual design platforms) and GitHub to build custom workflows and data pipelines. These aren't professional coders; they're bankers and consultants who've adopted AI-native workflows. They're still using Office 365 and traditional tools, but they've added a new layer of AI-assisted automation.
+                    </div>
+                    <div class="quote">
+                        "You see a lot of different screens now. It used to be research pages and PowerPoints. Now you see black coding screens — people using visual design, Vertex, GitHub to create workflows that ingest content and interact with LLMs."
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4 id="compute-capital">In 10 years, the new form of capital may be "how much compute do you own" rather than "how much software revenue do you generate"</h4>
+                    <div class="context">
+                        Dolan's most provocative claim: enterprise software cost savings aren't flowing to shareholders — they're being rotated into capital infrastructure (GPUs, TPUs, power, data centers). Companies are using AI-driven productivity gains to vertically integrate their compute stack. In a decade, the balance sheet asset that matters may not be software licenses or SaaS subscriptions, but owned compute capacity. This is a structural rotation from software margins (80%+) to hardware margins (20-40%) at scale.
+                    </div>
+                    <div class="quote">
+                        "If you look out 10 years, perhaps the new form of capital is not software license income, but how much compute do you own and how much runs through your infrastructure."
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4>Enterprise clients won't abandon Salesforce or ServiceNow for startups — trust and auditability matter more than features for regulated industries</h4>
+                    <div class="context">
+                        Dolan's point: financial services, healthcare, and public sector companies operate in highly regulated environments where auditability and platform reliability are non-negotiable. A new AI-native CRM might have better features, but it doesn't have a decade of compliance certifications, audit trails, and proven uptime. The mandate for regulated businesses is "high degree of auditability and reliability" — which favors incumbents with trust, not startups with features.
+                    </div>
+                    <div class="quote">
+                        "I don't see a complete divergence from enterprise software companies we've always trusted. Especially in regulated businesses, the mandate is a high degree of auditability and reliability."
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-category">
+                <div class="category-header counter">Counter-Intuitive</div>
+
+                <div class="insight">
+                    <h4>Cost savings from AI aren't going to shareholders — they're being reinvested in infrastructure, demand generation, and global expansion</h4>
+                    <div class="context">
+                        The conventional take: if AI makes workers 20% more productive, companies fire 20% of workers and pay the savings to shareholders. Dolan's reporting: cost savings are rotating into (1) capital infrastructure (GPUs, data centers), (2) demand generation (finding new customers globally), and (3) product development (building AI-native features). Private equity benefits from margin improvement, but public enterprises are reinvesting, not distributing. The rotation is from labor costs to capital expenditures.
+                    </div>
+                    <div class="quote">
+                        "Savings are not going away and going straight to shareholders. They're being reinvested — into capital infrastructure, demand generation, and new products."
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4>A bank CEO told PWC: "AI gives us more deployable capital to do more investing — and we can spend more time with founders"</h4>
+                    <div class="context">
+                        Dolan's conversation with a Texas bank: AI efficiency gains don't just save money, they free up capacity to evaluate more deals and spend more time with portfolio companies. If investment bankers can analyze 2x as many deals with the same headcount, the constraint shifts from analyst capacity to relationship bandwidth. This is the positive-sum version of the AI narrative: productivity gains enable more activity, not just cost cuts.
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-category">
+                <div class="category-header data">Data Points</div>
+
+                <div class="insight">
+                    <h4>The SaaS sector is down ~25% from Fall 2025 market highs — a "pretty significant" selloff</h4>
+                    <div class="context">
+                        Dolan confirmed the ~25% drawdown across the SaaS sector from peak valuations in Fall 2025. The selloff was broad-based, hitting both AI-vulnerable companies (CRM, analytics) and AI-resistant companies (vertical SaaS, infrastructure) equally. The indiscriminate nature suggests fear-driven selling rather than fundamentals-based repricing. Companies are now in "search for relevancy" mode — proving they can thrive in an AI-augmented world.
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-category">
+                <div class="category-header future">Future-Looking</div>
+
+                <div class="insight">
+                    <h4>Private equity is seeing the biggest mindset shift around AI — using it to platform portfolio companies and create operational leverage</h4>
+                    <div class="context">
+                        PWC is publishing research on AI's impact on private equity. The thesis: PE firms are using AI to accelerate value creation in portfolio companies (operations, customer acquisition, unit economics), not just cost-cutting. The platformization dynamic — where PE firms build centralized AI capabilities that all portfolio companies can leverage — creates a new source of alpha. This mirrors the "PwC internal AI tools rolling out across offices" playbook but applied to PE portfolio construction.
+                    </div>
+                </div>
+
+                <div class="insight">
+                    <h4 id="software-gdp">Consumption-based pricing is replacing seat-based SaaS licensing — Adobe did it 10 years ago, now it's permeating the ecosystem</h4>
+                    <div class="context">
+                        Dolan's historical note: Adobe transitioned to consumption-based Creative Cloud pricing over a decade ago, enduring a painful multi-year financial transition. That model is now standard for AI-era SaaS: charge based on usage (API calls, compute, storage) rather than seats. This changes everything — how sales teams sell, how products are built, how marketing positions value, and how partnerships are structured. The companies that transition successfully will survive; those that can't will die.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUICK HITS SECTION -->
+        <div class="quick-hits-section">
+            <h2 style="color: #FF9B71; margin-bottom: 25px; font-size: 1.8rem;">Quick Hits</h2>
+
+            <div class="quick-hit">
+                <h3>Bezos vs Elon: The moon race</h3>
+                <p class="quick-hit-meta">TBPN • <a href="https://www.youtube.com/watch?v=WO6xzbmD3KQ" target="_blank">Watch →</a></p>
+                <ul>
+                    <li>NASA Administrator Jared Isaacman announced a new policy: whoever gets to the Moon first gets the contracts. This transforms the lunar program from a bureaucratic award process into an explicit competition.</li>
+                    <li>Jeff Bezos publicly committed Blue Origin to "move heaven and earth to get to the moon first" by 2028, directly competing with SpaceX for NASA Artemis contracts.</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>All stainless steel coffee maker</h3>
+                <p class="quick-hit-meta">TBPN • <a href="https://www.youtube.com/watch?v=Q--dFG63A1M" target="_blank">Watch →</a></p>
+                <ul>
+                    <li>A product showcase or recommendation for a fully stainless steel coffee maker, likely highlighting durability and lack of plastic components.</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>How The World's Largest Fund Manager Gets People to Disagree With Him</h3>
+                <p class="quick-hit-meta">The Knowledge Project • <a href="https://www.youtube.com/watch?v=4ARIjMWjR30" target="_blank">Watch →</a></p>
+                <ul>
+                    <li>Nicolai Tangen, CEO of Norges Bank Investment Management (managing over $2 trillion), explains how he built a culture where people actually disagree with him.</li>
+                    <li>The "hockey puck" method: a simple technique used in meetings to depersonalize conflict and encourage genuine disagreement. When Tangen started, everyone agreed with him — he knew that was a problem and had to deliberately engineer dissent.</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>Open Platforms are at RISK</h3>
+                <p class="quick-hit-meta">20VC • <a href="https://www.youtube.com/watch?v=LlyIDe-W9PQ" target="_blank">Watch →</a></p>
+                <ul>
+                    <li>A discussion on threats to open platforms in the AI era, potentially covering platform concentration, regulation, or AI agent ecosystems disrupting traditional platform business models.</li>
+                </ul>
+            </div>
+
+            <div class="quick-hit">
+                <h3>Can China Stop the Deal?</h3>
+                <p class="quick-hit-meta">The Generalist • <a href="https://www.youtube.com/watch?v=ShDlLkpW7Rw" target="_blank">Watch →</a></p>
+                <ul>
+                    <li>Alex Dwek argues that while China likely can't stop current deals or jail founders who are already abroad, the real danger is a crackdown on future relocations.</li>
+                    <li>Founders must be strategic about moving IP and talent out of China — or better yet, start their companies in Singapore from day one to avoid "flip" scrutiny entirely.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
