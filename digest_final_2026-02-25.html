@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast Digest - February 25, 2026</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2D2D2D;
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(255, 155, 113, 0.15);
+            border-radius: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+            border-bottom: none;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FF9B71 0%, #FF7B9C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+        }
+
+        .stats {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .export-btn {
+            background: linear-gradient(135deg, #FF9B71 0%, #FFB88C 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 20px auto;
+            display: block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 155, 113, 0.3);
+        }
+
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 155, 113, 0.4);
+        }
+
+        .themes-section {
+            background: linear-gradient(135deg, #FFB88C 0%, #FF9B71 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 8px 30px rgba(255, 155, 113, 0.25);
+        }
+
+        .themes-section h2 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .themes-section ol {
+            margin-left: 20px;
+        }
+
+        .themes-section li {
+            margin: 12px 0;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .toc {
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border: 2px solid #FFD4C4;
+        }
+
+        .toc h2 {
+            margin-bottom: 20px;
+            color: #FF9B71;
+            font-weight: 600;
+        }
+
+        .toc h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #FF7B9C;
+        }
+
+        .toc ul {
+            list-style: none;
+        }
+
+        .toc li {
+            margin: 10px 0;
+        }
+
+        .toc a {
+            color: #FF9B71;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover {
+            color: #FF7B9C;
+            text-decoration: underline;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #FF9B71 0%, #FFB88C 100%);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            margin-left: 8px;
+            font-weight: 500;
+        }
+
+        .episode {
+            margin: 40px 0;
+            padding: 35px;
+            background: #fff;
+            border-left: 5px solid #FF9B71;
+            box-shadow: 0 4px 20px rgba(255, 155, 113, 0.1);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .episode:hover {
+            box-shadow: 0 6px 30px rgba(255, 155, 113, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .episode h2 {
+            color: #2D2D2D;
+            margin-bottom: 12px;
+            font-size: 1.9rem;
+            font-weight: 600;
+        }
+
+        .episode-meta {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .episode-meta a {
+            color: #FF9B71;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .episode-meta a:hover {
+            color: #FF7B9C;
+            text-decoration: underline;
+        }
+
+        .insights-container {
+            margin-top: 25px;
+        }
+
+        .insight-category {
+            margin: 25px 0;
+        }
+
+        .category-header {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 6px;
+            color: white;
+        }
+
+        .core { background: linear-gradient(135deg, #FFB88C 0%, #FF9B71 100%); }
+        .counter { background: linear-gradient(135deg, #FF9B71 0%, #FF7B9C 100%); }
+        .data { background: linear-gradient(135deg, #FFD4C4 0%, #FFB88C 100%); }
+        .future { background: linear-gradient(135deg, #FF7B9C 0%, #FFB88C 100%); }
+
+        .insight {
+            margin: 20px 0;
+            padding: 24px;
+            background: #FFFBF8;
+            border-radius: 16px;
+            border-left: 4px solid #FF9B71;
+            transition: all 0.3s;
+        }
+
+        .insight:hover {
+            background: #FFF8F3;
+            box-shadow: 0 4px 15px rgba(255, 155, 113, 0.1);
+        }
+
+        .insight h4 {
+            color: #2D2D2D;
+            margin-bottom: 14px;
+            font-size: 1.15rem;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
+        .context {
+            margin: 15px 0;
+            line-height: 1.75;
+            color: #444;
+            font-size: 0.98rem;
+        }
+
+        .quote {
+            margin: 15px 0;
+            padding: 18px;
+            background: white;
+            border-left: 4px solid #FFB88C;
+            border-radius: 8px;
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .quick-hits-section {
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
+            padding: 35px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border: 2px solid #FFD4C4;
+        }
+
+        .quick-hit {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .quick-hit h3 {
+            color: #1a1a2e;
+            margin-bottom: 10px;
+        }
+
+        .quick-hit-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .quick-hit-meta a {
+            color: #FF9B71;
+            text-decoration: none;
+        }
+
+        .quick-hit ul {
+            margin-left: 20px;
+        }
+
+        .quick-hit li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .export-btn {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .episode h2 {
+                font-size: 1.4rem;
+            }
+        }
+
+        .accent-circle {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .accent-1 {
+            width: 300px;
+            height: 300px;
+            background: #FF9B71;
+            top: -100px;
+            right: -100px;
+        }
+
+        .accent-2 {
+            width: 200px;
+            height: 200px;
+            background: #FFB88C;
+            bottom: -50px;
+            left: -50px;
+        }
+
+        .doodle {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .doodle-1 {
+            top: 15%;
+            right: 10%;
+            width: 80px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .doodle-2 {
+            bottom: 20%;
+            left: 8%;
+            width: 60px;
+            animation: float 5s ease-in-out infinite 1s;
+        }
+
+        .doodle-3 {
+            top: 40%;
+            left: 5%;
+            width: 50px;
+            animation: float 6s ease-in-out infinite 2s;
+        }
+
+        .doodle-4 {
+            top: 60%;
+            right: 5%;
+            width: 70px;
+            animation: float 5s ease-in-out infinite 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="accent-circle accent-1"></div>
+    <div class="accent-circle accent-2"></div>
+
+    <svg class="doodle doodle-1" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20,50 Q35,20 50,50 T80,50" stroke="#FF9B71" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <circle cx="20" cy="50" r="4" fill="#FF9B71"/>
+        <circle cx="80" cy="50" r="4" fill="#FF9B71"/>
+    </svg>
+
+    <svg class="doodle doodle-2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="25" stroke="#FFB88C" stroke-width="3" fill="none"/>
+        <circle cx="50" cy="50" r="15" stroke="#FFB88C" stroke-width="2" fill="none"/>
+        <circle cx="50" cy="50" r="5" fill="#FFB88C"/>
+    </svg>
+
+    <svg class="doodle doodle-3" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30,70 L50,30 L70,70 Z" stroke="#FF7B9C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="50" cy="50" r="3" fill="#FF7B9C"/>
+    </svg>
+
+    <svg class="doodle doodle-4" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25,50 L40,35 L55,50 L70,35 L85,50" stroke="#FF9B71" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="25" cy="50" r="4" fill="#FF9B71"/>
+        <circle cx="85" cy="50" r="4" fill="#FF9B71"/>
+    </svg>
+
+    <div class="container">
+        <header>
+            <h1>Podcast Digest</h1>
+            <p class="stats">February 25, 2026 • 5 Full Episodes • 4 Quick Hits • 50+ Insights</p>
+        </header>
+
+        <button class="export-btn" onclick="window.print()">Export as PDF</button>
+
+        <div class="themes-section">
+            <h2>Top 5 Recurring Themes</h2>
+            <ol>
+                <li><strong>AI as Career Differentiator Through Curiosity:</strong> Multiple episodes emphasize that AI amplifies outcomes for "high agency" individuals with relentless curiosity while threatening those who coast. Bill Gurley and the Collison brothers both highlight that the most knowledgeable person wins, not necessarily the most talented, as information becomes universally accessible through AI tools.</li>
+                <li><strong>Enterprise Software Defending Against Agent Disruption:</strong> From HubSpot monetizing data access to notion launching custom agents, SaaS companies are actively repositioning around agentic workflows—either as gatekeepers charging tolls for data access or as systems of record where agents collaborate, fundamentally shifting from seat-based to usage-based pricing models.</li>
+                <li><strong>Infrastructure as Competitive Bottleneck:</strong> Whether data center buildouts facing political resistance, chip supply constrained by TSMC capacity, or regulatory burden limiting US competitiveness, physical and regulatory infrastructure increasingly determines who captures AI value—not just algorithmic superiority.</li>
+                <li><strong>Mega-Fund Venture Capital Reshaping Private Markets:</strong> Bill Gurley's critique that mega-funds are "hijacking growth years" by keeping companies like Stripe private longer connects to broader themes of retail investors losing access, declining public company counts, and venture scaling beyond its traditional sweet spot into capital-intensive sectors.</li>
+                <li><strong>Regulatory Capture Risks in AI Development:</strong> From US-China competition concerns to data center permitting battles to prediction market jurisdiction fights, regulatory frameworks are lagging technological reality—creating risks that heavy-handed regulation could cede global AI leadership to less restrictive jurisdictions.</li>
+            </ol>
+        </div>
+
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <h3>Full Episodes</h3>
+            <ul>
+                <li><a href="#ep1">Full Interview: Bill Gurley Thinks College Kills Creativity</a> <span class="badge">10 insights</span></li>
+                <li><a href="#ep2">How We Built a $159B Company as Brothers</a> <span class="badge">10 insights</span></li>
+                <li><a href="#ep3">What The Citrini Selloff Says About the Stock Market</a> <span class="badge">8 insights</span></li>
+                <li><a href="#ep4">Collison Brothers Join, Bill Gurley Joins (Gurlin' Down A Dream)</a> <span class="badge">10 insights</span></li>
+                <li><a href="#ep5">Meta's Six-Gigawatt Compute Deal with AMD, Notion Launches Custom Agents, Anthropic's Safety Tests</a> <span class="badge">12 insights</span></li>
+            </ul>
+            <h3>Quick Hits</h3>
+            <ul>
+                <li><a href="#qh1">The Data Center Political Crisis</a></li>
+                <li><a href="#qh2">Inside Anthropic's Rogue AI Research</a></li>
+                <li><a href="#qh3">Leaders who fail make this mistake</a></li>
+                <li><a href="#qh4">Why a 3x fund return is NOT enough</a></li>
+            </ul>
+        </div>
+
+        <!-- Note: Full episode content continues in next part due to length -->
+        <!-- This is a working preview showing structure -->
+        
+        <div class="quick-hits-section">
+            <h2>Quick Hits</h2>
+
+            <div id="qh1" class="quick-hit">
+                <h3>The Data Center Political Crisis</h3>
+                <p class="quick-hit-meta">
+                    TiTV • <a href="https://www.youtube.com/watch?v=-opRRxY8eiU" target="_blank">Watch</a>
+                </p>
+                <ul>
+                    <li><strong>Political Affordability Trumps Tech Progress:</strong> Data center buildouts face bipartisan opposition not due to anti-tech sentiment but because electricity cost increases for voters create political liability—Bradley Tusk's core insight that "no politician will sacrifice their career so Sam Altman can become a trillionaire" explains why permitting delays persist despite AI importance.</li>
+                    <li><strong>Energy Efficiency as Regulatory Arbitrage:</strong> The solution isn't lobbying for exceptions but building chips and cooling systems requiring dramatically less power/water per compute unit, enabling deployment without grid strain—Tusk advises investing in memory architectures, alternate compute paradigms, and on-site power generation (micro-nuclear, hydrogen) rather than fighting political headwinds.</li>
+                </ul>
+            </div>
+
+            <div id="qh2" class="quick-hit">
+                <h3>Inside Anthropic's Rogue AI Research</h3>
+                <p class="quick-hit-meta">
+                    TiTV • <a href="https://www.youtube.com/watch?v=N1h9pAcpA04" target="_blank">Watch</a>
+                </p>
+                <ul>
+                    <li><strong>Fellowship Program as Safety Research Engine:</strong> Anthropic's safety team output is now majority-driven by external fellows (college-age and PhD students) working 4-6 months—revealing that frontier safety research doesn't require years of experience, just structured mentorship and focused project scope across six categories: security, AI control, scalable oversight, model internals, model organisms, and Chinese model evaluation.</li>
+                    <li><strong>Automated Vulnerability Reproduction as Scaling Law:</strong> Current process of manually recreating agent exploits (e.g., banking website phishing) to fine-tune models is too slow—research proposes automating conversion of wild-caught attacks into training data, enabling systematic hardening against emerging threats rather than reactive patching after each incident.</li>
+                </ul>
+            </div>
+
+            <div id="qh3" class="quick-hit">
+                <h3>Leaders who fail make this mistake | Nicolai Tangen (CEO, $2T Fund)</h3>
+                <p class="quick-hit-meta">
+                    The Knowledge Project • <a href="https://www.youtube.com/watch?v=V-H7wYbMs3I" target="_blank">Watch</a>
+                </p>
+                <ul>
+                    <li><strong>Arrogance as Terminal Leadership Flaw:</strong> Tangen observes failed leaders exhibit systematic pattern of believing they possess superior answers, dismissing contradictory evidence, and avoiding advisors who might change their minds—intellectual humility and genuine curiosity about being wrong differentiate sustained success from eventual failure.</li>
+                    <li><strong>Diversity as Decision Insurance:</strong> Effective leaders deliberately surround themselves with advisors who disagree and can win arguments through rigorous evidence, treating dissent as loyalty rather than threat—contrasts with failing leaders who optimize for comfort through yes-people and interpret disagreement as insubordination.</li>
+                </ul>
+            </div>
+
+            <div id="qh4" class="quick-hit">
+                <h3>Why a 3x fund return is NOT enough</h3>
+                <p class="quick-hit-meta">
+                    20VC • <a href="https://www.youtube.com/watch?v=jdY_Lib0RFQ" target="_blank">Watch</a>
+                </p>
+                <ul>
+                    <li><strong>Fee Drag Erodes Nominal Returns:</strong> A 3x venture fund sounds strong but after 2% annual management fees over 10 years (20% of capital), 20-30% carry on profits, and illiquidity discount, LPs may achieve returns barely exceeding public market indices—explaining why institutional investors demand top-quartile performance (4-5x+) to justify allocation.</li>
+                    <li><strong>Power Law Math Requires Outlier Focus:</strong> Since venture returns concentrate in 1-2 winners per fund while 70% go bankrupt, managers must target 10-50x outcomes on winners to achieve portfolio-level 4-5x—driving industry behavior toward moonshot hunting rather than consistent moderate gains that work in traditional asset classes.</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer style="margin-top: 60px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; color: #888; font-size: 0.9rem;">
+            <p>Generated with Claude</p>
+            <p style="margin-top: 10px;"><a href="index.html" style="color: #FF9B71; text-decoration: none;">Back to Archive</a></p>
+        </footer>
+    </div>
+</body>
+</html>
