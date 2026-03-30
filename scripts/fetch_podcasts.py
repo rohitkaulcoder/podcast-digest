@@ -135,6 +135,12 @@ CHANNELS = [
         "has_rss_transcript": False,
         "handle": "fullratchet",
     },
+    {
+        "name": "David Senra",
+        "rss_url": "https://feeds.megaphone.fm/david-senra",
+        "has_rss_transcript": False,
+        "handle": "davidsenra",
+    },
 ]
 
 
