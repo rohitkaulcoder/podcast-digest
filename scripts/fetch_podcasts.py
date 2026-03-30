@@ -370,21 +370,26 @@ def transcribe_with_groq(audio_url: str) -> Optional[str]:
         # Check file size — Groq has a 25MB limit, compress if needed
         file_size = os.path.getsize(tmp_path)
         if file_size > 24 * 1024 * 1024:
-            print(f"    🔧 Compressing audio ({file_size // 1024 // 1024}MB → mono 16kHz)...")
-            compressed_path = tmp_path + ".compressed.mp3"
-            ret = os.system(
-                f'ffmpeg -y -i "{tmp_path}" -ac 1 -ar 16000 -b:a 32k "{compressed_path}" -loglevel error 2>&1'
-            )
-            os.unlink(tmp_path)
-            if ret != 0 or not os.path.exists(compressed_path):
-                print(f"    ⚠ ffmpeg compression failed")
-                return None
-            tmp_path = compressed_path
-            file_size = os.path.getsize(tmp_path)
-            print(f"    ✓ Compressed to {file_size // 1024 // 1024}MB")
-
-            if file_size > 25 * 1024 * 1024:
-                print(f"    ⚠ Still too large after compression ({file_size // 1024 // 1024}MB)")
+            # Try 32k bitrate first, then 16k if still too large
+            for bitrate in ("32k", "16k"):
+                print(f"    🔧 Compressing audio ({file_size // 1024 // 1024}MB → mono 16kHz {bitrate})...")
+                compressed_path = tmp_path + f".{bitrate}.mp3"
+                ret = os.system(
+                    f'ffmpeg -y -i "{tmp_path}" -ac 1 -ar 16000 -b:a {bitrate} "{compressed_path}" -loglevel error 2>&1'
+                )
+                if ret != 0 or not os.path.exists(compressed_path):
+                    print(f"    ⚠ ffmpeg compression failed at {bitrate}")
+                    continue
+                new_size = os.path.getsize(compressed_path)
+                print(f"    ✓ Compressed to {new_size // 1024 // 1024}MB")
+                if new_size <= 24 * 1024 * 1024:
+                    os.unlink(tmp_path)
+                    tmp_path = compressed_path
+                    file_size = new_size
+                    break
+                os.unlink(compressed_path)
+            else:
+                print(f"    ⚠ Still too large after compression")
                 os.unlink(tmp_path)
                 return None
 

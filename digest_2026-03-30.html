@@ -8,495 +8,557 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6; color: #2D2D2D;
-            background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%);
-            min-height: 100vh; padding: 20px;
+            line-height: 1.7; color: #2D2D2D;
+            background: #ffffff;
+            min-height: 100vh; padding: 40px 20px;
         }
-        .container { max-width: 900px; margin: 0 auto; background: white; padding: 40px; box-shadow: 0 4px 20px rgba(255, 155, 113, 0.15); border-radius: 20px; }
-        header { text-align: center; padding-bottom: 30px; margin-bottom: 40px; border-bottom: none; }
-        h1 { font-size: 3rem; font-weight: 700; background: linear-gradient(135deg, #FF9B71 0%, #FF7B9C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 15px; letter-spacing: -0.02em; }
-        .stats { color: #666; font-size: 1.1rem; }
-        .export-btn { background: linear-gradient(135deg, #FF9B71 0%, #FFB88C 100%); color: white; border: none; padding: 14px 28px; border-radius: 12px; cursor: pointer; font-size: 1rem; font-weight: 500; margin: 20px auto; display: block; transition: all 0.3s; box-shadow: 0 4px 15px rgba(255, 155, 113, 0.3); }
-        .export-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 155, 113, 0.4); }
-        .themes-section { background: linear-gradient(135deg, #FFB88C 0%, #FF9B71 100%); color: white; padding: 35px; border-radius: 20px; margin: 40px 0; box-shadow: 0 8px 30px rgba(255, 155, 113, 0.25); }
-        .themes-section h2 { margin-bottom: 20px; font-size: 1.8rem; }
-        .themes-section ol { margin-left: 20px; }
-        .themes-section li { margin: 12px 0; font-size: 1.05rem; line-height: 1.5; }
-        .toc { background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%); padding: 30px; border-radius: 20px; margin: 40px 0; border: 2px solid #FFD4C4; }
-        .toc h2 { margin-bottom: 20px; color: #FF9B71; font-weight: 600; }
-        .toc ul { list-style: none; }
-        .toc li { margin: 10px 0; }
-        .toc a { color: #FF9B71; text-decoration: none; font-weight: 500; transition: color 0.2s; }
-        .toc a:hover { color: #FF7B9C; text-decoration: underline; }
-        .badge { background: linear-gradient(135deg, #FF9B71 0%, #FFB88C 100%); color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.85rem; margin-left: 8px; font-weight: 500; }
-        .episode { margin: 40px 0; padding: 35px; background: #fff; border-left: 5px solid #FF9B71; box-shadow: 0 4px 20px rgba(255, 155, 113, 0.1); border-radius: 16px; transition: all 0.3s; }
-        .episode:hover { box-shadow: 0 6px 30px rgba(255, 155, 113, 0.15); transform: translateY(-2px); }
-        .episode h2 { color: #2D2D2D; margin-bottom: 12px; font-size: 1.9rem; font-weight: 600; }
-        .episode-meta { color: #666; margin-bottom: 25px; font-size: 0.95rem; }
-        .episode-meta a { color: #FF9B71; text-decoration: none; font-weight: 500; }
-        .episode-meta a:hover { color: #FF7B9C; text-decoration: underline; }
-        .insights-container { margin-top: 25px; }
-        .insight-category { margin: 25px 0; }
-        .category-header { font-size: 1.3rem; font-weight: 600; margin-bottom: 15px; padding: 10px 15px; border-radius: 6px; color: white; }
-        .core { background: linear-gradient(135deg, #FFB88C 0%, #FF9B71 100%); }
-        .counter { background: linear-gradient(135deg, #FF9B71 0%, #FF7B9C 100%); }
-        .data { background: linear-gradient(135deg, #FFD4C4 0%, #FFB88C 100%); }
-        .future { background: linear-gradient(135deg, #FF7B9C 0%, #FFB88C 100%); }
-        .insight { margin: 20px 0; padding: 24px; background: #FFFBF8; border-radius: 16px; border-left: 4px solid #FF9B71; transition: all 0.3s; }
-        .insight:hover { background: #FFF8F3; box-shadow: 0 4px 15px rgba(255, 155, 113, 0.1); }
-        .insight h4 { color: #2D2D2D; margin-bottom: 14px; font-size: 1.15rem; line-height: 1.4; font-weight: 600; }
-        .context { margin: 15px 0; line-height: 1.75; color: #444; font-size: 0.98rem; }
-        .quote { margin: 15px 0; padding: 18px; background: white; border-left: 4px solid #FFB88C; border-radius: 8px; font-style: italic; color: #555; line-height: 1.6; }
-        .quick-hits-section { background: linear-gradient(135deg, #FFF8F3 0%, #FFE8E0 100%); padding: 35px; border-radius: 20px; margin: 40px 0; border: 2px solid #FFD4C4; }
-        .quick-hit { margin: 20px 0; padding: 20px; background: white; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .quick-hit h3 { color: #1a1a2e; margin-bottom: 10px; }
-        .quick-hit-meta { color: #666; font-size: 0.9rem; margin-bottom: 12px; }
-        .quick-hit-meta a { color: #FF9B71; text-decoration: none; }
-        .quick-hit ul { margin-left: 20px; }
-        .quick-hit li { margin: 8px 0; line-height: 1.5; }
-        @media print { body { background: white; } .container { box-shadow: none; padding: 20px; } .export-btn { display: none; } }
-        @media (max-width: 768px) { .container { padding: 20px; } h1 { font-size: 2rem; } .episode h2 { font-size: 1.4rem; } }
-        .accent-circle { position: fixed; border-radius: 50%; pointer-events: none; opacity: 0.1; z-index: -1; }
-        .accent-1 { width: 300px; height: 300px; background: #FF9B71; top: -100px; right: -100px; }
-        .accent-2 { width: 200px; height: 200px; background: #FFB88C; bottom: -50px; left: -50px; }
-        .doodle { position: fixed; pointer-events: none; opacity: 0.3; z-index: -1; }
-        .doodle-1 { top: 15%; right: 10%; width: 80px; animation: float 4s ease-in-out infinite; }
-        .doodle-2 { bottom: 20%; left: 8%; width: 60px; animation: float 5s ease-in-out infinite 1s; }
-        .doodle-3 { top: 40%; left: 5%; width: 50px; animation: float 6s ease-in-out infinite 2s; }
-        .doodle-4 { top: 60%; right: 5%; width: 70px; animation: float 5s ease-in-out infinite 1.5s; }
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+        .container { max-width: 820px; margin: 0 auto; }
+        header { padding-bottom: 30px; margin-bottom: 40px; border-bottom: 2px solid #eee; }
+        h1 { font-size: 2rem; font-weight: 700; color: #111; margin-bottom: 6px; }
+        .date-line { color: #888; font-size: 1rem; }
+        .episode { margin: 0 0 50px; }
+        .episode-title { font-size: 1.4rem; font-weight: 700; color: #111; margin-bottom: 4px; line-height: 1.3; }
+        .episode-podcast { color: #888; font-size: 0.9rem; margin-bottom: 20px; }
+        .category { margin: 18px 0; }
+        .category-label {
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+            color: #fff; padding: 3px 10px; border-radius: 3px; display: inline-block; margin-bottom: 10px;
+        }
+        .cat-core { background: #333; }
+        .cat-counter { background: #b44; }
+        .cat-data { background: #48a; }
+        .cat-future { background: #6a6; }
+        .insight { margin: 12px 0; padding: 14px 18px; background: #f9f9f9; border-left: 3px solid #ddd; border-radius: 4px; }
+        .insight h4 { font-size: 0.95rem; font-weight: 600; color: #222; margin-bottom: 6px; }
+        .insight p { font-size: 0.9rem; color: #555; line-height: 1.65; }
+        .insight .quote { font-style: italic; color: #777; margin-top: 8px; padding-left: 12px; border-left: 2px solid #ccc; font-size: 0.88rem; }
+        .divider { border: none; border-top: 1px solid #eee; margin: 40px 0; }
+        footer { text-align: center; color: #bbb; font-size: 0.8rem; padding: 30px 0 10px; }
     </style>
 </head>
 <body>
-    <div class="accent-circle accent-1"></div>
-    <div class="accent-circle accent-2"></div>
-    <svg class="doodle doodle-1" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20,50 Q35,20 50,50 T80,50" stroke="#FF9B71" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <circle cx="20" cy="50" r="4" fill="#FF9B71"/><circle cx="80" cy="50" r="4" fill="#FF9B71"/>
-    </svg>
-    <svg class="doodle doodle-2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="25" stroke="#FFB88C" stroke-width="3" fill="none"/>
-        <circle cx="50" cy="50" r="15" stroke="#FFB88C" stroke-width="2" fill="none"/>
-        <circle cx="50" cy="50" r="5" fill="#FFB88C"/>
-    </svg>
-    <svg class="doodle doodle-3" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M30,70 L50,30 L70,70 Z" stroke="#FF7B9C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="50" cy="50" r="3" fill="#FF7B9C"/>
-    </svg>
-    <svg class="doodle doodle-4" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M25,50 L40,35 L55,50 L70,35 L85,50" stroke="#FF9B71" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="25" cy="50" r="4" fill="#FF9B71"/><circle cx="85" cy="50" r="4" fill="#FF9B71"/>
-    </svg>
+<div class="container">
 
-    <div class="container">
-        <header>
-            <h1>&#127897; Podcast Digest</h1>
-            <p class="stats">March 30, 2026 &bull; 5 Full Episodes &bull; 1 Quick Hit &bull; 30 Insights</p>
-        </header>
-        <button class="export-btn" onclick="window.print()">&#128196; Export as PDF</button>
+<header>
+    <h1>Podcast Digest</h1>
+    <div class="date-line">March 30, 2026 &mdash; 10 episodes</div>
+</header>
 
-        <!-- THEMES SECTION -->
-        <div class="themes-section">
-            <h2>&#128293; Top 5 Recurring Themes</h2>
-            <ol>
-                <li><strong>The Venture Model Under Pressure</strong> &mdash; Entry prices at 100-150x ARR, ballooning fund sizes, and declining public multiples are forcing a reckoning for VCs and LPs alike</li>
-                <li><strong>Relationships as Durable Competitive Advantage</strong> &mdash; From Ron Conway's 40-year Rolodex to Footwork's 2x board seats, the best investors win through networks, not just capital</li>
-                <li><strong>AI Agents Are Reshaping Work and Life</strong> &mdash; Claire Vo runs nine specialized OpenClaw agents; 20-40% of public company board meetings now focus on AI strategy</li>
-                <li><strong>America's Manufacturing Renaissance</strong> &mdash; The Navy needs 70 million labor hours for submarine production; software-driven factories aim to 2-3x worker productivity to fill the gap</li>
-                <li><strong>Founder-Investor Alignment at Inflection Points</strong> &mdash; The highest-stakes VC conflicts revolve around when to sell, how to handle crises, and whether to fight for founders or protect portfolios</li>
-            </ol>
+<!-- Episode 1: 20VC Gilly Renan -->
+<div class="episode">
+    <div class="episode-title">The Venture Model is Broken | You Need to be Greedy and Selfish to Win Early</div>
+    <div class="episode-podcast">20VC</div>
+
+    <div class="category">
+        <div class="category-label cat-core">Core</div>
+        <div class="insight">
+            <h4>Seed investing requires selfishness and greed as virtues</h4>
+            <p>Gilly Renan, former Sequoia GP and founder of CyberStarts, argues that early-stage investing demands a mindset most people consider negative. With his Fund 1 producing a decacorn (Wiz), seven unicorns, and three acquisitions from just 19 companies, the math works precisely because he's ruthlessly selective.</p>
+            <div class="quote">"We need to be selfish and we need to be greedy. Those are good traits for an early stage investor."</div>
         </div>
-
-        <!-- TABLE OF CONTENTS -->
-        <div class="toc">
-            <h2>&#128209; Table of Contents</h2>
-            <ul>
-                <li><strong>&#128309; Core Insights</strong></li>
-                <li>&nbsp;&nbsp;&nbsp;<a href="#core-1">The venture business structurally does not work for most players</a></li>
-                <li>&nbsp;&nbsp;&nbsp;<a href="#core-2">Multiple specialized AI agents beat one general-purpose agent</a></li>
-                <li>&nbsp;&nbsp;&nbsp;<a href="#core-3">The U.S. lost 9 out of 10 submarine manufacturing jobs post-Cold War</a></li>
-                <li>&nbsp;&nbsp;&nbsp;...and 11 more</li>
-                <li style="margin-top: 15px;"><strong>&#128995; Counter-Intuitive</strong></li>
-                <li>&nbsp;&nbsp;&nbsp;<a href="#counter-1">Gross margins don't matter for early-stage companies</a></li>
-                <li>&nbsp;&nbsp;&nbsp;<a href="#counter-2">IPOs are marketing events, not liquidity events</a></li>
-                <li>&nbsp;&nbsp;&nbsp;<a href="#counter-3">Ron Conway hates managing people despite building a legendary firm</a></li>
-                <li>&nbsp;&nbsp;&nbsp;...and 7 more</li>
-                <li style="margin-top: 15px;"><strong>&#128994; Data Points</strong></li>
-                <li>&nbsp;&nbsp;&nbsp;<a href="#data-1">Only 1-2 out of 150 Israeli cybersecurity startups become unicorns per year</a></li>
-                <li>&nbsp;&nbsp;&nbsp;<a href="#data-2">Wiz grew from $1M to $24M in new ARR in its first year</a></li>
-                <li>&nbsp;&nbsp;&nbsp;<a href="#data-3">Submarine workers currently operate at less than 50% productivity</a></li>
-                <li>&nbsp;&nbsp;&nbsp;...and 8 more</li>
-                <li style="margin-top: 15px;"><strong>&#128992; Future-Looking</strong></li>
-                <li>&nbsp;&nbsp;&nbsp;<a href="#future-1">AI will enable millions of new entrepreneurs who couldn't build before</a></li>
-                <li>&nbsp;&nbsp;&nbsp;<a href="#future-2">Submarines will command fleets of underwater drones</a></li>
-                <li>&nbsp;&nbsp;&nbsp;<a href="#future-3">Employee liquidity programs will replace IPOs as the primary retention tool</a></li>
-                <li>&nbsp;&nbsp;&nbsp;...and 9 more</li>
-            </ul>
+        <div class="insight">
+            <h4>The T2D3 framework remains the north star for SaaS greatness</h4>
+            <p>Triple-triple-double-double-double: 3x new ARR in year 2, then 3x again, then double three times. Starting with $1M new ARR, that yields $144M new ARR by year 5. The bar for what constitutes a great company hasn't changed, even if individual companies can exceed it.</p>
         </div>
-
-        <!-- CORE INSIGHTS -->
-        <div class="insight-category">
-            <div class="category-header core">&#128309; Core Insights</div>
-
-            <div class="insight" id="core-1">
-                <h4>The venture business structurally does not work &mdash; and that's by design</h4>
-                <div class="episode-meta">[20VC] The Venture Model is Broken | Gili Raanan &bull; <a href="https://thetwentyminutevc.libsyn.com/20vc-the-venture-model-is-broken-you-need-to-be-greedy-and-selfish-to-win-early-stage-investing-why-margins-do-not-matter-for-early-stage-startups-the-growth-rate-that-is-required-in-a-world-of-ai-with-gili-raanan-founder-cyberstarts">Listen &rarr;</a></div>
-                <div class="context">Gili Raanan, founder of Cyberstarts and former Sequoia GP, argues that the venture business is not supposed to work for most players. Returns distribution is inherently unequal, and only a tiny number of firms (Sequoia, Andreessen, Benchmark, Greylock, Lightspeed) sustain performance over decades. With money flooding into the market, LPs who have distributed their venture allocation evenly should be worried.</div>
-                <div class="quote">"The expectation that a venture business would work out is set yourself for disappointment from the get-go. It doesn't work. Now, it worked for some people. It worked for some people for some time. And the number of people it works for over a long period of time is super small."</div>
-            </div>
-
-            <div class="insight" id="core-2">
-                <h4>Multiple specialized AI agents beat one general-purpose agent</h4>
-                <div class="episode-meta">[Lenny] From Skeptic to True Believer: How OpenClaw Changed My Life | Claire Vo &bull; <a href="https://www.lennysnewsletter.com/p/how-openclaw-changed-my-life-claire-vo">Listen &rarr;</a></div>
-                <div class="context">Claire Vo, former product executive and founder of ChatPRD, runs nine specialized OpenClaw agents across multiple Mac Minis and old laptops. Each agent handles a specific domain: family calendar, inbound sales, kids' homework help, podcast prep, and course management. The approach of dedicated agents per task outperforms trying to use a single AI for everything.</div>
-                <div class="quote">"Claire now runs her business, podcast, and family life with the help of nine OpenClaw agents running on multiple Mac Minis and old laptops... from OpenClaw skeptic (it deleted her family calendar the first time she tried it) to true believer."</div>
-            </div>
-
-            <div class="insight" id="core-3">
-                <h4>The U.S. lost 9 out of 10 submarine manufacturing jobs after the Cold War</h4>
-                <div class="episode-meta">[A16Z] Submarines and the Future of Defense Manufacturing &bull; <a href="https://a16z.simplecast.com/episodes/submarines-and-the-future-of-defense-manufacturing-KGko_EJ6">Listen &rarr;</a></div>
-                <div class="context">After the Cold War ended, the U.S. essentially walked away from submarine manufacturing. Production collapsed from four nuclear submarines per year in the mid-1980s to roughly three total in the entire 1990s. Nine out of ten manufacturing jobs vanished, and an entire generation was told to skip the factory floor. Now, the Navy needs more than five times the capacity it had a decade ago, and the workers who could fill those roles aged out with nobody replacing them.</div>
-                <div class="quote">"At the end of the Cold War, we walked away from manufacturing. We only built about three submarines in the 1990s... the amount of work that we need now to replenish our fleet is on the order of about 70 million hours."</div>
-            </div>
-
-            <div class="insight" id="core-4">
-                <h4>Ron Conway's investing philosophy: be an advocate for founders, not a passive check-writer</h4>
-                <div class="episode-meta">[Uncapped] Ron Conway from SV Angel &bull; <a href="#">Listen &rarr;</a></div>
-                <div class="context">Ron Conway describes SV Angel's core operating principle: "advocates for founders" who are always on, whether it's 2 AM or in the middle of a crisis. This isn't passive angel investing &mdash; it means helping with UCSF hospital connections for sick family members, fighting the government during the SVB crisis, and rallying to reinstate Sam Altman at OpenAI. Conway views his relationship network as SV Angel's most valuable asset.</div>
-                <div class="quote">"If SV Angel had a moniker, it would be advocates for founders. We want to help the whole founder... If they have a problem at two in the morning and I'm in Venice, I'm picking up the phone."</div>
-            </div>
-
-            <div class="insight" id="core-5">
-                <h4>Velocity and growth rate are the single best predictor of company success</h4>
-                <div class="episode-meta">[20VC] The Venture Model is Broken | Gili Raanan &bull; <a href="https://thetwentyminutevc.libsyn.com/20vc-the-venture-model-is-broken-you-need-to-be-greedy-and-selfish-to-win-early-stage-investing-why-margins-do-not-matter-for-early-stage-startups-the-growth-rate-that-is-required-in-a-world-of-ai-with-gili-raanan-founder-cyberstarts">Listen &rarr;</a></div>
-                <div class="context">Gili Raanan argues that when a company grows exceptionally fast, it becomes part of their DNA. It doesn't just slow down because of averages &mdash; there needs to be a significant external event. His benchmark: 4x, 4x, 3x, 3x growth in new ARR over the first five years, which compounds to 144x. A company doing $1M in year one would book $144M in new ARR by year five.</div>
-                <div class="quote">"Whenever you see a business that's growing very, very fast, it's a good company... if a company grows fast, it would continue to grow fast. It's part of the DNA. They probably do something very right at that company."</div>
-            </div>
-
-            <div class="insight" id="core-6">
-                <h4>Thematic investing is the only way to build conviction at the seed stage</h4>
-                <div class="episode-meta">[Uncapped] Ron Conway from SV Angel &bull; <a href="#">Listen &rarr;</a></div>
-                <div class="context">SV Angel has always been thematic investors, typically tracking about six themes at any given time. Any company fitting those themes gets serious consideration; everything outside gets quickly turned down. This approach has been consistent from the search engine era through B2B, internet, and now AI. Within AI, they've had to create sub-themes because everything is AI.</div>
-                <div class="quote">"We're always thematic. We have this piece of paper... we're always looking at probably six themes. Any company in that theme that comes in the door, we're going to at least take a look at. If it doesn't fit those themes, we pretty quickly turn them down."</div>
-            </div>
-
-            <div class="insight" id="core-7">
-                <h4>The submarine industrial base is not a money problem &mdash; it's a people problem</h4>
-                <div class="episode-meta">[A16Z] Submarines and the Future of Defense Manufacturing &bull; <a href="https://a16z.simplecast.com/episodes/submarines-and-the-future-of-defense-manufacturing-KGko_EJ6">Listen &rarr;</a></div>
-                <div class="context">Chris Power of Hadrian explains that the capital can be purchased, but the skilled workforce simply doesn't exist. The U.S. told kids in the '80s and '90s to skip manufacturing and get four-year degrees instead. Now the remaining skilled workers are in their late 50s and 60s, and training a Navy welder takes a decade. Software must augment workers to get 50-70% fewer people to produce the same output.</div>
-                <div class="quote">"We could spend $10 billion hiring 2 million welders that he needs. They just don't exist in the country. We have to get this productivity uplift by fusing workforce training and software together to go a lot faster."</div>
-            </div>
-
-            <div class="insight" id="core-8">
-                <h4>Footwork's secret sauce: take 2x board seats and deliver a 1-pager instead of a deck</h4>
-                <div class="episode-meta">[Peel] Footwork's Secret Sauce | Mike Smith and Nikhil Basu Trivedi &bull; <a href="https://podcasters.spotify.com/pod/show/turner-novak/episodes/Footworks-Secret-Sauce--Mike-Smith-and-Nikhil-Basu-Trivedi-e3h019d">Listen &rarr;</a></div>
-                <div class="context">Footwork, the seed/Series A firm founded by Mike Smith and Nikhil Basu Trivedi, differentiates through unusually deep engagement: they take two board seats per investment and distill their analysis into a one-page document rather than sprawling pitch decks. They believe investors should also talk to and help employees, not just founders &mdash; extending their impact deeper into the organization.</div>
-                <div class="quote">"Investors should talk to and help employees... the pace of VC is faster than operating."</div>
-            </div>
-
-            <div class="insight" id="core-9">
-                <h4>If you don't disrupt yourself, you will be disrupted</h4>
-                <div class="episode-meta">[Uncapped] Ron Conway from SV Angel &bull; <a href="#">Listen &rarr;</a></div>
-                <div class="context">Conway learned this lesson firsthand at Altos Computer in the 1980s. After a successful IPO, the company became complacent and was overtaken by PCs connected to Ethernet, which replaced their multi-user systems. They had to sell to Acer. This experience shaped Conway's approach to investing: he constantly looks for companies that are disrupting incumbents and warns founders against complacency.</div>
-                <div class="quote">"If you don't disrupt yourself, you will be disrupted. We were complacent. We had a great IPO. We thought we were king of the hill. And along came this little thing called a PC connected to the Ethernet."</div>
-            </div>
-
-            <div class="insight" id="core-10">
-                <h4>Avoiding the biggest OpenClaw mistake: don't install it on your main computer</h4>
-                <div class="episode-meta">[Lenny] From Skeptic to True Believer: How OpenClaw Changed My Life | Claire Vo &bull; <a href="https://www.lennysnewsletter.com/p/how-openclaw-changed-my-life-claire-vo">Listen &rarr;</a></div>
-                <div class="context">Claire Vo's biggest lesson from deploying AI agents is to isolate them from your primary work environment. Her first experience with OpenClaw was catastrophic &mdash; it deleted her family calendar. By running agents on separate Mac Minis and old laptops, she contains risk while allowing agents to operate with the autonomy they need to be effective.</div>
-                <div class="quote">"How to avoid the biggest OpenClaw mistakes: don't install it on your main computer."</div>
-            </div>
-
-            <div class="insight">
-                <h4>Venture needs selfishness and greed &mdash; they're features, not bugs</h4>
-                <div class="episode-meta">[20VC] The Venture Model is Broken | Gili Raanan &bull; <a href="https://thetwentyminutevc.libsyn.com/20vc-the-venture-model-is-broken-you-need-to-be-greedy-and-selfish-to-win-early-stage-investing-why-margins-do-not-matter-for-early-stage-startups-the-growth-rate-that-is-required-in-a-world-of-ai-with-gili-raanan-founder-cyberstarts">Listen &rarr;</a></div>
-                <div class="context">Raanan reframes traits normally considered negative as essential for early-stage investing. Price discipline, selectivity, and a willingness to walk away from deals that don't meet your criteria are what separate sustained performers from the crowd. When seed valuations are inflated (100-150x ARR), skepticism is healthy.</div>
-                <div class="quote">"We need to be selfish and we need to be greedy. Those are good traits for an early stage investor. Those are not bad, negative traits for anybody who's dealing with early stage."</div>
-            </div>
-
-            <div class="insight">
-                <h4>Fearlessness for founders: the willingness to fight is what separates great investors</h4>
-                <div class="episode-meta">[Uncapped] Ron Conway from SV Angel &bull; <a href="#">Listen &rarr;</a></div>
-                <div class="context">Conway didn't sleep for three days during the SVB crisis, working to get the government to guarantee deposits before the Tokyo stock market opened on Monday. He got "very, very firm" with Senator Sherrod Brown and Rep. Maxine Waters. Similarly, during the OpenAI board crisis, he had "conviction that the founder had been mistreated" and "took no prisoners" to reinstate Sam Altman.</div>
-                <div class="quote">"If I had a gravestone, just 'fearless for founders.' That's what we're about. Because founders do get abused... when that happens, we don't like it. And we get the blinders on until we fix it."</div>
-            </div>
-
-            <div class="insight">
-                <h4>A single accountable person in charge is the biggest unlock for defense procurement</h4>
-                <div class="episode-meta">[A16Z] Submarines and the Future of Defense Manufacturing &bull; <a href="https://a16z.simplecast.com/episodes/submarines-and-the-future-of-defense-manufacturing-KGko_EJ6">Listen &rarr;</a></div>
-                <div class="context">The Pentagon created a new role &mdash; direct reporting portfolio manager for submarines (colloquially "submarine czar") &mdash; reporting directly to Deputy Defense Secretary Steven Feinberg. This short-circuits bureaucracy that previously slowed submarine production. Chris Power notes this single-accountability model is being replicated across drone dominance and Golden Dome programs.</div>
-                <div class="quote">"One of the smartest things we could be doing is, hey, there is a single accountable person that just runs this instead of 20 people trying to contribute... that's not possible unless there's a single man or woman in charge."</div>
-            </div>
-
-            <div class="insight">
-                <h4>Product-market fit is a structured exercise, not a happy accident</h4>
-                <div class="episode-meta">[20VC] The Venture Model is Broken | Gili Raanan &bull; <a href="https://thetwentyminutevc.libsyn.com/20vc-the-venture-model-is-broken-you-need-to-be-greedy-and-selfish-to-win-early-stage-investing-why-margins-do-not-matter-for-early-stage-startups-the-growth-rate-that-is-required-in-a-world-of-ai-with-gili-raanan-founder-cyberstarts">Listen &rarr;</a></div>
-                <div class="context">At Cyberstarts, every portfolio company goes through a structured product-market fit exercise: aligning the pain point in the market with the solution so you're selling something people will use, love, buy more of, and recommend. This isn't just a concept &mdash; it's a formalized process that has driven breakout growth at companies like Wiz and Sierra.</div>
-                <div class="quote">"It's an attempt to get into some sort of alignment between the pain point in the market and the solution you have. So you really sell something that people would use and love and buy more and recommend to their friends and colleagues."</div>
-            </div>
+        <div class="insight">
+            <h4>Focus on portfolio, not coverage</h4>
+            <p>Renan admits missing maybe one or two Israeli cyber seed deals in eight years, but deliberately refuses to stress about comprehensive coverage. Energy goes into existing portfolio companies, not chasing every deal.</p>
+            <div class="quote">"If you are stressed about winning every battle, I can predict you are not going to be in every important AI company."</div>
         </div>
-
-        <!-- COUNTER-INTUITIVE -->
-        <div class="insight-category">
-            <div class="category-header counter">&#128995; Counter-Intuitive</div>
-
-            <div class="insight" id="counter-1">
-                <h4>Gross margins don't matter for early-stage companies &mdash; talk about them in 2029</h4>
-                <div class="episode-meta">[20VC] The Venture Model is Broken | Gili Raanan &bull; <a href="https://thetwentyminutevc.libsyn.com/20vc-the-venture-model-is-broken-you-need-to-be-greedy-and-selfish-to-win-early-stage-investing-why-margins-do-not-matter-for-early-stage-startups-the-growth-rate-that-is-required-in-a-world-of-ai-with-gili-raanan-founder-cyberstarts">Listen &rarr;</a></div>
-                <div class="context">Despite personally believing gross margins are important vital signs for healthy businesses, Raanan says he never discusses gross margins with his early-stage cybersecurity companies. The job of the investor is to help founders prioritize what to tackle this year versus what can wait. Margins can wait until 2029 if the foundations of a healthy business are being built now.</div>
-                <div class="quote">"How often I discuss gross margins with my early stage companies? Never. Part of our job as investors is to really help the founders realize what problems they need to tackle right now... I would tell you, gross margins are important. Let's talk about it in 2029."</div>
-            </div>
-
-            <div class="insight" id="counter-2">
-                <h4>IPOs are marketing events, not liquidity events &mdash; they're actually the opposite of liquidity</h4>
-                <div class="episode-meta">[20VC] The Venture Model is Broken | Gili Raanan &bull; <a href="https://thetwentyminutevc.libsyn.com/20vc-the-venture-model-is-broken-you-need-to-be-greedy-and-selfish-to-win-early-stage-investing-why-margins-do-not-matter-for-early-stage-startups-the-growth-rate-that-is-required-in-a-world-of-ai-with-gili-raanan-founder-cyberstarts">Listen &rarr;</a></div>
-                <div class="context">Raanan challenges the common assumption that IPOs are about financial liquidity. In reality, you get shackles on your hands, cannot sell stock, and face all kinds of limitations. The real value is branding: telling customers, partners, and employees "I'm here to stay." This reframing explains why companies like Stripe and Canva have been content to stay private.</div>
-                <div class="quote">"Going public is not a financial event. It's a branding event... It's hell for liquidity, but it's an important marketing event."</div>
-            </div>
-
-            <div class="insight" id="counter-3">
-                <h4>Ron Conway hates managing people &mdash; and that's what made him a legendary investor</h4>
-                <div class="episode-meta">[Uncapped] Ron Conway from SV Angel &bull; <a href="#">Listen &rarr;</a></div>
-                <div class="context">After scaling Altos Computer to nearly 1,000 employees and taking it public, Conway realized he hated managing people. Don Valentine of Sequoia suggested he attend board meetings and become an angel investor instead. Conway's self-awareness about his own weaknesses &mdash; and willingness to lean into strengths (connecting people, fighting for founders) &mdash; became the foundation of SV Angel.</div>
-                <div class="quote">"I don't like managing people. I found that out because close to a thousand people and you just become an HR director in my opinion... Don said, well if you don't like managing people, why don't you just come hang out with me. Come to board meetings and watch me give founders advice."</div>
-            </div>
-
-            <div class="insight">
-                <h4>You can create a market that doesn't exist &mdash; just like the iPhone in 2006</h4>
-                <div class="episode-meta">[20VC] The Venture Model is Broken | Gili Raanan &bull; <a href="https://thetwentyminutevc.libsyn.com/20vc-the-venture-model-is-broken-you-need-to-be-greedy-and-selfish-to-win-early-stage-investing-why-margins-do-not-matter-for-early-stage-startups-the-growth-rate-that-is-required-in-a-world-of-ai-with-gili-raanan-founder-cyberstarts">Listen &rarr;</a></div>
-                <div class="context">Island, an enterprise browser company founded in 2019, is now a $5B company competing with free products from Google and Microsoft. In 2019, zero CISOs said they needed an enterprise browser &mdash; just like zero consumers asked for an iPhone in 2006. Island defined and grew its own market, selling to Fortune 100 banks that now use Island browsers instead of Chrome.</div>
-                <div class="quote">"The number of CISOs that told us that they need an enterprise browser equals the number of users that told the market in 2006 that they need an iPhone. It's a market that doesn't exist. And still, the company is growing super fast."</div>
-            </div>
-
-            <div class="insight">
-                <h4>Let team members play to their strengths, not fix their weaknesses</h4>
-                <div class="episode-meta">[Uncapped] Ron Conway from SV Angel &bull; <a href="#">Listen &rarr;</a></div>
-                <div class="context">Conway's approach to building a great venture partnership is counterintuitive: instead of creating guardrails that bring everyone to the same mode of operation, he lets each team member play to their relative strengths. On weaknesses, the best they can be is average. On strengths, they create real differentiation.</div>
-                <div class="quote">"I would let each team member play on their relative strengths and would not require them to focus on improving their weaknesses... on their weaknesses, at the best case, they can be as good as the market. But on the things that are exceptional, they are creating real advantage."</div>
-            </div>
-
-            <div class="insight">
-                <h4>The AI boom is bigger than semiconductors, computers, software, and the internet combined</h4>
-                <div class="episode-meta">[Uncapped] Ron Conway from SV Angel &bull; <a href="#">Listen &rarr;</a></div>
-                <div class="context">Ron Conway has lived through every major technology cycle since the 1970s &mdash; semiconductors at National Semiconductor, PCs at Altos Computer, the software era, the internet boom. He states flatly that AI dwarfs all of them combined, making it harder than ever to keep up. Even during the internet boom, you could track what was happening. With AI, the pace of change is overwhelming even for insiders.</div>
-                <div class="quote">"The AI boom is bigger than all of those combined. I swear to God. It's hard to fathom. It's hard to keep up with. Even in the Internet boom, you could kind of keep track of things."</div>
-            </div>
-
-            <div class="insight">
-                <h4>Too much money is actually not a problem for great founders</h4>
-                <div class="episode-meta">[20VC] The Venture Model is Broken | Gili Raanan &bull; <a href="https://thetwentyminutevc.libsyn.com/20vc-the-venture-model-is-broken-you-need-to-be-greedy-and-selfish-to-win-early-stage-investing-why-margins-do-not-matter-for-early-stage-startups-the-growth-rate-that-is-required-in-a-world-of-ai-with-gili-raanan-founder-cyberstarts">Listen &rarr;</a></div>
-                <div class="context">Harry Stebbings pushes back about "foie grasing" &mdash; flooding companies with too much capital too early. Raanan rejects the premise entirely. If you trust a founder to build a critical cybersecurity company protecting the nation's most sensitive information, you should trust them to handle extra cash. If you don't, you're babysitting, not investing.</div>
-                <div class="quote">"I'm not in a business of babysitting founders. For me, this is like babysitting the founder. If we trust them to build an important cybersecurity company... and you tell them, okay, you can't handle some extra cushion in a bank. I don't buy into that."</div>
-            </div>
-
-            <div class="insight">
-                <h4>Building a submarine demands higher precision than building a rocket</h4>
-                <div class="episode-meta">[A16Z] Submarines and the Future of Defense Manufacturing &bull; <a href="https://a16z.simplecast.com/episodes/submarines-and-the-future-of-defense-manufacturing-KGko_EJ6">Listen &rarr;</a></div>
-                <div class="context">Chris Power of Hadrian pushes back against the assumption that rockets represent the pinnacle of manufacturing difficulty. In terms of tolerancing, precision, quality, and welding requirements, submarines are more demanding. A submarine must operate perfectly for 30-40 years underwater &mdash; there's no room for error at any step.</div>
-                <div class="quote">"If you think about easy manufacturing and difficult manufacturing, and maybe you put Starship at the top of the list, submarines in terms of tolerancing and precision and quality and welding are easily number one."</div>
-            </div>
-
-            <div class="insight">
-                <h4>Founders chemistry matters more than individual spikiness</h4>
-                <div class="episode-meta">[20VC] The Venture Model is Broken | Gili Raanan &bull; <a href="https://thetwentyminutevc.libsyn.com/20vc-the-venture-model-is-broken-you-need-to-be-greedy-and-selfish-to-win-early-stage-investing-why-margins-do-not-matter-for-early-stage-startups-the-growth-rate-that-is-required-in-a-world-of-ai-with-gili-raanan-founder-cyberstarts">Listen &rarr;</a></div>
-                <div class="context">Raanan recently changed his mind on this. While many investors focus on the "spikiest" individual founder, he now believes the chemistry between co-founders is far more important. His simple tests: Do they know each other? Were they roommates? Did they work together through challenges? The founding relationship "extremely, extremely matters."</div>
-                <div class="quote">"Founders chemistry, how important that is... Focus on the teams that you have the most chemistry with."</div>
-            </div>
-
-            <div class="insight">
-                <h4>Conway's first angel investment was in AI &mdash; in the early 1990s</h4>
-                <div class="episode-meta">[Uncapped] Ron Conway from SV Angel &bull; <a href="#">Listen &rarr;</a></div>
-                <div class="context">Conway's very first angel investment was Natural Language Incorporated, a Berkeley-based AI company. It was decades too early for AI to work commercially, so they sold the team to Bill Gates at Microsoft in a deal Conway personally forced to close in a single day by telling Gates they'd sell to someone else otherwise. The founder still works at Microsoft today.</div>
-                <div class="quote">"My first investment ever. I'm not exaggerating. Natural Language Incorporated, Berkeley, California. Natural language. Sounds like AI. Way too early for AI. So we went up to Microsoft and Bill Gates already was all over AI."</div>
-            </div>
-        </div>
-
-        <!-- DATA POINTS -->
-        <div class="insight-category">
-            <div class="category-header data">&#128994; Data Points</div>
-
-            <div class="insight" id="data-1">
-                <h4>Only 1-2 out of 150 Israeli cybersecurity startups become unicorns in a typical year</h4>
-                <div class="episode-meta">[20VC] The Venture Model is Broken | Gili Raanan &bull; <a href="https://thetwentyminutevc.libsyn.com/20vc-the-venture-model-is-broken-you-need-to-be-greedy-and-selfish-to-win-early-stage-investing-why-margins-do-not-matter-for-early-stage-startups-the-growth-rate-that-is-required-in-a-world-of-ai-with-gili-raanan-founder-cyberstarts">Listen &rarr;</a></div>
-                <div class="context">Israel represents approximately 40% of the global cybersecurity startup market. In 2025, only two Israeli companies became unicorns. In 2024, it was just one. The sole outlier was 2021 with seven. Yet entry prices for seed rounds have ballooned to $100-150M post-money, creating a fundamentally imbalanced market where the math doesn't work for most investors.</div>
-                <div class="quote">"Out of around 150 new companies in cybersecurity in Israel, the likelihood you'll hit a successful company is still 1 out of 150, maybe 2 out of 150. And the entry prices are going significantly higher... the market is not balanced."</div>
-            </div>
-
-            <div class="insight" id="data-2">
-                <h4>Wiz grew from $1M to $24M in new ARR in its first year of selling</h4>
-                <div class="episode-meta">[20VC] The Venture Model is Broken | Gili Raanan &bull; <a href="https://thetwentyminutevc.libsyn.com/20vc-the-venture-model-is-broken-you-need-to-be-greedy-and-selfish-to-win-early-stage-investing-why-margins-do-not-matter-for-early-stage-startups-the-growth-rate-that-is-required-in-a-world-of-ai-with-gili-raanan-founder-cyberstarts">Listen &rarr;</a></div>
-                <div class="context">Wiz's first year of selling software in 2020 shows what exceptional growth looks like: Q1 was $1M, Q2 was $2M, Q3 was $8M, Q4 was $24M. Out of Cyberstarts' 19-company Fund 1 portfolio, Wiz became a decacorn, plus seven unicorns, plus three acquisitions &mdash; an extraordinary hit rate that proves the power of growth velocity as a predictor.</div>
-                <div class="quote">"At Wiz, when you look at the first year of selling software, the first quarter was a million dollar. And then second quarter was two million dollars. And then eight and then 24. That's an amazing year."</div>
-            </div>
-
-            <div class="insight" id="data-3">
-                <h4>Submarine workers currently operate at less than 50% productivity</h4>
-                <div class="episode-meta">[A16Z] Submarines and the Future of Defense Manufacturing &bull; <a href="https://a16z.simplecast.com/episodes/submarines-and-the-future-of-defense-manufacturing-KGko_EJ6">Listen &rarr;</a></div>
-                <div class="context">Admiral Goucher reveals that in some areas, submarine manufacturing workers are less than 50% productive &mdash; for every two person-hours, only one hour of actual work gets done. Even at peak performance in the mid-1980s when the U.S. built four submarines per year, productivity was only 0.7 to 0.8. Machines and software could push this above human limits by running around the clock.</div>
-                <div class="quote">"What I would tell you is in some areas today, we are less than 50% productive. So essentially for every two people, I'm getting one hour. And that's no one's fault. That's just where we are."</div>
-            </div>
-
-            <div class="insight">
-                <h4>Cyberstarts Fund 1: 1 decacorn, 7 unicorns, 3 acquisitions out of 19 companies</h4>
-                <div class="episode-meta">[20VC] The Venture Model is Broken | Gili Raanan &bull; <a href="https://thetwentyminutevc.libsyn.com/20vc-the-venture-model-is-broken-you-need-to-be-greedy-and-selfish-to-win-early-stage-investing-why-margins-do-not-matter-for-early-stage-startups-the-growth-rate-that-is-required-in-a-world-of-ai-with-gili-raanan-founder-cyberstarts">Listen &rarr;</a></div>
-                <div class="context">Gili Raanan's first fund at Cyberstarts achieved a remarkable hit rate: from 19 companies, he invested in Wiz (decacorn), seven unicorns, and three other companies that were acquired. He attributes this to deep domain expertise in cybersecurity combined with the structured product-market fit exercises he runs with every portfolio company.</div>
-                <div class="quote">"In his 19-company portfolio of Fund 1... he invested in a Decacorn, Wiz, seven unicorns, and he had three other companies acquired. That is an insane hit rate."</div>
-            </div>
-
-            <div class="insight">
-                <h4>350-400 new cybersecurity startups get funded every year globally</h4>
-                <div class="episode-meta">[20VC] The Venture Model is Broken | Gili Raanan &bull; <a href="https://thetwentyminutevc.libsyn.com/20vc-the-venture-model-is-broken-you-need-to-be-greedy-and-selfish-to-win-early-stage-investing-why-margins-do-not-matter-for-early-stage-startups-the-growth-rate-that-is-required-in-a-world-of-ai-with-gili-raanan-founder-cyberstarts">Listen &rarr;</a></div>
-                <div class="context">The flow of new cybersecurity startups has been steady at about 350-400 companies per year across the U.S., Israel, and Europe over the past 20 years. That means 4,000+ new cybersecurity startups were created in the past decade, with another 4,000-5,000 expected in the coming decade. Despite this volume, the probability of any single company hitting unicorn status remains roughly 1%.</div>
-                <div class="quote">"The past decade, there were about 4,000 new cybersecurity startups. And in the next decade, there'll be probably four to five, maybe a thousand cybersecurity startups in the world."</div>
-            </div>
-
-            <div class="insight">
-                <h4>A Columbia-class submarine costs $16B and takes nearly a decade to build</h4>
-                <div class="episode-meta">[A16Z] Submarines and the Future of Defense Manufacturing &bull; <a href="https://a16z.simplecast.com/episodes/submarines-and-the-future-of-defense-manufacturing-KGko_EJ6">Listen &rarr;</a></div>
-                <div class="context">The Columbia-class ballistic missile submarines &mdash; the replacement for the aging Ohio-class fleet &mdash; represent one of the most expensive and complex manufacturing programs in history. Each submarine requires roughly 70 million labor hours across the full program. Hadrian's new 2.25 million square foot Factory 4 in Alabama is dedicated specifically to supporting this program.</div>
-                <div class="quote">"A Columbia-class submarine costs $16 billion, takes almost a decade to build, carries the nuclear deterrent."</div>
-            </div>
-
-            <div class="insight">
-                <h4>Stitch Fix went from $0 to $1B revenue in five years on just $17M in capital</h4>
-                <div class="episode-meta">[Peel] Footwork's Secret Sauce | Mike Smith and Nikhil Basu Trivedi &bull; <a href="https://podcasters.spotify.com/pod/show/turner-novak/episodes/Footworks-Secret-Sauce--Mike-Smith-and-Nikhil-Basu-Trivedi-e3h019d">Listen &rarr;</a></div>
-                <div class="context">Mike Smith joined Stitch Fix as the 4th employee and helped scale it from zero to $1 billion in revenue in five years with remarkably capital-efficient growth &mdash; only $17 million raised. This experience of building with discipline shaped Footwork's investing philosophy around finding founders who can do more with less.</div>
-                <div class="quote">"Scaling Stitch Fix $0 to $1B revenue in five years with $17m in capital."</div>
-            </div>
-
-            <div class="insight">
-                <h4>20-40% of public company board meetings now focus on AI</h4>
-                <div class="episode-meta">[Peel] Footwork's Secret Sauce | Mike Smith and Nikhil Basu Trivedi &bull; <a href="https://podcasters.spotify.com/pod/show/turner-novak/episodes/Footworks-Secret-Sauce--Mike-Smith-and-Nikhil-Basu-Trivedi-e3h019d">Listen &rarr;</a></div>
-                <div class="context">Footwork's partners, who sit on both startup and public company boards, observe that AI has consumed 20-40% of board meeting agendas across public companies. This isn't just a startup phenomenon &mdash; established enterprises are grappling with how AI transforms their operations, products, and competitive positioning at the board level.</div>
-                <div class="quote">"20-40% of board meetings are now about AI."</div>
-            </div>
-
-            <div class="insight">
-                <h4>Raanan's first Wiz check: $6M at $66M post-money in 2019</h4>
-                <div class="episode-meta">[20VC] The Venture Model is Broken | Gili Raanan &bull; <a href="https://thetwentyminutevc.libsyn.com/20vc-the-venture-model-is-broken-you-need-to-be-greedy-and-selfish-to-win-early-stage-investing-why-margins-do-not-matter-for-early-stage-startups-the-growth-rate-that-is-required-in-a-world-of-ai-with-gili-raanan-founder-cyberstarts">Listen &rarr;</a></div>
-                <div class="context">To illustrate the inflation in seed pricing, Raanan traces the evolution: his first check to Assaf Rappaport's Adallom in 2012 was $5M at $15M post. His Wiz seed in 2019 was $6M at $66M post. Today, seed deals are closing at $100-150M post. The outcome probability hasn't changed (still ~1%), but the entry price has increased 10x.</div>
-                <div class="quote">"When I wrote the first check to Assaf Rappaport at Adallom in 2012, it was done at $15 million post, $5 million check. At Wiz in 2019, I wrote a $6 million seed check at $66 million post money. Today, you can see deals done at $100, $150 million post."</div>
-            </div>
-
-            <div class="insight">
-                <h4>The "exceptional company" growth benchmark: 4x, 4x, 3x, 3x = 144x in 5 years</h4>
-                <div class="episode-meta">[20VC] The Venture Model is Broken | Gili Raanan &bull; <a href="https://thetwentyminutevc.libsyn.com/20vc-the-venture-model-is-broken-you-need-to-be-greedy-and-selfish-to-win-early-stage-investing-why-margins-do-not-matter-for-early-stage-startups-the-growth-rate-that-is-required-in-a-world-of-ai-with-gili-raanan-founder-cyberstarts">Listen &rarr;</a></div>
-                <div class="context">Raanan offers a specific framework for what "exceptional" looks like: 4x new ARR in year 2, 4x again in year 3, then 3x in years 4 and 5. The math: starting at $1M new ARR, you reach $144M in new ARR by year five. He notes this bar hasn't changed despite AI-accelerated growth &mdash; companies growing faster is great, but the bar for greatness remains constant.</div>
-                <div class="quote">"If you go 4X, 4X, 3X, and 3X on new ARR... that's 144X after five years, which means that in the first year, even if you have booked a million dollars of new ARR, in the fifth year, you'll book 144 million."</div>
-            </div>
-
-            <div class="insight">
-                <h4>No Name hit $3M then $15M in ARR before plateauing &mdash; sold for ~$500M to Akamai</h4>
-                <div class="episode-meta">[20VC] The Venture Model is Broken | Gili Raanan &bull; <a href="https://thetwentyminutevc.libsyn.com/20vc-the-venture-model-is-broken-you-need-to-be-greedy-and-selfish-to-win-early-stage-investing-why-margins-do-not-matter-for-early-stage-startups-the-growth-rate-that-is-required-in-a-world-of-ai-with-gili-raanan-founder-cyberstarts">Listen &rarr;</a></div>
-                <div class="context">Raanan uses portfolio company No Name as a cautionary tale about market size. The API security company grew from $3M to $15M impressively, then plateaued because the market turned out to be a niche segment within application security, not a standalone category. Eventually sold to Akamai for ~$500M &mdash; a decent outcome but not a market-defining one.</div>
-                <div class="quote">"The market for API security, it wasn't a market. It was a niche segment within application security. And a company, in order to really sustain that growth, had to really reinvent itself into a much bigger product vision, market vision."</div>
-            </div>
-        </div>
-
-        <!-- FUTURE-LOOKING -->
-        <div class="insight-category">
-            <div class="category-header future">&#128992; Future-Looking</div>
-
-            <div class="insight" id="future-1">
-                <h4>AI will enable millions of new entrepreneurs who couldn't build before</h4>
-                <div class="episode-meta">[Peel] Footwork's Secret Sauce | Mike Smith and Nikhil Basu Trivedi &bull; <a href="https://podcasters.spotify.com/pod/show/turner-novak/episodes/Footworks-Secret-Sauce--Mike-Smith-and-Nikhil-Basu-Trivedi-e3h019d">Listen &rarr;</a></div>
-                <div class="context">Footwork believes AI will create an entirely new wave of entrepreneurship by lowering the barriers to starting companies. People who previously lacked technical skills or resources will be able to build products, creating a much larger universe of startups. This has profound implications for early-stage investing: the funnel of potential investments is about to expand dramatically.</div>
-                <div class="quote">"AI will enable millions of new entrepreneurs."</div>
-            </div>
-
-            <div class="insight" id="future-2">
-                <h4>Submarines will become command-and-control platforms for autonomous underwater drone fleets</h4>
-                <div class="episode-meta">[A16Z] Submarines and the Future of Defense Manufacturing &bull; <a href="https://a16z.simplecast.com/episodes/submarines-and-the-future-of-defense-manufacturing-KGko_EJ6">Listen &rarr;</a></div>
-                <div class="context">Admiral Goucher describes a future where submarines go forward undetected, connect with a network of underwater drones, maintain human-in-the-loop decision-making, and the submarine itself may never have to fire a weapon. The payload becomes modular &mdash; whatever the conflict requires can be loaded onto the submarine, extending its mission flexibility far beyond current capabilities.</div>
-                <div class="quote">"I could see a world where a submarine goes far forward, it connects with a network of drones to give the signal so you still have a human in the loop... and the submarine may never have to shoot a weapon."</div>
-            </div>
-
-            <div class="insight" id="future-3">
-                <h4>Employee liquidity programs will replace IPOs as the primary retention tool</h4>
-                <div class="episode-meta">[20VC] The Venture Model is Broken | Gili Raanan &bull; <a href="https://thetwentyminutevc.libsyn.com/20vc-the-venture-model-is-broken-you-need-to-be-greedy-and-selfish-to-win-early-stage-investing-why-margins-do-not-matter-for-early-stage-startups-the-growth-rate-that-is-required-in-a-world-of-ai-with-gili-raanan-founder-cyberstarts">Listen &rarr;</a></div>
-                <div class="context">Cyberstarts created an "employee liquidity fund" that runs recurring annual tender offers for portfolio company employees. The structural problem: stock options vest in 4-5 years, but building significant companies takes much longer. Fully vested employees with concentrated wealth are structurally incentivized to leave. Annual secondary programs give them public-market-like liquidity while staying at private companies.</div>
-                <div class="quote">"The antidote for that market built-in weakness is the secondary... we provide liquidity to their employees every year. The very same type of liquidity they would get in a public market, they would get it in a private company."</div>
-            </div>
-
-            <div class="insight">
-                <h4>Software-driven factories will need 50-70% fewer people to match current output</h4>
-                <div class="episode-meta">[A16Z] Submarines and the Future of Defense Manufacturing &bull; <a href="https://a16z.simplecast.com/episodes/submarines-and-the-future-of-defense-manufacturing-KGko_EJ6">Listen &rarr;</a></div>
-                <div class="context">Hadrian's Factory 4 in Alabama &mdash; a 2.25 million square foot facility &mdash; represents a new model for defense manufacturing. By augmenting workers with software at the task level, making them 90% more productive, and reducing training time from a decade to a fraction, Chris Power believes the 70 million labor hours can be achievable with 50-70% fewer people than traditional approaches.</div>
-                <div class="quote">"If we translate the 70 million hours targeting to people with software, we can make that 50% less people, 70% less people."</div>
-            </div>
-
-            <div class="insight">
-                <h4>California's proposed 5% wealth tax on voting control could drive founders out of state</h4>
-                <div class="episode-meta">[Uncapped] Ron Conway from SV Angel &bull; <a href="#">Listen &rarr;</a></div>
-                <div class="context">A ballot initiative proposed by a single healthcare union in California would impose a 5% annual wealth tax on all assets, with a devastating twist: if you have voting control (like dual-class shares), you're taxed on the voting-control percentage, not the ownership percentage. This means Larry Page and Sergey Brin, with 80% voting control but ~10% ownership, would be taxed on 80% of Google's market cap. Conway says this is why they had to leave California.</div>
-                <div class="quote">"Even though Larry and Sergey don't own 80 percent of Google, they want to tax them for 80 percent of the market cap of the company. That is why Larry and Sergey had to leave."</div>
-            </div>
-
-            <div class="insight">
-                <h4>Autonomous AI agents will manage the entire household within years</h4>
-                <div class="episode-meta">[Lenny] From Skeptic to True Believer: How OpenClaw Changed My Life | Claire Vo &bull; <a href="https://www.lennysnewsletter.com/p/how-openclaw-changed-my-life-claire-vo">Listen &rarr;</a></div>
-                <div class="context">Claire Vo's setup &mdash; nine specialized agents handling family scheduling, inbound sales, kids' homework, podcast prep, and course management &mdash; represents the bleeding edge of consumer AI adoption. The progression from skeptic to running an entire life on AI agents points toward a future where households routinely deploy dedicated AI agents for distinct domains, much like apps on a phone.</div>
-                <div class="quote">"Claire now runs her business, podcast, and family life with the help of nine OpenClaw agents running on multiple Mac Minis and old laptops."</div>
-            </div>
-
-            <div class="insight">
-                <h4>The Hadrian factory model is designed to be replicated across the country</h4>
-                <div class="episode-meta">[A16Z] Submarines and the Future of Defense Manufacturing &bull; <a href="https://a16z.simplecast.com/episodes/submarines-and-the-future-of-defense-manufacturing-KGko_EJ6">Listen &rarr;</a></div>
-                <div class="context">Factory 4 in Alabama is explicitly designed as a template. Hadrian has already proven the model in other states and plans factories 5, 6, 7, and beyond. The key to repeatability is the combination of software-driven flexibility (high-mix, low-volume production), workforce development programs, and capital structures that put the company's own money at risk alongside the Navy's.</div>
-                <div class="quote">"We've already proven that we can do this in different states... it has to be a national mission. And it's all about the people and the productivity combined."</div>
-            </div>
-
-            <div class="insight">
-                <h4>Public market multipliers will rebound once growth rates prove sustainable in AI</h4>
-                <div class="episode-meta">[20VC] The Venture Model is Broken | Gili Raanan &bull; <a href="https://thetwentyminutevc.libsyn.com/20vc-the-venture-model-is-broken-you-need-to-be-greedy-and-selfish-to-win-early-stage-investing-why-margins-do-not-matter-for-early-stage-startups-the-growth-rate-that-is-required-in-a-world-of-ai-with-gili-raanan-founder-cyberstarts">Listen &rarr;</a></div>
-                <div class="context">With Monday.com at 1.5x revenue and Wix at 2.5x, public market multiples have cratered. Raanan believes the multiplier is simply the market's anticipation of future growth rate. If the market fears autonomous AI programs will eat incumbents' businesses, multiples drop. But if companies continue growing at exceptional rates despite AI disruption, multiples will rebound.</div>
-                <div class="quote">"The multiplier is just the market anticipation for your growth rate... if those companies would continue to grow at an incredible pace, the multipliers would rebound back."</div>
-            </div>
-
-            <div class="insight">
-                <h4>Sequence-critical material is the hidden bottleneck in submarine production</h4>
-                <div class="episode-meta">[A16Z] Submarines and the Future of Defense Manufacturing &bull; <a href="https://a16z.simplecast.com/episodes/submarines-and-the-future-of-defense-manufacturing-KGko_EJ6">Listen &rarr;</a></div>
-                <div class="context">Admiral Goucher identifies "sequence critical material" as the biggest practical blocker in submarine yards. When 95% of parts are ready but one component is missing, the entire production step stalls. Traditional supply chains can take 12 months to deliver a single missing part. Software-driven flexible manufacturing at facilities like Hadrian can manufacture on-demand, including obsolete parts from companies that no longer exist.</div>
-                <div class="quote">"The biggest thing that we find as you walk around our yards... it's what's called sequence critical material. You get to the point where I've got one more part I've got to have, and I can't finish the step."</div>
-            </div>
-
-            <div class="insight">
-                <h4>Venture is a profession where you don't know if you're good for five years</h4>
-                <div class="episode-meta">[20VC] The Venture Model is Broken | Gili Raanan &bull; <a href="https://thetwentyminutevc.libsyn.com/20vc-the-venture-model-is-broken-you-need-to-be-greedy-and-selfish-to-win-early-stage-investing-why-margins-do-not-matter-for-early-stage-startups-the-growth-rate-that-is-required-in-a-world-of-ai-with-gili-raanan-founder-cyberstarts">Listen &rarr;</a></div>
-                <div class="context">Raanan reflects on the uniquely difficult feedback loop in venture: you show up every day for five or six years with no idea if you're any good. At Sequoia, he was surrounded by super-achievers and felt like the "shittiest investor in the room" every single day. It takes extraordinary greed and determination to keep going until you figure it out.</div>
-                <div class="quote">"Show me another profession where you show up to work every day for five years. You have no idea if you are doing any good... you look yourself in a mirror and say, I'm the shittiest investor in this room."</div>
-            </div>
-
-            <div class="insight">
-                <h4>Drone experience at Anduril could translate directly into submarine module building</h4>
-                <div class="episode-meta">[A16Z] Submarines and the Future of Defense Manufacturing &bull; <a href="https://a16z.simplecast.com/episodes/submarines-and-the-future-of-defense-manufacturing-KGko_EJ6">Listen &rarr;</a></div>
-                <div class="context">Admiral Goucher reveals he spoke with Anduril just two days before the event about how their experience building autonomous underwater drones could translate into building modules for submarines. Both involve manufacturing integrated systems &mdash; the skills and processes overlap even though the scale and complexity differ dramatically.</div>
-                <div class="quote">"Some of the experience that companies like Anduril get from building these unmanned systems can translate to building modules for submarines. To be honest, I had that conversation two days ago with Anduril."</div>
-            </div>
-
-            <div class="insight">
-                <h4>Canva's Seed pitch in 2014 previewed the AI-enabled design revolution</h4>
-                <div class="episode-meta">[Peel] Footwork's Secret Sauce | Mike Smith and Nikhil Basu Trivedi &bull; <a href="https://podcasters.spotify.com/pod/show/turner-novak/episodes/Footworks-Secret-Sauce--Mike-Smith-and-Nikhil-Basu-Trivedi-e3h019d">Listen &rarr;</a></div>
-                <div class="context">Footwork discusses their involvement in Canva's Seed round in 2014, when the thesis of democratizing design was ahead of its time. That same pattern &mdash; enabling non-experts to create professional output &mdash; is now accelerating across every domain through AI, from code to content to business operations. The best seed investors recognize this archetype early.</div>
-                <div class="quote">"Canva's Seed pitch in 2014."</div>
-            </div>
-        </div>
-
-        <!-- QUICK HITS SECTION -->
-        <div class="quick-hits-section">
-            <h2>&#127919; Quick Hits</h2>
-
-            <div class="quick-hit">
-                <h3>Investor Stories 468: Selling Too Early, LP Pressure, and Investor Tension</h3>
-                <div class="quick-hit-meta">[TFR] The Full Ratchet &bull; <a href="https://fullratchet.net/levine-byunn-ulevitch">Listen &rarr;</a></div>
-                <ul>
-                    <li><strong>When-to-sell misalignment is the most common high-stakes VC conflict.</strong> Seth Levine (Foundry Group) notes that investors disagree on exits because of different cost bases, fundraising timelines, and personal situations. His solution: radical transparency about everyone's biases rather than hiding behind intellectual arguments. <em>"Let's at least acknowledge what our biases are... because you can solve for some of these problems if you know what the problem is."</em></li>
-                    <li><strong>Management teams almost always win the sell-vs-hold debate.</strong> Eric Biyun (Centana Growth) says that nine times out of ten, the management team's position prevails on exit timing. When it doesn't, formal NVCA voting mechanisms resolve it. His firm has never executed a secondary against the founder or management team's wishes. <em>"Nine times out of 10, management team kind of wins that debate."</em></li>
-                </ul>
-            </div>
-        </div>
-
     </div>
+
+    <div class="category">
+        <div class="category-label cat-counter">Counter-Intuitive</div>
+        <div class="insight">
+            <h4>Founder babysitting is a trap for seed investors</h4>
+            <p>Unlike the prevailing "value-add VC" narrative, Renan explicitly says he's not in the business of babysitting founders. His model is high conviction entry, then let the founders execute. The hands-off approach contradicts the industry's trend toward operational support.</p>
+        </div>
+        <div class="insight">
+            <h4>Old frameworks are dead but the instincts behind them still work</h4>
+            <p>Younger VCs are told that rule-of-40, triple-triple-double-double, and margin focus are obsolete in the AI era. Renan's advice: learn from experienced investors but ultimately trust your gut. The frameworks may shift but the judgment muscle is timeless.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-data">Data Points</div>
+        <div class="insight">
+            <h4>Public market multiples have collapsed for SaaS</h4>
+            <p>Monday.com trades at ~1.5x revenue. Wix at ~2.5x (announcing a buyback at $4B market cap). The expectation that autonomous AI agents will eat into these businesses is compressing multiples, even for companies with strong cash flows.</p>
+        </div>
+        <div class="insight">
+            <h4>CyberStarts Fund 1: 19 companies, 1 decacorn, 7 unicorns</h4>
+            <p>An extraordinary hit rate from a concentrated seed portfolio focused exclusively on Israeli cybersecurity. The concentrated thesis-driven approach produced returns most diversified funds can only dream of.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-future">Future-Looking</div>
+        <div class="insight">
+            <h4>AI will compress SaaS multiples further before it creates new ones</h4>
+            <p>Markets are pricing in the expectation that autonomous programs will displace parts of existing SaaS businesses. Renan predicts this compression will continue before a new generation of AI-native companies redefines the category.</p>
+        </div>
+    </div>
+</div>
+
+<hr class="divider">
+
+<!-- Episode 2: 20VC Roundtable -->
+<div class="episode">
+    <div class="episode-title">Why You Need a $1BN Fund To Do Series A Today | OpenAI vs Anthropic</div>
+    <div class="episode-podcast">20VC</div>
+
+    <div class="category">
+        <div class="category-label cat-core">Core</div>
+        <div class="insight">
+            <h4>Series A now requires billion-dollar funds</h4>
+            <p>Round sizes at Series A have expanded so dramatically that firms without massive fund sizes simply can't write checks large enough to lead. The math on reserves, follow-on, and ownership targets demands scale that was previously associated with growth-stage investing.</p>
+        </div>
+        <div class="insight">
+            <h4>Anthropic is eating OpenAI's lunch in the enterprise</h4>
+            <p>Ramp's spending data suggests Anthropic is winning enterprise adoption over OpenAI. The panel discusses whether this is a durable trend or an artifact of OpenAI's consumer-first approach creating an enterprise opening.</p>
+        </div>
+        <div class="insight">
+            <h4>The reserve ratio determines your strategy more than the entry check</h4>
+            <p>For Series A-focused firms, reserving ~50% of initial capital for follow-on defines the game. Unlike seed investors who treat the A as an option on a bigger later check, pure A/B firms need the first check to be where most of the value is made.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-counter">Counter-Intuitive</div>
+        <div class="insight">
+            <h4>DeepSeek was a "massive market overreaction to a proof of concept"</h4>
+            <p>The panel pushes back hard on the DeepSeek panic, arguing that established players like Sequoia should not have been rattled. If you're a software company not already thinking about AI disruption to both how you build and what you build, you should be shorting yourself.</p>
+        </div>
+        <div class="insight">
+            <h4>Antitrust enforcement has become a revenue extraction mechanism</h4>
+            <p>Government antitrust policy is described as a "perverse incentive" where the outcome is always "wire me the money." Whether deals close or don't, the government collects through some combination of fines and taxes. Cleaning up the rules would cost the government $20-30B.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-data">Data Points</div>
+        <div class="insight">
+            <h4>Figma stock has collapsed from $108 to ~$21.66/share</h4>
+            <p>After Google launched Stitch, Figma's secondary market valuation tumbled. Even Sequoia buying $35M of stock didn't arrest the decline. The probability-of-disruption discount in equity pricing is brutal for design tools.</p>
+        </div>
+        <div class="insight">
+            <h4>SpaceX valued at $2 trillion after TerraFab; Bezos seeking $100B for new project</h4>
+            <p>The megacap scale of hard-tech companies continues to expand, dwarfing traditional software valuations and changing the calculus for venture returns.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-future">Future-Looking</div>
+        <div class="insight">
+            <h4>The unicorn-to-acquirer ratio is at career lows</h4>
+            <p>With IPOs stalled, the critical question is: who buys these companies? The panel doubts hyperscalers will acquire most unicorns, meaning for many startups it's "win or die" &mdash; no soft landing via acquisition.</p>
+            <div class="quote">"I just worry there's some ratio of potential acquirers divided by unicorns, and I think we're at the lowest ratio of our careers."</div>
+        </div>
+    </div>
+</div>
+
+<hr class="divider">
+
+<!-- Episode 3: SpaceX/Tesla Playbook -->
+<div class="episode">
+    <div class="episode-title">The SpaceX and Tesla Playbook for Hard Tech Startups</div>
+    <div class="episode-podcast">The A16Z Show</div>
+
+    <div class="category">
+        <div class="category-label cat-core">Core</div>
+        <div class="insight">
+            <h4>Question every requirement &mdash; simple is fast, simple is cheap</h4>
+            <p>The core engineering lesson from SpaceX: relentlessly question requirements until you've eliminated every unnecessary one. What remains can be designed simply, built quickly, and manufactured cheaply. This is more than "move fast" &mdash; it's a systematic method for finding the shortest path to production.</p>
+        </div>
+        <div class="insight">
+            <h4>The factory mindset: design for production from day one</h4>
+            <p>SpaceX alumni describe a culture where engineering decisions are always evaluated through the lens of "can this be manufactured at scale?" A snorkel component designed for Booster was repurposed for Ship, skipping an entire design cycle. The trick was proving the edge case (liquid in the valves) rather than redesigning from scratch.</p>
+        </div>
+        <div class="insight">
+            <h4>Vertical integration is a survival question, not an ideology</h4>
+            <p>The useful framing isn't "should we vertically integrate?" but "does the company exist without it?" When a critical supply chain doesn't have enough competition to ensure cost reduction, you must own it. Otherwise, outsource.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-counter">Counter-Intuitive</div>
+        <div class="insight">
+            <h4>Aggressive deadlines make teams think more deliberately, not less</h4>
+            <p>Counter to the "move fast, break things" caricature: impossibly aggressive timelines at SpaceX force teams to identify the 100 things (out of 1,000) that genuinely can't be done in six months &mdash; and attack those first. Speed comes from ruthless prioritization, not recklessness.</p>
+        </div>
+        <div class="insight">
+            <h4>Hiring slowly is a feature at companies known for speed</h4>
+            <p>At Tesla, engineers talk to 6+ other engineers and go through 8-10 conversations before getting an offer. This technical rigor ensures new hires can be autonomous and balance authority with accountability. Slower hiring enables faster execution.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-data">Data Points</div>
+        <div class="insight">
+            <h4>SpaceX alumni have founded 100+ companies in two decades</h4>
+            <p>From a starting point of 160 employees in 2002, SpaceX has produced a founder pipeline rivaling any accelerator. Tesla's alumni pipeline runs in parallel, concentrated in hard-tech sectors like minerals, energy, and defense.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-future">Future-Looking</div>
+        <div class="insight">
+            <h4>The SpaceX/Tesla alumni network will define the next era of hard-tech</h4>
+            <p>Companies like Galadai (missile propulsion) and Mariana Minerals (critical mineral supply chains) represent a new generation applying SpaceX-style engineering rigor to defense and industrial problems. The playbook is becoming reproducible.</p>
+        </div>
+    </div>
+</div>
+
+<hr class="divider">
+
+<!-- Episode 4: CAPE / Salt Typhoon -->
+<div class="episode">
+    <div class="episode-title">Security, Resilience, and the Future of Mobile Infrastructure</div>
+    <div class="episode-podcast">The A16Z Show</div>
+
+    <div class="category">
+        <div class="category-label cat-core">Core</div>
+        <div class="insight">
+            <h4>Assume the infrastructure is hostile and build on top</h4>
+            <p>CAPE's founding insight: rather than trying to find and remove Chinese infiltration from existing telecom infrastructure, build a clean software-defined cellular network on top of it. Treat the physical layer as compromised by default.</p>
+            <div class="quote">"Rather than trying to ferret through the existing carriers and find all the China and try to get rid of it, let's just do a clean install of a telco on top of the existing physical infrastructure."</div>
+        </div>
+        <div class="insight">
+            <h4>The Navy's innovation model shifted from builder to gardener</h4>
+            <p>The Navy CTO describes a transformation from trying to build everything internally to "planting seeds" across the ecosystem &mdash; identifying promising startups, running pilots, and using an Innovation Adoption Kit to scale successes across commands. Special ops serves as a proving ground for Big Navy.</p>
+        </div>
+        <div class="insight">
+            <h4>Selling to defense means finding the one indispensable module</h4>
+            <p>When a contract has 10 modules, 9 don't matter but 1 is indispensable. The advice: make tasks fully severable, then target the hardest piece. Don't try to solve the whole problem &mdash; own the chunk that can't be turned off.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-counter">Counter-Intuitive</div>
+        <div class="insight">
+            <h4>Bad startup experience is worse than no startup experience</h4>
+            <p>For veterans transitioning to tech, joining a bad startup teaches bad behaviors. The recommendation is to specifically seek out good startups because "learning what not to do" is not actually the useful lesson &mdash; learning what to do is.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-data">Data Points</div>
+        <div class="insight">
+            <h4>Salt Typhoon: only 5 of 60 cybersecurity experts at Davos knew about it</h4>
+            <p>Despite being one of the most significant telecom breaches in history &mdash; China infiltrating every major US carrier's lawful intercept systems &mdash; awareness was shockingly low even among security professionals.</p>
+        </div>
+        <div class="insight">
+            <h4>CAPE was building its solution three months before Salt Typhoon was publicly disclosed</h4>
+            <p>The company had already identified the vulnerability pattern and begun building a resilient alternative before the breach became public knowledge, validating their thesis about compromised telecom infrastructure.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-future">Future-Looking</div>
+        <div class="insight">
+            <h4>Software-defined telecom will become a national security imperative</h4>
+            <p>As the scope of state-sponsored telecom compromise becomes clearer, clean-install software-defined networks will move from experimental Navy deployments to critical infrastructure requirements. The model of treating hardware as untrusted is the future.</p>
+        </div>
+    </div>
+</div>
+
+<hr class="divider">
+
+<!-- Episode 5: Jay Kreps -->
+<div class="episode">
+    <div class="episode-title">What Nobody Tells Engineers About Becoming a CEO</div>
+    <div class="episode-podcast">In Depth</div>
+
+    <div class="category">
+        <div class="category-label cat-core">Core</div>
+        <div class="insight">
+            <h4>The CEO operates in a "fog of partial understanding"</h4>
+            <p>Jay Kreps, co-founder of Confluent, describes the hardest transition: from engineering where problems are mostly knowable, to CEO where you make critical decisions with unknowable aspects. You must be roughly directionally right rather than precisely correct.</p>
+            <div class="quote">"Very quickly as the organization gets bigger, it's impossible to know everything about everything. You have to kind of be roughly directionally right."</div>
+        </div>
+        <div class="insight">
+            <h4>A single blog post did more than years of engineering for Kafka adoption</h4>
+            <p>Kreps realized that if they couldn't articulate why Kafka was exciting, it wouldn't succeed as an open source project. The blog post explaining the "why" became the single biggest driver of adoption, outweighing all the technical work.</p>
+        </div>
+        <div class="insight">
+            <h4>Tenacity beats optimism as a founder trait</h4>
+            <p>Kreps doesn't consider himself an optimist. His formula: "The probability is only 20%, but we're not going to give up until we've lost all hope." Not inspiring as a slogan, but effective as a operating principle. Pain tolerance and determination compensate for lack of natural optimism.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-counter">Counter-Intuitive</div>
+        <div class="insight">
+            <h4>Confluent bet on both software and cloud when everyone said pick one</h4>
+            <p>Advisors told them to choose: enterprise software or cloud. Splitting a new market in half didn't make sense, so they pursued both despite the impossible engineering burden. They built the software product first (faster to ship), then pulled resources away to build the cloud offering, losing early customers along the way.</p>
+            <div class="quote">"We just kind of bludgeoned our way through. None of it was pretty. Some of our biggest early customers quit on us."</div>
+        </div>
+        <div class="insight">
+            <h4>The CEO must lean into the things that will kill the company</h4>
+            <p>The natural tendency is to avoid talking about existential threats. Kreps argues the CEO's job is the opposite: identify the things that could kill the company and address them head-on, even when nobody else wants to discuss them.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-data">Data Points</div>
+        <div class="insight">
+            <h4>Amazon's Kinesis was built in imitation of Kafka</h4>
+            <p>The competitive threat was real and multi-pronged: Amazon built an incompatible clone (Kinesis), and if that didn't capture the market, they'd wrap open source Kafka itself. This galvanized Confluent's urgency to ship a managed service.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-future">Future-Looking</div>
+        <div class="insight">
+            <h4>The CEO role demands becoming the most multidisciplinary person in the room</h4>
+            <p>Kreps argues that even executives brought in from other disciplines need to become deeply curious across every function. The engineering habit of continuous learning transfers well, but the breadth required goes far beyond any single discipline.</p>
+        </div>
+    </div>
+</div>
+
+<hr class="divider">
+
+<!-- Episode 6: Francois Chollet -->
+<div class="episode">
+    <div class="episode-title">How Francois Chollet Is Building A New Path To AGI</div>
+    <div class="episode-podcast">Y Combinator</div>
+
+    <div class="category">
+        <div class="category-label cat-core">Core</div>
+        <div class="insight">
+            <h4>Endia is rebuilding the entire ML stack, not making another coding agent</h4>
+            <p>Chollet's new lab Endia is doing program synthesis research &mdash; building a new learning substrate that's fundamentally different from parametric deep learning. Instead of fitting parameters via gradient descent, they're building an alternative to deep learning itself, working at the lowest level of the ML stack.</p>
+        </div>
+        <div class="insight">
+            <h4>Don't commit to foundations too early, but make sure you're compounding</h4>
+            <p>It took Endia six months of trying different approaches before finding solid foundations. The key principle: you don't want to constantly try new things that don't reuse learnings. Once you find the right foundation, build a compounding stack &mdash; layer on layer, each building on the last.</p>
+        </div>
+        <div class="insight">
+            <h4>ARC-AGI benchmarks target the residual gap in AI capabilities</h4>
+            <p>The benchmark isn't a fixed "if you pass this, it's AGI" test. It's a moving target that identifies what current frontier models still can't do compared to humans, deliberately targeting those gaps. Each new version gets harder as AI improves.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-counter">Counter-Intuitive</div>
+        <div class="insight">
+            <h4>ARC-3 games use no language, symbols, or cultural knowledge</h4>
+            <p>The 250+ games built by a dedicated game studio strip away everything that could be memorized or pattern-matched from training data. No arrows, no green-means-go, no cultural symbols. Just core knowledge priors: basic physics, objects, agents with intentions. It's interactive IQ testing.</p>
+        </div>
+        <div class="insight">
+            <h4>You can't stop AI progress, so ride the wave</h4>
+            <p>Despite being one of AI's most prominent critics of hype, Chollet's practical stance is pragmatic: AI progress is here, it's accelerating, and resisting it is futile. The question is how to leverage it. This from someone building an alternative to deep learning.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-data">Data Points</div>
+        <div class="insight">
+            <h4>ARC-3 has 250+ original games built by a dedicated game studio</h4>
+            <p>Each game takes ~10 minutes for a human to play from scratch. The private test set is deliberately much harder than the public set, and uses different game concepts to resist the targeting strategies that cracked ARC-2.</p>
+        </div>
+        <div class="insight">
+            <h4>Chollet estimates AGI around 2030</h4>
+            <p>Based on current trajectories, around the time ARC-6 or ARC-7 is released. This from someone who has been deeply skeptical of overpromising timelines, giving the estimate more weight.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-future">Future-Looking</div>
+        <div class="insight">
+            <h4>ARC-5 will test compounding curriculum learning over long timescales</h4>
+            <p>Future versions will have fewer games but many more levels that compound &mdash; each level requires reusing what was learned before. ARC-4 moves to continual learning; ARC-5 extends this further. The benchmarks are evolving toward testing genuine intelligence rather than pattern matching.</p>
+        </div>
+    </div>
+</div>
+
+<hr class="divider">
+
+<!-- Episode 7: Full Ratchet -->
+<div class="episode">
+    <div class="episode-title">Selling Too Early, LP Pressure, and Investor Tension</div>
+    <div class="episode-podcast">The Full Ratchet</div>
+
+    <div class="category">
+        <div class="category-label cat-core">Core</div>
+        <div class="insight">
+            <h4>Misaligned exit timing is the most common VC conflict</h4>
+            <p>Seth Levine of Foundry Group describes how investors and founders constantly clash on when to sell. One investor wants DPI for fundraising, another got in at a lower basis and wants to hold. The solution: radical honesty about what's driving each person's position, because you can often solve the underlying need without selling the whole company.</p>
+            <div class="quote">"Let's at least acknowledge what our biases are... because you can solve for some of these problems if you know what the problem is."</div>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-counter">Counter-Intuitive</div>
+        <div class="insight">
+            <h4>Undisclosed inter-firm conflicts can fester for years</h4>
+            <p>David Ulovich of a16z discovered that a close collaborating firm had a "huge beef" with them that nobody surfaced. It took two months of calls &mdash; starting with screaming, ending in resolution. The fix: acknowledging philosophical differences while recognizing aligned interests in supporting founders.</p>
+        </div>
+    </div>
+</div>
+
+<hr class="divider">
+
+<!-- Episode 8: OpenClaw / Lenny's -->
+<div class="episode">
+    <div class="episode-title">From Skeptic to True Believer: How OpenClaw Changed My Life</div>
+    <div class="episode-podcast">Lenny's Podcast</div>
+
+    <div class="category">
+        <div class="category-label cat-core">Core</div>
+        <div class="insight">
+            <h4>The biggest mistake with AI agents is expecting one agent to do everything</h4>
+            <p>Claire Vo runs nine specialized OpenClaw agents across three computers. The breakthrough: don't throw any task at a single agent. Build specialized ones &mdash; Sam for sales, Howie for meeting prep, Polly for family logistics. Each agent gets a narrow domain and tuned instructions.</p>
+        </div>
+        <div class="insight">
+            <h4>The highest bandwidth API is just talking to it</h4>
+            <p>"Ramble Mode" &mdash; instead of thinking about APIs and integrations, just describe what you want in natural language, preferably via voice notes on your phone. Don't start with "is there a Google API for this?" Start with "here's my messy inbox problem, can you fix it?"</p>
+        </div>
+        <div class="insight">
+            <h4>Agent value = making the user look good, not just completing tasks</h4>
+            <p>The Howie agent sends friendly morning reminders with context for each meeting, links to LinkedIn profiles, and a hype-up message. It's not just task automation &mdash; it makes Claire look better to customers and show up better for her family. This reframes agent design from "replace labor" to "amplify the person."</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-counter">Counter-Intuitive</div>
+        <div class="insight">
+            <h4>Eight hours of painful setup and a deleted calendar made her a true believer</h4>
+            <p>Claire's first OpenClaw install took 8 hours and deleted her family calendar. But between the disasters, there was enough "joy and utility" to see the potential. The willingness to push through catastrophic failure to find the signal is what separates power users from skeptics.</p>
+            <div class="quote">"It just hit me with enough joy and enough utility when it wasn't deleting my calendar that I knew something was there."</div>
+        </div>
+        <div class="insight">
+            <h4>A Mac Mini running free open-source agents replaced $10K/year of human labor</h4>
+            <p>Claire was paying someone 10 hours/week to do sales prospecting. The Sam agent now handles it on a Mac Mini. She iterates on Sam's behavior through natural conversation: "handle international end to end, but always bring me SF-based startups." No CRM automations or no-code tools needed.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-data">Data Points</div>
+        <div class="insight">
+            <h4>9 agents across 3 computers, each with a name and personality</h4>
+            <p>Polly, Finn, Max, Howie, Kelly, Holly, Sam, and more. Each has a distinct role: Sam handles sales, Howie preps meetings, others manage family logistics. The naming and personality aren't gimmicks &mdash; they make the system's behavior more legible and tunable.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-future">Future-Looking</div>
+        <div class="insight">
+            <h4>The non-commercialized "co-experience" of open source AI agents won't last</h4>
+            <p>Claire notes that OpenClaw's open-source, non-commercial nature creates a uniquely positive user experience. But she recognizes this is temporary: the co-experience "doesn't feel commercialized yet" and makes her want to go "commercialize a bunch of stuff" herself. The window of pure utility without monetization pressure is closing.</p>
+        </div>
+    </div>
+</div>
+
+<hr class="divider">
+
+<!-- Episode 9: Footwork -->
+<div class="episode">
+    <div class="episode-title">Footwork's Secret Sauce</div>
+    <div class="episode-podcast">The Peel</div>
+
+    <div class="category">
+        <div class="category-label cat-core">Core</div>
+        <div class="insight">
+            <h4>Individual partner matters more than firm brand</h4>
+            <p>Mike Smith and Nikhil Basu Trivedi argue founders should back-channel the specific partner, not just the firm. Most firms operate where you work with one individual &mdash; so the question is: what is this person like in the boardroom when you're having a bad day?</p>
+        </div>
+        <div class="insight">
+            <h4>The best founding partnerships combine complementary skills with shared values</h4>
+            <p>Nikhil was a VC at Shasta; Mike was an operator at Stitch Fix. They bonded on a chaotic board (Imperfect Foods) where Mike's truth-seeking behavior stood out. The partnership works because the skills are different but the values are aligned.</p>
+        </div>
+        <div class="insight">
+            <h4>Near-death forces focus: Stitch Fix's path from 65 rejections to efficiency</h4>
+            <p>Mike Smith was rejected by 60 of 65 firms he pitched for Series A at Stitch Fix. A few weeks from missing payroll, they bridged with $1.5M from an existing investor and were forced into radical focus. The efficiency lesson: constraint breeds clarity.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-counter">Counter-Intuitive</div>
+        <div class="insight">
+            <h4>Stitch Fix's ML-driven business was too sophisticated for most VCs to evaluate</h4>
+            <p>At peak, 152 data scientists whose algorithms directly drove contribution margin and LTV. But investors asked shallow questions ("What if Amazon does this?") and couldn't engage with the data science. Most private market investors didn't spend the time to understand the actual competitive moat.</p>
+        </div>
+        <div class="insight">
+            <h4>A text about a tweet about becoming Patagonia's CEO led to founding a VC firm</h4>
+            <p>Nikhil texted Mike about amplifying a tweet suggesting Mike for Patagonia CEO. Mike said no. Nikhil's next text: "Would you consider starting a venture firm?" The founding story of Footwork is a lesson in shooting your shot via unexpected segues.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-data">Data Points</div>
+        <div class="insight">
+            <h4>Footwork launched on January 20, 2021 &mdash; now five years in</h4>
+            <p>The management company was set up during the pandemic, with the partners going from first text exchange in mid-2020 to formal launch in about six months. Both partners work with every portfolio company, an unusual model in venture.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-future">Future-Looking</div>
+        <div class="insight">
+            <h4>Bi-directional diligence will become the norm for founder-VC relationships</h4>
+            <p>The best founders already treat VC selection like hiring: 5+ year commitment, deep reference checks on the individual partner, understanding their behavior under stress. As the market matures, founders who don't do this level of diligence will be the exception.</p>
+        </div>
+    </div>
+</div>
+
+<hr class="divider">
+
+<!-- Episode 10: Celine Nguyen -->
+<div class="episode">
+    <div class="episode-title">Nurturing Your Mind in Public</div>
+    <div class="episode-podcast">Dialectic</div>
+
+    <div class="category">
+        <div class="category-label cat-core">Core</div>
+        <div class="insight">
+            <h4>Intellectual discovery is a birthright, not a credential</h4>
+            <p>Celine Nguyen, a product designer by day, argues that producing your intellectual worldview isn't reserved for scholars, academics, or critics. Everyone has a right &mdash; and should feel invited &mdash; to cultivate a life of the mind. This isn't anti-expertise; it's anti-gatekeeping.</p>
+            <div class="quote">"As a human being, intellectual discovery and gratification are your birthright."</div>
+        </div>
+        <div class="insight">
+            <h4>Great writers create the taste by which they are relished</h4>
+            <p>Borrowing from Wordsworth: the audience for your interests may be small today, but good writing can expand the market. Just as tech startups create demand for products nobody asked for, intellectual writers can shape how people relate to ideas they didn't know they cared about.</p>
+        </div>
+        <div class="insight">
+            <h4>Consumption breeds creation &mdash; the fan fiction pipeline</h4>
+            <p>People who consume great work are moved to create their own. Fan fiction writers become novelists. This isn't a degradation of culture; it's the natural mechanism by which creative communities grow. The more people read, the more they want to make.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-counter">Counter-Intuitive</div>
+        <div class="insight">
+            <h4>The case for Proust is gossip, sex, and intrigue &mdash; not literary importance</h4>
+            <p>Nguyen's newsletter "No One Told Me About Proust" makes the case for 3,000 pages of modernist literature not through prestige but through what people already love: gossip, the intricacies of people's romantic and sexual lives, social dynamics. Meeting people where they are, not where literary culture says they should be.</p>
+        </div>
+        <div class="insight">
+            <h4>Being impulsive is a skill for psychologically load-bearing projects</h4>
+            <p>For projects you've overthought &mdash; lifelong dreams you're afraid of getting wrong &mdash; the only way to start is by seizing the moment. Planning more will make you choke. Understanding your own psychology means knowing when spontaneity is the only viable strategy.</p>
+        </div>
+        <div class="insight">
+            <h4>Virgil Abloh was best understood as a philosopher, not a designer</h4>
+            <p>Like Christopher Alexander, certain practitioners produce work that matters, but their thinking is the real contribution. Abloh's self-reflexive approach is applicable across disciplines far beyond fashion or design.</p>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-label cat-future">Future-Looking</div>
+        <div class="insight">
+            <h4>Getting older is becoming the self you want to be</h4>
+            <p>Against the cultural fetishization of youth: Nguyen looked up to people in their 30s, 40s, and 50s doing amazing work and realized they just had time. Decades of practice, not youthful brilliance, produced their best work. Aging is the process of becoming, not declining.</p>
+        </div>
+        <div class="insight">
+            <h4>You don't need permission &mdash; take it</h4>
+            <p>Echoing Virgil Abloh: don't wait for someone to validate your intellectual or creative work. The only permission that matters is the one you give yourself. The benefit of youth is not knowing what you don't know &mdash; but that boldness can be cultivated at any age.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    Generated on March 30, 2026
+</footer>
+
+</div>
 </body>
 </html>

@@ -78,8 +78,16 @@ def generate_highlights(episode: dict) -> list:
             return []
 
         raw = result.stdout.strip()
-        # Strip markdown code fences
+        # Strip markdown code fences and any preamble text
         raw = raw.replace("```json", "").replace("```", "").strip()
+        # Find the first '[' to skip any preamble
+        bracket_idx = raw.find("[")
+        if bracket_idx >= 0:
+            raw = raw[bracket_idx:]
+        # Find the last ']' to strip any trailing text
+        rbracket_idx = raw.rfind("]")
+        if rbracket_idx >= 0:
+            raw = raw[:rbracket_idx + 1]
         highlights = json.loads(raw)
         return highlights
 
@@ -103,10 +111,12 @@ def push_to_readwise(highlights: list, episode: dict) -> bool:
 
     payload = []
     for h in highlights:
+        # Prepend speaker name to highlight text
+        text = f"**{h['speaker']}:** {h['text']}" if h.get("speaker") else h["text"]
         entry = {
-            "text": h["text"],
+            "text": text,
             "title": title,
-            "author": f"{h['speaker']} — {episode['podcast']}",
+            "author": episode["podcast"],
             "category": "podcasts",
             "highlight_tags": [{"name": "podcast-digest"}],
         }
