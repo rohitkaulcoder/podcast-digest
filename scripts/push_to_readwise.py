@@ -21,13 +21,19 @@ import tempfile
 
 HIGHLIGHT_PROMPT = """Read the podcast transcript below and extract 10-15 highlights.
 
-Each highlight should be a 3-4 paragraph mini-essay that captures one complete idea arc from the conversation. It should read like a well-written blog excerpt — not a transcript and not a dry summary. Preserve the speaker's insight, their reasoning, the evidence they cite, and the conclusion, all in tight clear prose. Cut all filler, repetition, and meandering — just the substance.
+Each highlight should be a cleaned-up version of the speaker's actual words — NOT a summary or essay rewrite. Your job is to be an editor, not a writer. Specifically:
 
-Do NOT add any labels like "Key insight" or "Why this matters." The highlight should stand entirely on its own.
+- PRESERVE the speaker's actual words, phrasing, metaphors, and specific examples as much as possible
+- CUT filler words (like, you know, I mean, basically, obviously), false starts, self-corrections, and interviewer interjections
+- ADD paragraph breaks for readability
+- DO NOT rephrase their ideas into generic essay prose
+- DO NOT summarize — keep the detail, the specific numbers, the anecdotes, the quotes within quotes
+- Each highlight should capture one complete idea arc (3-5 paragraphs)
+- It should feel like reading a cleaned-up transcript where the speaker is talking directly to you
 
 For each highlight, identify the speaker (host or guest). Use the episode title and context to determine speaker names.
 
-Output as a JSON array. Each element has two keys: "speaker" (string) and "text" (string with the 3-4 paragraph highlight).
+Output as a JSON array. Each element has two keys: "speaker" (string) and "text" (string with the cleaned-up highlight).
 
 Only output the JSON, nothing else. Skip any ad reads or sponsor segments.
 
@@ -66,7 +72,7 @@ def generate_highlights(episode: dict) -> list:
             prompt_text = pf.read()
 
         result = subprocess.run(
-            ["claude", "--print"],
+            ["claude", "--print", "--dangerously-skip-permissions"],
             input=prompt_text,
             capture_output=True,
             text=True,
