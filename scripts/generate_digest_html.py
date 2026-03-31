@@ -143,6 +143,56 @@ def main():
     highlight_count = sum(len(ep["highlights"]) for ep in data)
     print(f"Generated {output_file} ({episode_count} episodes, {highlight_count} highlights)")
 
+    # Update index.html with new digest link
+    update_index(work_dir, args.date, episode_count, highlight_count)
+
+
+def update_index(work_dir: str, date_str: str, episode_count: int, highlight_count: int):
+    """Add today's digest to the top of index.html."""
+    index_path = f"{work_dir}/index.html"
+    if not os.path.exists(index_path):
+        return
+
+    with open(index_path) as f:
+        index_html = f.read()
+
+    # Check if already linked
+    digest_filename = f"digest_{date_str}.html"
+    if digest_filename in index_html:
+        return
+
+    try:
+        dt = datetime.strptime(date_str, "%Y-%m-%d")
+        formatted_date = dt.strftime("%B %d, %Y")
+    except ValueError:
+        formatted_date = date_str
+
+    ep_label = "episode" if episode_count == 1 else "episodes"
+
+    new_card = f"""                <li>
+                    <div class="digest-card">
+                        <a href="{digest_filename}" class="digest-link">
+                            <div class="date">{formatted_date}</div>
+                            <div class="stats">
+                                <span class="stat-badge">📊 <strong>{episode_count}</strong> {ep_label}</span>
+                                <span class="stat-badge">💡 <strong>{highlight_count}</strong> highlights</span>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+"""
+
+    # Insert after <ul class="digest-grid">
+    marker = '<ul class="digest-grid">'
+    idx = index_html.find(marker)
+    if idx >= 0:
+        insert_pos = idx + len(marker) + 1  # after the newline
+        index_html = index_html[:insert_pos] + new_card + index_html[insert_pos:]
+
+        with open(index_path, "w") as f:
+            f.write(index_html)
+        print(f"Updated index.html with {digest_filename}")
+
 
 if __name__ == "__main__":
     main()
