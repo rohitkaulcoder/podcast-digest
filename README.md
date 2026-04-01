@@ -1,29 +1,28 @@
-# 🎙️ Podcast Digest
+# Podcast Digest
 
-Daily insights from the best podcasts, distilled into digestible nuggets.
+Daily insights from the best podcasts, distilled into digestible highlights.
 
 ## What is this?
 
-An automated podcast digest system that fetches, analyzes, and publishes podcast insights daily. Each digest contains:
-
-- **Deep Dives**: Full-length episodes with 8-12 categorized insights
-- **Quick Hits**: Shorter clips with 1-2 key takeaways
+An automated podcast digest system that fetches transcripts from YouTube podcast channels, generates highlight-driven HTML digests using Claude Code, and publishes to GitHub Pages. Also pushes highlights to Readwise.
 
 ## How it works
 
-**Fully automated via local launchd jobs:**
+**Local automation via macOS launchd (3-stage pipeline):**
 
-1. **Daily fetch (5:00 PM)**: Fetches transcripts from 23 YouTube podcast channels
-2. **Generate digest (5:15 PM)**: Claude Code analyzes transcripts and creates HTML digest
-3. **Auto-publish (5:30 PM)**: Commits and pushes to GitHub Pages
-4. **Health check (9:00 AM)**: Daily monitoring with notifications
+1. **Fetch** — Pulls transcripts from YouTube podcast channels
+2. **Generate** — Claude Code analyzes transcripts and creates an HTML digest with categorized insights
+3. **Publish** — Commits and pushes to GitHub Pages
 
-### 🚀 Completely Automated & FREE
+Plus a daily health check with macOS notifications.
 
-- Uses macOS launchd (runs even when laptop was asleep!)
-- Claude Code for analysis (no API costs)
-- GitHub Pages for hosting
-- macOS notifications for status updates
+**Also has a GitHub Actions workflow** (`fetch-podcasts.yml`) for cloud-based fetch + chunk preparation.
+
+### Cost
+
+- Claude Code for analysis (uses Max plan — no API costs)
+- YouTube API free tier
+- GitHub Pages free hosting
 
 ## Browse Digests
 
@@ -54,32 +53,13 @@ Each deep dive episode is analyzed for:
 
 ## Tech Stack
 
-- **Automation**: macOS launchd (4 separate jobs)
+- **Automation**: macOS launchd (local) + GitHub Actions (cloud backup)
 - **Data fetching**: YouTube Transcript API + YouTube Data API v3
 - **Analysis**: Claude Code (non-interactive mode)
+- **Highlights**: Pushed to Readwise via `push_to_readwise.py`
 - **Hosting**: GitHub Pages
 - **Notifications**: macOS notification system
 - **Monitoring**: Daily health checks
-
-## Features
-
-✅ **Automated Workflow**
-- Fetches new episodes daily at 5 PM
-- Generates insights automatically
-- Publishes to web instantly
-- Zero manual intervention
-
-✅ **Reliable**
-- launchd catches up if laptop was asleep
-- Separate jobs for each step (better debugging)
-- Error notifications via macOS
-- Daily health check at 9 AM
-
-✅ **Free**
-- No API costs (uses Claude Code subscription)
-- YouTube API free tier (10K quota/day)
-- GitHub Pages free hosting
-- $0/month total cost
 
 ## Setup
 
@@ -142,23 +122,18 @@ tail -f ~/podcast_health_check.log     # Health (9:00 AM)
 
 ```
 podcast-digest/
-├── .github/workflows/          # GitHub Actions (backup)
+├── .github/workflows/
+│   └── fetch-podcasts.yml        # GitHub Actions fetch workflow
 ├── scripts/
-│   ├── fetch_podcasts.py       # YouTube transcript fetcher
-│   └── prepare_digest_chunks.py
-├── data/                       # Episode data
-├── digest_*.html               # Generated digests
-├── index.html                  # Archive landing page
-├── README.md                   # This file
-└── SETUP.md                    # Setup instructions
+│   ├── fetch_podcasts.py         # YouTube transcript fetcher
+│   ├── generate_digest_html.py   # HTML digest generator
+│   ├── prepare_digest_chunks.py  # Chunk prep for analysis
+│   └── push_to_readwise.py      # Push highlights to Readwise
+├── data/chunks/                  # Episode chunk data
+├── digest_*.html                 # Generated digests
+├── index.html                    # Archive landing page
+├── README.md
+└── SETUP.md
 ```
 
-## Contributing
-
-This is a personal project, but feel free to fork and adapt for your own podcast subscriptions!
-
----
-
-**Generated with 💙 by [Claude](https://claude.ai)**
-
-Last updated: February 2026
+Last updated: April 2026
