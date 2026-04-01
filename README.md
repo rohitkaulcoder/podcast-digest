@@ -61,6 +61,12 @@ Each deep dive episode is analyzed for:
 - **Notifications**: macOS notification system
 - **Monitoring**: Daily health checks
 
+## Secrets
+
+- **Local automation (launchd)**: API keys are provided via `EnvironmentVariables` in the plist file (`com.rohitkaul.podcast-step1-fetch.plist`)
+- **GitHub Actions**: Keys stored in GitHub Secrets (`YOUTUBE_API_KEY`)
+- **Interactive / manual scripts**: Read from `~/.zshrc` environment variables
+
 ## Setup
 
 See [SETUP.md](SETUP.md) for complete installation instructions.
